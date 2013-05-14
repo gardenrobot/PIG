@@ -36,6 +36,7 @@ class HumanPlayer : public Player
     static const std::string SWITCH_POKEMON_COMMAND;
     static const std::string SURRENDER_COMMAND;
     static const std::string INFO_COMMAND;
+    static const std::string HELP_COMMAND;
 
     /// Possible arguments of info command
     static const std::string PLAYER;

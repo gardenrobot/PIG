@@ -3,7 +3,7 @@
 // 
 // Author: Lucas Clotfelter
 // 
-// Each game is separated into rounds
+// Each game is separated into rounds. This class processes a round.
 // 
 // //////////////////////////////////////////////////////////////////// 
 
@@ -25,7 +25,7 @@ class Round
 
   private:
 
-    /// Determine which player should go first and  set "first" and "second"
+    /// Determine which player should go first and set "first" and "second"
     /// pointers to the appropriate objects.
     static void determineFirstPlayer(Player& playerOne, Player& playerTwo,
         Choice& choiceOne, Choice& choiceTwo, Player*& firstPlayer,

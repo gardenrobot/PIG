@@ -42,6 +42,12 @@ void Player::addPokemon(Pokemon* addedPokemon)
 }
 
 
+void Player::surrender()
+{
+    surrenders = true;
+}
+
+
 bool Player::hasLost() const
 {
     if(surrenders)

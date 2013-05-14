@@ -42,6 +42,8 @@ class Player
 
     std::string getName() const;
 
+    void surrender();
+
   protected:
 
     Player(std::string name);

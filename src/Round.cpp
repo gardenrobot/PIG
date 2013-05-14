@@ -96,7 +96,7 @@ void Round::processChoice(Player& attacking, Player& defending, Choice& choice)
 
       case SURRENDER:
       {
-          println_debug("surrender");
+          attacking.surrender();
           break;
       }
 
