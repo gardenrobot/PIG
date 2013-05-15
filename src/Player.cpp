@@ -10,6 +10,7 @@
 #include "Choice.h"
 
 #include <vector>
+#include <cassert>
 #include <string>
 #include <iostream>
 
@@ -39,6 +40,16 @@ void Player::addPokemon(Pokemon* addedPokemon)
     {
         ownedPokemon.push_back(addedPokemon);
     }
+}
+
+
+void Player::swapPokemon(int index)
+{
+    assert(index >= 1 and index < getNumPokemon());
+
+    Pokemon* tmp = ownedPokemon[0];
+    ownedPokemon[0] = ownedPokemon[index];
+    ownedPokemon[index] = tmp;
 }
 
 

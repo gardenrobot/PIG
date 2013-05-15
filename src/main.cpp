@@ -21,6 +21,7 @@ int main(int argc, char** argv)
 
     HumanPlayer* p1 = new HumanPlayer("Alpha");
     p1->addPokemon(new Charmander("Firey"));
+    p1->addPokemon(new Squirtle("Bubbles"));
     HumanPlayer* p2 = new HumanPlayer("Beta");
     p2->addPokemon(new Squirtle("Watery"));
 

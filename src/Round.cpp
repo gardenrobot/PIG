@@ -92,9 +92,9 @@ void Round::processChoice(Player& attacking, Player& defending, Choice& choice)
             break;
         }
 
-        case SWITCH_POKEMON:
+        case SWAP_POKEMON:
         {
-            println_debug("switch");
+            attacking.swapPokemon(choice.index - 1);
             break;
         }
 

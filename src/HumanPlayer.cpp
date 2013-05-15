@@ -19,7 +19,7 @@ using namespace std;
 
 
 const string HumanPlayer::MOVE_COMMAND = "move";
-const string HumanPlayer::SWITCH_POKEMON_COMMAND = "switch";
+const string HumanPlayer::SWAP_POKEMON_COMMAND = "swap";
 const string HumanPlayer::SKIP_COMMAND = "skip";
 const string HumanPlayer::SURRENDER_COMMAND = "surrender";
 const string HumanPlayer::INFO_COMMAND = "info";
@@ -83,7 +83,7 @@ Choice* HumanPlayer::askForInput(Player& otherPlayer)
 
         return new Choice(MOVE, index);
     }
-    else if(splitInput[0] == SWITCH_POKEMON_COMMAND)
+    else if(splitInput[0] == SWAP_POKEMON_COMMAND)
     {
         if(splitInput.size() < 2)
         {
@@ -98,7 +98,7 @@ Choice* HumanPlayer::askForInput(Player& otherPlayer)
             return NULL;
         }
 
-        return new Choice(SWITCH_POKEMON, index);
+        return new Choice(SWAP_POKEMON, index);
     }
     else if(splitInput[0] == INFO_COMMAND)
     {
@@ -143,7 +143,7 @@ Choice* HumanPlayer::askForInput(Player& otherPlayer)
         cout << "All commands: " << endl;
         cout << "move <move index>" << endl;
         cout << "  Use your pokemon's move" << endl;
-        cout << "switch <pokemon index>" << endl;
+        cout << "swap <pokemon index>" << endl;
         cout << "  Switch current pokemon for another in team" << endl;
         cout << "skip" << endl;
         cout << "  Do nothing this turn" << endl;

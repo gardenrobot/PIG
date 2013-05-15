@@ -30,6 +30,12 @@ class Player
     /// Add a pokemon to the player's team. It will be deleted by the player.
     void addPokemon(Pokemon* addedPokemon);
 
+    /// This player gives up
+    void surrender();
+
+    /// Swaps the lead pokemon for the pokemon at the given index
+    void swapPokemon(int index);
+
     /// Returns true if the player has been beaten
     bool hasLost() const;
 
@@ -41,8 +47,6 @@ class Player
     int getNumPokemon() const;
 
     std::string getName() const;
-
-    void surrender();
 
   protected:
 
