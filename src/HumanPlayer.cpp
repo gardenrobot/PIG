@@ -35,13 +35,13 @@ HumanPlayer::HumanPlayer(string name)
 }
 
 
-Choice HumanPlayer::getInput()
+Choice HumanPlayer::getInput(Player& otherPlayer)
 {
     bool isValid = false;
     Choice* tmpChoice;
     while(not isValid)
     {
-        tmpChoice = askForInput();
+        tmpChoice = askForInput(otherPlayer);
         isValid = tmpChoice != NULL;
         cout << endl;
 
@@ -53,7 +53,7 @@ Choice HumanPlayer::getInput()
 }
 
 
-Choice* HumanPlayer::askForInput()
+Choice* HumanPlayer::askForInput(Player& otherPlayer)
 {
     cout << getName() << ", enter choice..." << endl;
 
@@ -112,14 +112,21 @@ Choice* HumanPlayer::askForInput()
             cout << "   HP: " << poke->getHp() << " / " << poke->getMaxHp() <<
                 endl;
 
-            cout << "   Moves:" << endl;
+            cout << "      Moves:" << endl;
             for(int j = 0; j < poke->getNumMoves(); ++j)
             {
                 Move* move = poke->getMove(j);
-                cout << "   " << move->getName() << " " << endl;
+                cout << "      " << move->getName() << " " << endl;
             }
 
         }
+
+        Pokemon* otherPokemon = otherPlayer.getPokemon(0);
+        cout << otherPlayer.getName() << "'s lead pokemon is " <<
+            otherPokemon->getSpeciesName() << endl;
+        cout << "   Nickname: " << otherPokemon->getNickname() << endl;
+        cout << "   HP: " << otherPokemon->getHp() << " / " <<
+            otherPokemon->getMaxHp() << endl;
 
         return NULL;
     }

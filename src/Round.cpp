@@ -21,8 +21,8 @@ using namespace std;
 
 void Round::doRound(Environment& env, Player& playerOne, Player& playerTwo)
 {
-    Choice choiceOne = playerOne.getInput();
-    Choice choiceTwo = playerTwo.getInput();
+    Choice choiceOne = playerOne.getInput(playerTwo);
+    Choice choiceTwo = playerTwo.getInput(playerOne);
 
     Player* firstPlayer;
     Player* secondPlayer;

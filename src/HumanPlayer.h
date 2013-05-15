@@ -24,12 +24,12 @@ class HumanPlayer : public Player
 
     /// Prompts the user for input. The user can enter a command to take an
     /// action or view info. Stops prompting when user takes action.
-    Choice getInput();
+    Choice getInput(Player& otherPlayer);
 
   private:
 
     /// Prompts the user for input once. Returns the choice valid or not.
-    Choice* askForInput();
+    Choice* askForInput(Player& otherPlayer);
 
     /// Commands
     static const std::string MOVE_COMMAND;

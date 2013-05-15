@@ -34,7 +34,7 @@ class Player
     bool hasLost() const;
 
     /// Prompt the user for input
-    virtual Choice getInput() = 0;
+    virtual Choice getInput(Player& otherPlayer) = 0;
 
     Pokemon* getPokemon(int index);
 
