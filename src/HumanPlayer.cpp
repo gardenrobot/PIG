@@ -20,6 +20,7 @@ using namespace std;
 
 const string HumanPlayer::MOVE_COMMAND = "move";
 const string HumanPlayer::SWITCH_POKEMON_COMMAND = "switch";
+const string HumanPlayer::SKIP_COMMAND = "skip";
 const string HumanPlayer::SURRENDER_COMMAND = "surrender";
 const string HumanPlayer::INFO_COMMAND = "info";
 const string HumanPlayer::HELP_COMMAND = "help";
@@ -106,7 +107,7 @@ Choice* HumanPlayer::askForInput()
         for(int i = 0; i < getNumPokemon(); ++i)
         {
             Pokemon* poke = getPokemon(i);
-            cout << i << ": " << poke->getSpeciesName() << endl;
+            cout << (i+1) << ": " << poke->getSpeciesName() << endl;
             cout << "   Nickname: " << poke->getNickname() << endl;
             cout << "   HP: " << poke->getHp() << " / " << poke->getMaxHp() <<
                 endl;
@@ -122,6 +123,10 @@ Choice* HumanPlayer::askForInput()
 
         return NULL;
     }
+    else if(splitInput[0] == SKIP_COMMAND)
+    {
+        return new Choice(SKIP, 0);
+    }
     else if(splitInput[0] == SURRENDER_COMMAND)
     {
         return new Choice(SURRENDER, 0);
@@ -133,6 +138,8 @@ Choice* HumanPlayer::askForInput()
         cout << "  Use your pokemon's move" << endl;
         cout << "switch <pokemon index>" << endl;
         cout << "  Switch current pokemon for another in team" << endl;
+        cout << "skip" << endl;
+        cout << "  Do nothing this turn" << endl;
         cout << "surrender" << endl;
         cout << "  Give up" << endl;
         return NULL;

@@ -11,6 +11,7 @@
 #include "Move.h"
 #include "Type.h"
 #include "Stat.h"
+#include "Debug.h"
 
 #include <string>
 #include <vector>
@@ -247,13 +248,13 @@ void Pokemon::onRoundEnd()
 
 
 Charmander::Charmander(const string nickname)
-:Pokemon(nickname, "Charmander", FIRE, NONE, 39, 52, 43, 60, 50, 65, new Ember(), NULL,
+:Pokemon(nickname, "Charmander", FIRE, NONE, 39, 52, 143, 60, 150, 65, new Ember(), NULL,
     NULL, NULL)
 {
 }
 
 Squirtle::Squirtle(const string nickname)
-:Pokemon(nickname, "Squirtle", WATER, NONE, 29, 30, 80, 23, 21, 29, new WaterGun(), NULL,
+:Pokemon(nickname, "Squirtle", WATER, NONE, 29, 30, 180, 23, 121, 29, new WaterGun(), NULL,
     NULL, NULL)
 {
 }

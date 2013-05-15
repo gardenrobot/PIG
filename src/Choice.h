@@ -14,7 +14,7 @@
 /// These enums are actions that the players can take
 typedef enum
 {
-    MOVE, SWITCH_POKEMON, SURRENDER
+    MOVE, SWITCH_POKEMON, SKIP, SURRENDER
 } ChoiceType;
 
 struct Choice

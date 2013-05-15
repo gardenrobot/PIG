@@ -104,6 +104,11 @@ void Round::processChoice(Player& attacking, Player& defending, Choice& choice)
             break;
         }
 
+        case SKIP:
+        {
+            break;
+        }
+
         default:
         {
             println_debug("Unknown command");

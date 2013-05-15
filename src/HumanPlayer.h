@@ -34,6 +34,7 @@ class HumanPlayer : public Player
     /// Commands
     static const std::string MOVE_COMMAND;
     static const std::string SWITCH_POKEMON_COMMAND;
+    static const std::string SKIP_COMMAND;
     static const std::string SURRENDER_COMMAND;
     static const std::string INFO_COMMAND;
     static const std::string HELP_COMMAND;
