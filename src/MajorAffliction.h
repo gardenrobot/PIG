@@ -13,11 +13,17 @@
 
 class Pokemon;
 
+#include <iostream>
+
 
 class MajorAffliction
 {
 
   public:
+
+    const std::string name;
+
+    const std::string shortName;
 
     /// Called when the round ends
     virtual void onRoundEnd();
@@ -31,7 +37,8 @@ class MajorAffliction
 
   protected:
 
-    MajorAffliction(Pokemon& afflictedPokemon);
+    MajorAffliction(Pokemon& afflictedPokemon, std::string name,
+        std::string shortName);
 
     /// The pokemon that this is afflicted.
     Pokemon& afflictedPokemon;

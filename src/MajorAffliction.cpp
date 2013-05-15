@@ -7,9 +7,16 @@
 
 #include "MajorAffliction.h"
 
+#include <iostream>
 
-MajorAffliction::MajorAffliction(Pokemon& afflictedPokemon)
+using namespace std;
+
+
+MajorAffliction::MajorAffliction(Pokemon& afflictedPokemon, string name,
+    string shortName)
 :afflictedPokemon(afflictedPokemon)
+,name(name)
+,shortName(shortName)
 {
 }
 

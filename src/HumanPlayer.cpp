@@ -10,6 +10,7 @@
 #include "StringHelper.h"
 #include "Pokemon.h"
 #include "Move.h"
+#include "MajorAffliction.h"
 
 #include <iostream>
 #include <string>
@@ -107,7 +108,13 @@ Choice* HumanPlayer::askForInput(Player& otherPlayer)
         for(int i = 0; i < getNumPokemon(); ++i)
         {
             Pokemon* poke = getPokemon(i);
-            cout << (i+1) << ": " << poke->getSpeciesName() << endl;
+            cout << (i+1) << ": " << poke->getSpeciesName() << " ";
+            if(poke->getMajorAffliction() != NULL)
+            {
+                cout << poke->getMajorAffliction()->shortName;
+            }
+            cout << endl;
+
             cout << "   Nickname: " << poke->getNickname() << endl;
             cout << "   HP: " << poke->getHp() << " / " << poke->getMaxHp() <<
                 endl;
@@ -123,7 +130,12 @@ Choice* HumanPlayer::askForInput(Player& otherPlayer)
 
         Pokemon* otherPokemon = otherPlayer.getPokemon(0);
         cout << otherPlayer.getName() << "'s lead pokemon is " <<
-            otherPokemon->getSpeciesName() << endl;
+            otherPokemon->getSpeciesName() << " ";
+        if(otherPokemon->getMajorAffliction() != NULL)
+        {
+            cout << otherPokemon->getMajorAffliction()->shortName;
+        }
+        cout << endl;
         cout << "   Nickname: " << otherPokemon->getNickname() << endl;
         cout << "   HP: " << otherPokemon->getHp() << " / " <<
             otherPokemon->getMaxHp() << endl;

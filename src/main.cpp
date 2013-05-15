@@ -11,6 +11,7 @@
 #include "HumanPlayer.h"
 #include "Environment.h"
 #include "Pokemon.h"
+#include "MajorAffliction.h"
 
 #include <iostream>
 
@@ -22,6 +23,7 @@ int main(int argc, char** argv)
     HumanPlayer* p1 = new HumanPlayer("Alpha");
     p1->addPokemon(new Charmander("Firey"));
     p1->addPokemon(new Squirtle("Bubbles"));
+    p1->getPokemon(0)->setMajorAffliction(new Poison(*(p1->getPokemon(0))));
     HumanPlayer* p2 = new HumanPlayer("Beta");
     p2->addPokemon(new Squirtle("Watery"));
 

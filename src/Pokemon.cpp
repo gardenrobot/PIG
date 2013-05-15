@@ -244,6 +244,21 @@ void Pokemon::onRoundEnd()
 }
 
 
+void Pokemon::healMajorAffliction()
+{
+    delete majorAffliction;
+    majorAffliction = NULL;
+}
+
+
+void Pokemon::setMajorAffliction(MajorAffliction* affliction)
+{
+    assert(this->majorAffliction == NULL);
+
+    this->majorAffliction = affliction;
+}
+
+
 /// All implementations for derived classes of Pokemon go below here.
 
 

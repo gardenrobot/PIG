@@ -72,6 +72,10 @@ class Pokemon
     /// Called when the environment finishes a round.
     void onRoundEnd();
 
+    void healMajorAffliction();
+
+    void setMajorAffliction(MajorAffliction* affliction);
+
     Type getTypeOne() const;
 
     Type getTypeTwo() const;

@@ -14,7 +14,7 @@ using namespace std;
 
 
 Poison::Poison(Pokemon& afflictedPokemon)
-:MajorAffliction(afflictedPokemon)
+:MajorAffliction(afflictedPokemon, "Poison", "PSN")
 {
 }
 
