@@ -62,7 +62,7 @@ Category Move::getCategory() const
 
 void Move::onRoundEnd() const
 {
-    cout << "Move sees that the round is ending" << endl;
+
 }
 
 

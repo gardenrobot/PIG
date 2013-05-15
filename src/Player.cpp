@@ -56,11 +56,7 @@ void Player::swapPokemon(int index)
 
 void Player::onRoundEnd()
 {
-    MajorAffliction* ma = getPokemon(0)->getMajorAffliction();
-    if(ma != NULL)
-    {
-        ma->onRoundEnd();
-    }
+    getPokemon(0)->onRoundEnd();
 }
 
 
