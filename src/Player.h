@@ -36,6 +36,8 @@ class Player
     /// Swaps the lead pokemon for the pokemon at the given index
     void swapPokemon(int index);
 
+    void onRoundEnd();
+
     /// Returns true if the player has been beaten
     bool hasLost() const;
 

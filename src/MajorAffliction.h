@@ -46,12 +46,12 @@ class MajorAffliction
 };
 
 
-class Poison : public MajorAffliction
+class Burn : public MajorAffliction
 {
 
   public:
 
-    Poison(Pokemon& afflictedPokemon);
+    Burn(Pokemon& afflictedPokemon);
 
     void onRoundEnd();
 

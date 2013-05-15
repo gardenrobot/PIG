@@ -1,5 +1,5 @@
 // 
-// File: Poison.cpp 
+// File: Burn.cpp 
 // 
 // Author: Lucas Clotfelter
 // 
@@ -13,20 +13,22 @@
 using namespace std;
 
 
-Poison::Poison(Pokemon& afflictedPokemon)
-:MajorAffliction(afflictedPokemon, "Poison", "PSN")
+Burn::Burn(Pokemon& afflictedPokemon)
+:MajorAffliction(afflictedPokemon, "Burn", "BRN")
 {
 }
 
 
-void Poison::onRoundEnd()
+void Burn::onRoundEnd()
 {
-    int damage(afflictedPokemon.getHp() / 16.0);
+    int damage(afflictedPokemon.getHp() / 8.0);
+    cout << afflictedPokemon.getNickname() << " took " << damage <<
+        " burn damage" << endl;
     afflictedPokemon.setHp(afflictedPokemon.getHp() - damage);
 }
 
 
-bool Poison::isFinished()
+bool Burn::isFinished()
 {
     return false;
 }

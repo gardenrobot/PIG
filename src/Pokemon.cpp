@@ -144,7 +144,7 @@ const vector< Move* > Pokemon::getMovesContainer() const
 }
 
 
-const MajorAffliction* Pokemon::getMajorAffliction() const
+MajorAffliction* Pokemon::getMajorAffliction() 
 {
     return majorAffliction;
 }

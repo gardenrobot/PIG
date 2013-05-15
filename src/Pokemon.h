@@ -47,7 +47,7 @@ class Pokemon
 
     const std::vector< Move* > getMovesContainer() const;
 
-    const MajorAffliction* getMajorAffliction() const;
+    MajorAffliction* getMajorAffliction();
 
     const MinorAffliction* getMinorAffliction(int index) const;
 

@@ -8,6 +8,7 @@
 #include "Player.h"
 #include "Pokemon.h"
 #include "Choice.h"
+#include "MajorAffliction.h"
 
 #include <vector>
 #include <cassert>
@@ -50,6 +51,16 @@ void Player::swapPokemon(int index)
     Pokemon* tmp = ownedPokemon[0];
     ownedPokemon[0] = ownedPokemon[index];
     ownedPokemon[index] = tmp;
+}
+
+
+void Player::onRoundEnd()
+{
+    MajorAffliction* ma = getPokemon(0)->getMajorAffliction();
+    if(ma != NULL)
+    {
+        ma->onRoundEnd();
+    }
 }
 
 

@@ -34,6 +34,9 @@ void Round::doRound(Environment& env, Player& playerOne, Player& playerTwo)
 
     processChoice(*firstPlayer, *secondPlayer, *firstChoice);
     processChoice(*secondPlayer, *firstPlayer, *secondChoice);
+
+    playerOne.onRoundEnd();
+    playerTwo.onRoundEnd();
 }
 
 void Round::determineFirstPlayer(Player& playerOne, Player& playerTwo,
