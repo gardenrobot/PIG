@@ -103,40 +103,44 @@ Choice* HumanPlayer::askForInput(Player& otherPlayer)
     }
     else if(splitInput[0] == INFO_COMMAND)
     {
+        // print info of all player's pokemon and basic info of the enemy's
+        // lead pokemon
         cout << getName() << ", you have " << getNumPokemon() << " pokemon." <<
             endl;
         for(int i = 0; i < getNumPokemon(); ++i)
         {
             Pokemon* poke = getPokemon(i);
-            cout << (i+1) << ": " << poke->getSpeciesName() << " ";
+            cout << (i+1) << ": " << poke->getNickname() << " ";
             if(poke->getMajorAffliction() != NULL)
             {
                 cout << poke->getMajorAffliction()->shortName;
             }
             cout << endl;
 
-            cout << "   Nickname: " << poke->getNickname() << endl;
+            cout << "   Species: " << poke->getSpeciesName() << endl;
             cout << "   HP: " << poke->getHp() << " / " << poke->getMaxHp() <<
                 endl;
 
-            cout << "      Moves:" << endl;
+            cout << "   Moves:" << endl;
             for(int j = 0; j < poke->getNumMoves(); ++j)
             {
                 Move* move = poke->getMove(j);
-                cout << "      " << move->getName() << " " << endl;
+                cout << "      " << (j + 1) << ". " << move->getName() << " "
+                    << endl;
             }
 
         }
+        cout << endl;
 
         Pokemon* otherPokemon = otherPlayer.getPokemon(0);
         cout << otherPlayer.getName() << "'s lead pokemon is " <<
-            otherPokemon->getSpeciesName() << " ";
+            otherPokemon->getNickname() << " ";
         if(otherPokemon->getMajorAffliction() != NULL)
         {
             cout << otherPokemon->getMajorAffliction()->shortName;
         }
         cout << endl;
-        cout << "   Nickname: " << otherPokemon->getNickname() << endl;
+        cout << "   Species: " << otherPokemon->getSpeciesName() << endl;
         cout << "   HP: " << otherPokemon->getHp() << " / " <<
             otherPokemon->getMaxHp() << endl;
 
