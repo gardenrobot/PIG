@@ -6,6 +6,8 @@
 // //////////////////////////////////////////////////////////////////// 
 
 #include "MinorAffliction.h"
+#include "Move.h"
+#include "Battle.h"
 
 #include <iostream>
 #include <cstdlib>
@@ -28,7 +30,10 @@ bool Confusion::whenAttacks()
     if(rand() % 100 < 50)
     {
         cout << afflictedPokemon.getNickname() << " hurt itself in its confusion." << endl;
-        afflictedPokemon.setHp(-afflictedPokemon.getHp() / 2);
+
+        Move* confusedMove = new SelfInflictedConfusionMove();
+        Battle::doBattle(afflictedPokemon, afflictedPokemon, *confusedMove);
+        delete confusedMove;
         return true;
     }
     else

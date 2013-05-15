@@ -12,6 +12,7 @@
 #include "Battle.h"
 #include "Choice.h"
 #include "Stat.h"
+#include "MinorAffliction.h"
 #include "Debug.h"
 
 #include <iostream>
@@ -91,7 +92,19 @@ void Round::processChoice(Player& attacking, Player& defending, Choice& choice)
             Pokemon* defendingPokemon = defending.getPokemon(0);
             Move* chosenMove = attackingPokemon->getMove(choice.index - 1);
 
-            Battle::doBattle(*attackingPokemon, *defendingPokemon, *chosenMove);
+            bool skipBattle = false;
+            for(int i = 0; i < attackingPokemon->getNumMinorAfflictions(); ++i)
+            {
+                if(attackingPokemon->getMinorAffliction(i)->whenAttacks())
+                {
+                    skipBattle = true;
+                }
+            }
+
+            if(not skipBattle)
+            {
+                Battle::doBattle(*attackingPokemon, *defendingPokemon, *chosenMove);
+            }
             break;
         }
 

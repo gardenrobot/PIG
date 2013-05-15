@@ -49,7 +49,9 @@ class Pokemon
 
     MajorAffliction* getMajorAffliction();
 
-    const MinorAffliction* getMinorAffliction(int index) const;
+    int getNumMinorAfflictions() const;
+
+    MinorAffliction* getMinorAffliction(int index);
 
     const Stat& getAttack() const;
     const Stat& getDefense() const;
@@ -75,6 +77,8 @@ class Pokemon
     void healMajorAffliction();
 
     void setMajorAffliction(MajorAffliction* affliction);
+
+    void addMinorAffliction(MinorAffliction* affliction);
 
     Type getTypeOne() const;
 

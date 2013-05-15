@@ -9,6 +9,7 @@
 #include "Pokemon.h"
 
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -21,10 +22,10 @@ Burn::Burn(Pokemon& afflictedPokemon)
 
 void Burn::onRoundEnd()
 {
-    int damage(afflictedPokemon.getHp() / 8.0);
+    int damage(ceil(afflictedPokemon.getMaxHp() / 8.0));
     cout << afflictedPokemon.getNickname() << " took " << damage <<
         " burn damage" << endl;
-    afflictedPokemon.setHp(afflictedPokemon.getHp() - damage);
+    afflictedPokemon.changeHp(-damage);
 }
 
 

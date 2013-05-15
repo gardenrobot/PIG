@@ -95,5 +95,14 @@ class WaterGun : public Move
 
 };
 
+class SelfInflictedConfusionMove : public Move
+{
+
+  public:
+
+    SelfInflictedConfusionMove();
+
+};
+
 #endif // MOVE_H_
 

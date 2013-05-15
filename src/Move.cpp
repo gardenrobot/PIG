@@ -83,3 +83,8 @@ WaterGun::WaterGun()
 {
 }
 
+SelfInflictedConfusionMove::SelfInflictedConfusionMove()
+:Move(string("Confused Move"), NONE, 40, -1, PHYSICAL)
+{
+}
+

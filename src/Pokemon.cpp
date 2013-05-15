@@ -90,6 +90,7 @@ Pokemon::~Pokemon()
 
 void Pokemon::setHp(int hp)
 {
+    println_debug(getNickname() << "'s hp set to " << hp);
     this->hp = hp;
 }
 
@@ -150,9 +151,15 @@ MajorAffliction* Pokemon::getMajorAffliction()
 }
 
 
-const MinorAffliction* Pokemon::getMinorAffliction(int index) const
+int Pokemon::getNumMinorAfflictions() const
 {
-    assert(index >= 0 and index < moves.size());
+    return minorAfflictions.size();
+}
+
+
+MinorAffliction* Pokemon::getMinorAffliction(int index)
+{
+    assert(index >= 0 and index < minorAfflictions.size());
 
     return minorAfflictions[index];
 }
@@ -256,6 +263,11 @@ void Pokemon::setMajorAffliction(MajorAffliction* affliction)
     assert(this->majorAffliction == NULL);
 
     this->majorAffliction = affliction;
+}
+
+void Pokemon::addMinorAffliction(MinorAffliction* affliction)
+{
+    minorAfflictions.push_back(affliction);
 }
 
 
