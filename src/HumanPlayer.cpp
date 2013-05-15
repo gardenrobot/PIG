@@ -8,6 +8,8 @@
 #include "Player.h"
 #include "HumanPlayer.h"
 #include "StringHelper.h"
+#include "Pokemon.h"
+#include "Move.h"
 
 #include <iostream>
 #include <string>
@@ -19,6 +21,7 @@ using namespace std;
 const string HumanPlayer::MOVE_COMMAND = "move";
 const string HumanPlayer::SWITCH_POKEMON_COMMAND = "switch";
 const string HumanPlayer::SURRENDER_COMMAND = "surrender";
+const string HumanPlayer::INFO_COMMAND = "info";
 const string HumanPlayer::HELP_COMMAND = "help";
 
 const string HumanPlayer::PLAYER = "player";
@@ -96,6 +99,29 @@ Choice* HumanPlayer::askForInput()
 
         return new Choice(SWITCH_POKEMON, index);
     }
+    else if(splitInput[0] == INFO_COMMAND)
+    {
+        cout << getName() << ", you have " << getNumPokemon() << " pokemon." <<
+            endl;
+        for(int i = 0; i < getNumPokemon(); ++i)
+        {
+            Pokemon* poke = getPokemon(i);
+            cout << i << ": " << poke->getSpeciesName() << endl;
+            cout << "   Nickname: " << poke->getNickname() << endl;
+            cout << "   HP: " << poke->getHp() << " / " << poke->getMaxHp() <<
+                endl;
+
+            cout << "   Moves:" << endl;
+            for(int j = 0; j < poke->getNumMoves(); ++j)
+            {
+                Move* move = poke->getMove(j);
+                cout << "   " << move->getName() << " " << endl;
+            }
+
+        }
+
+        return NULL;
+    }
     else if(splitInput[0] == SURRENDER_COMMAND)
     {
         return new Choice(SURRENDER, 0);
@@ -111,9 +137,6 @@ Choice* HumanPlayer::askForInput()
         cout << "  Give up" << endl;
         return NULL;
     }
-    else
-    {
-        return NULL;
-    }
+    return NULL;
 }
 

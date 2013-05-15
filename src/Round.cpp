@@ -14,6 +14,10 @@
 #include "Stat.h"
 #include "Debug.h"
 
+#include <iostream>
+
+using namespace std;
+
 
 void Round::doRound(Environment& env, Player& playerOne, Player& playerTwo)
 {
@@ -78,33 +82,33 @@ void Round::processChoice(Player& attacking, Player& defending, Choice& choice)
 {
     switch(choice.choiceType)
     {
-      case MOVE:
-      {
-          Pokemon* attackingPokemon = attacking.getPokemon(0);
-          Pokemon* defendingPokemon = defending.getPokemon(0);
-          Move* chosenMove = attackingPokemon->getMove(choice.index - 1);
+        case MOVE:
+        {
+            Pokemon* attackingPokemon = attacking.getPokemon(0);
+            Pokemon* defendingPokemon = defending.getPokemon(0);
+            Move* chosenMove = attackingPokemon->getMove(choice.index - 1);
 
-          Battle::doBattle(*attackingPokemon, *defendingPokemon, *chosenMove);
-          break;
-      }
+            Battle::doBattle(*attackingPokemon, *defendingPokemon, *chosenMove);
+            break;
+        }
 
-      case SWITCH_POKEMON:
-      {
-          println_debug("switch");
-          break;
-      }
+        case SWITCH_POKEMON:
+        {
+            println_debug("switch");
+            break;
+        }
 
-      case SURRENDER:
-      {
-          attacking.surrender();
-          break;
-      }
+        case SURRENDER:
+        {
+            attacking.surrender();
+            break;
+        }
 
-      default:
-      {
-          println_debug("Unknown command");
-          break;
-      }
+        default:
+        {
+            println_debug("Unknown command");
+            break;
+        }
     }
 }
 
