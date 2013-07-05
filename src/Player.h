@@ -36,9 +36,14 @@ class Player
     /// Swaps the lead pokemon for the pokemon at the given index
     void swapPokemon(int index);
 
+    /// Notifies its pokemon of the round end.
     void onRoundEnd();
 
-    /// Returns true if the player has been beaten
+    /// Returns true iff it is legal to swap head pokemon with the pokemon at
+    /// the given index
+    bool canSwap(int index); 
+
+    /// Returns true iff the player has been beaten
     bool hasLost() const;
 
     /// Prompt the user for input

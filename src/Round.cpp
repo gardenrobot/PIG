@@ -110,7 +110,14 @@ void Round::processChoice(Player& attacking, Player& defending, Choice& choice)
 
         case SWAP_POKEMON:
         {
-            attacking.swapPokemon(choice.index - 1);
+            int index = choice.index - 1;
+            assert_debug(attacking.canSwap(index));
+
+            cout << attacking.getPokemon(0)->getNickname() <<
+                " was swapped for " <<
+                attacking.getPokemon(index)->getNickname() << endl;
+            attacking.swapPokemon(index);
+
             break;
         }
 

@@ -28,3 +28,9 @@ bool MinorAffliction::whenAttacks()
     return false;
 }
 
+
+bool MinorAffliction::isTrapped()
+{
+    return false;
+}
+

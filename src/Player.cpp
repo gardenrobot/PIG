@@ -9,6 +9,8 @@
 #include "Pokemon.h"
 #include "Choice.h"
 #include "MajorAffliction.h"
+#include "MinorAffliction.h"
+#include "Debug.h"
 
 #include <vector>
 #include <cassert>
@@ -46,7 +48,7 @@ void Player::addPokemon(Pokemon* addedPokemon)
 
 void Player::swapPokemon(int index)
 {
-    assert(index >= 1 and index < getNumPokemon());
+    assert_debug(index >= 1 and index < getNumPokemon());
 
     Pokemon* tmp = ownedPokemon[0];
     ownedPokemon[0] = ownedPokemon[index];
@@ -78,6 +80,25 @@ bool Player::hasLost() const
     for( ; it != ownedPokemon.end(); ++it)
     {
         if((*it)->getHp() > 0)
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
+bool Player::canSwap(int index)
+{
+    // check if any of the lead pokemon's minor afflictions prevent them from
+    // leaving
+    Pokemon* pokemon = getPokemon(0);
+    assert_debug(pokemon != NULL);
+
+    for(int i = 0; i < pokemon->getNumMinorAfflictions(); ++i)
+    {
+        if(pokemon->getMinorAffliction(i)->isTrapped())
         {
             return false;
         }

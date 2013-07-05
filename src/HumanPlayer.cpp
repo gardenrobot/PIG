@@ -69,7 +69,7 @@ Choice* HumanPlayer::askForInput(Player& otherPlayer)
     }
     else if(splitInput[0] == MOVE_COMMAND)
     {
-        if(splitInput.size() < 2)
+        if(splitInput.size() != 2)
         {
             return NULL;
         }
@@ -86,7 +86,7 @@ Choice* HumanPlayer::askForInput(Player& otherPlayer)
     }
     else if(splitInput[0] == SWAP_POKEMON_COMMAND)
     {
-        if(splitInput.size() < 2)
+        if(splitInput.size() != 2)
         {
             return NULL;
         }
@@ -95,6 +95,11 @@ Choice* HumanPlayer::askForInput(Player& otherPlayer)
         bool success = stringstream(splitInput[1]) >> index;
 
         if(not success)
+        {
+            return NULL;
+        }
+
+        if(index <= 1 or index > getNumPokemon() or not canSwap(index - 1))
         {
             return NULL;
         }

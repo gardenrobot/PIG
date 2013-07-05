@@ -26,8 +26,12 @@ class MinorAffliction
     /// replaces the attack
     virtual bool whenAttacks();
 
-    /// Returns true if the minor affliction should be removed from the pokemon.
+    /// Returns true iff the minor affliction should be removed from the pokemon
     virtual bool isFinished() = 0;
+
+    /// Returns true iff this affliction is preventing the pokemon from being
+    /// swapped
+    virtual bool isTrapped();
 
   protected:
 
@@ -47,6 +51,25 @@ class Confusion : public MinorAffliction
     Confusion(Pokemon& afflictedPokemon);
 
     bool whenAttacks();
+
+    bool isFinished();
+
+  private:
+
+    int turnsLeft;
+
+};
+
+
+// this is just for testing the isTrapped function; remove this later
+class Bind : public MinorAffliction
+{
+
+  public:
+
+    Bind(Pokemon& afflictedPokemon);
+
+    bool isTrapped();
 
     bool isFinished();
 

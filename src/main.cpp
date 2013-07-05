@@ -28,6 +28,7 @@ int main(int argc, char** argv)
     p1->addPokemon(new Squirtle("Bubbles"));
     p1->getPokemon(0)->setMajorAffliction(new Burn(*(p1->getPokemon(0))));
     p1->getPokemon(0)->addMinorAffliction(new Confusion(*(p1->getPokemon(0))));
+    //p1->getPokemon(0)->addMinorAffliction(new Bind(*(p1->getPokemon(0))));
     HumanPlayer* p2 = new HumanPlayer("Beta");
     p2->addPokemon(new Squirtle("Watery"));
 
