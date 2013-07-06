@@ -99,7 +99,7 @@ Choice* HumanPlayer::askForInput(Player& otherPlayer)
             return NULL;
         }
 
-        if(index <= 1 or index > getNumPokemon() or not canSwap(index - 1))
+        if(not canSwap(index - 1))
         {
             return NULL;
         }

@@ -91,14 +91,27 @@ bool Player::hasLost() const
 
 bool Player::canSwap(int index)
 {
+    // bounds checking
+    if(index < 1 or index >= getNumPokemon())
+    {
+        return false;
+    }
+
+    // check if the entering pokemon is fainted
+    Pokemon* enteringPokemon = getPokemon(index);
+    if(enteringPokemon->isFainted())
+    {
+        return false;
+    }
+
     // check if any of the lead pokemon's minor afflictions prevent them from
     // leaving
-    Pokemon* pokemon = getPokemon(0);
-    assert_debug(pokemon != NULL);
+    Pokemon* leadPokemon = getPokemon(0);
+    assert_debug(leadPokemon != NULL);
 
-    for(int i = 0; i < pokemon->getNumMinorAfflictions(); ++i)
+    for(int i = 0; i < leadPokemon->getNumMinorAfflictions(); ++i)
     {
-        if(pokemon->getMinorAffliction(i)->isTrapped())
+        if(leadPokemon->getMinorAffliction(i)->isTrapped())
         {
             return false;
         }
