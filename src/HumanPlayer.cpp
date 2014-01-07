@@ -168,6 +168,8 @@ Choice* HumanPlayer::askForInput(Player& otherPlayer)
         cout << "  Switch current pokemon for another in team" << endl;
         cout << "skip" << endl;
         cout << "  Do nothing this turn" << endl;
+        cout << "info" << endl;
+        cout << "  Show information of battle" << endl;
         cout << "surrender" << endl;
         cout << "  Give up" << endl;
         return NULL;
