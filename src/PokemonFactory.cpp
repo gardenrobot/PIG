@@ -14,11 +14,6 @@
 using namespace std;
 
 
-void PokemonFactory::initialize()
-{
-    cout << "Initializing" << endl;
-}
-
 Pokemon* PokemonFactory::createPokemon(int speciesId, string nickname)
 {
     switch(speciesId)

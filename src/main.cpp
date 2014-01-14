@@ -23,7 +23,6 @@ using namespace std;
 int main(int argc, char** argv)
 {
     srand(50);
-    PokemonFactory::initialize();
 
     HumanPlayer* p1 = new HumanPlayer("Alpha");
     p1->addPokemon(PokemonFactory::createPokemon(4, "Flamey"));
