@@ -53,10 +53,10 @@ CPP_FILES =	Battle.cpp Burn.cpp Choice.cpp Confusion.cpp Environment.cpp HumanPl
 C_FILES =	
 PS_FILES =	
 S_FILES =	
-H_FILES =	Battle.h Category.h Choice.h Debug.h Environment.h HumanPlayer.h MajorAffliction.h MinorAffliction.h Move.h Player.h Pokemon.h Round.h Stat.h StringHelper.h Type.h
+H_FILES =	Battle.h Category.h Choice.h Debug.h Environment.h HumanPlayer.h MajorAffliction.h MinorAffliction.h Move.h Player.h Pokemon.h Round.h Stat.h StringHelper.h Type.h PokemonFactory.h
 SOURCEFILES =	$(H_FILES) $(CPP_FILES) $(C_FILES) $(S_FILES)
 .PRECIOUS:	$(SOURCEFILES)
-OBJFILES =	Battle.o Burn.o Choice.o Confusion.o Environment.o HumanPlayer.o main.o MajorAffliction.o MinorAffliction.o Move.o Player.o Pokemon.o Round.o Stat.o StringHelper.o Type.o Bind.o
+OBJFILES =	Battle.o Burn.o Choice.o Confusion.o Environment.o HumanPlayer.o main.o MajorAffliction.o MinorAffliction.o Move.o Player.o Pokemon.o Round.o Stat.o StringHelper.o Type.o Bind.o PokemonFactory.o
 
 #
 # Main targets
@@ -88,7 +88,8 @@ Round.o:	Battle.h Choice.h Debug.h Environment.h Player.h Pokemon.h Round.h Stat
 Stat.o:	Stat.h
 StringHelper.o:	StringHelper.h
 Type.o:	Type.h
-main.o:	Choice.h Debug.h Environment.h HumanPlayer.h Move.h Player.h Pokemon.h Round.h Type.h
+PokemonFactory.o: PokemonFactory.h
+main.o:	Choice.h Debug.h Environment.h HumanPlayer.h Move.h Player.h Pokemon.h Round.h Type.h PokemonFactory.h
 
 #
 # Housekeeping

@@ -11,6 +11,7 @@
 #include "HumanPlayer.h"
 #include "Environment.h"
 #include "Pokemon.h"
+#include "PokemonFactory.h"
 #include "MajorAffliction.h"
 #include "MinorAffliction.h"
 
@@ -22,15 +23,19 @@ using namespace std;
 int main(int argc, char** argv)
 {
     srand(50);
+    PokemonFactory::initialize();
 
     HumanPlayer* p1 = new HumanPlayer("Alpha");
-    p1->addPokemon(new Charmander("Firey"));
-    p1->addPokemon(new Squirtle("Bubbles"));
+    p1->addPokemon(PokemonFactory::createPokemon(4, "Flamey"));
+    p1->addPokemon(PokemonFactory::createPokemon(7, "Bubbles"));
+    //p1->addPokemon(new Charmander("Firey"));
+    //p1->addPokemon(new Squirtle("Bubbles"));
     p1->getPokemon(0)->setMajorAffliction(new Burn(*(p1->getPokemon(0))));
     p1->getPokemon(0)->addMinorAffliction(new Confusion(*(p1->getPokemon(0))));
     //p1->getPokemon(0)->addMinorAffliction(new Bind(*(p1->getPokemon(0))));
     HumanPlayer* p2 = new HumanPlayer("Beta");
-    p2->addPokemon(new Squirtle("Watery"));
+    //p2->addPokemon(new Squirtle("Watery"));
+    p2->addPokemon(PokemonFactory::createPokemon(7, "Watery"));
 
     Environment env(p1, p2);
 
