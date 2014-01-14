@@ -11,6 +11,7 @@
 #include "Move.h"
 #include "Type.h"
 #include "Stat.h"
+#include "MoveFactory.h"
 #include "Debug.h"
 
 #include <string>
@@ -275,13 +276,13 @@ void Pokemon::addMinorAffliction(MinorAffliction* affliction)
 
 
 Charmander::Charmander(const string nickname)
-:Pokemon(nickname, "Charmander", FIRE, NONE, 39, 52, 143, 60, 150, 65, new Ember(), NULL,
+:Pokemon(nickname, "Charmander", FIRE, NONE, 39, 52, 143, 60, 150, 65, MoveFactory::createMove(0), NULL,
     NULL, NULL)
 {
 }
 
 Squirtle::Squirtle(const string nickname)
-:Pokemon(nickname, "Squirtle", WATER, NONE, 29, 30, 180, 23, 121, 29, new WaterGun(), NULL,
+:Pokemon(nickname, "Squirtle", WATER, NONE, 29, 30, 180, 23, 121, 29, MoveFactory::createMove(1), NULL,
     NULL, NULL)
 {
 }

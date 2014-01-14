@@ -49,14 +49,14 @@ CCLIBFLAGS =
 ########## End of default flags
 
 
-CPP_FILES =	Battle.cpp Burn.cpp Choice.cpp Confusion.cpp Environment.cpp HumanPlayer.cpp main.cpp MajorAffliction.cpp MinorAffliction.cpp Move.cpp Player.cpp Pokemon.cpp Round.cpp Stat.cpp StringHelper.cpp Type.cpp Bind.cpp
+CPP_FILES =	Battle.cpp Burn.cpp Choice.cpp Confusion.cpp Environment.cpp HumanPlayer.cpp main.cpp MajorAffliction.cpp MinorAffliction.cpp Move.cpp Player.cpp Pokemon.cpp Round.cpp Stat.cpp StringHelper.cpp Type.cpp Bind.cpp PokemonFactory.cpp MoveFactory.cpp
 C_FILES =	
 PS_FILES =	
 S_FILES =	
-H_FILES =	Battle.h Category.h Choice.h Debug.h Environment.h HumanPlayer.h MajorAffliction.h MinorAffliction.h Move.h Player.h Pokemon.h Round.h Stat.h StringHelper.h Type.h PokemonFactory.h
+H_FILES =	Battle.h Category.h Choice.h Debug.h Environment.h HumanPlayer.h MajorAffliction.h MinorAffliction.h Move.h Player.h Pokemon.h Round.h Stat.h StringHelper.h Type.h PokemonFactory.h MoveFactory.h
 SOURCEFILES =	$(H_FILES) $(CPP_FILES) $(C_FILES) $(S_FILES)
 .PRECIOUS:	$(SOURCEFILES)
-OBJFILES =	Battle.o Burn.o Choice.o Confusion.o Environment.o HumanPlayer.o main.o MajorAffliction.o MinorAffliction.o Move.o Player.o Pokemon.o Round.o Stat.o StringHelper.o Type.o Bind.o PokemonFactory.o
+OBJFILES =	Battle.o Burn.o Choice.o Confusion.o Environment.o HumanPlayer.o main.o MajorAffliction.o MinorAffliction.o Move.o Player.o Pokemon.o Round.o Stat.o StringHelper.o Type.o Bind.o PokemonFactory.o MoveFactory.o
 
 #
 # Main targets
@@ -89,7 +89,8 @@ Stat.o:	Stat.h
 StringHelper.o:	StringHelper.h
 Type.o:	Type.h
 PokemonFactory.o: PokemonFactory.h
-main.o:	Choice.h Debug.h Environment.h HumanPlayer.h Move.h Player.h Pokemon.h Round.h Type.h PokemonFactory.h
+MoveFactory.o: MoveFactory.h
+main.o:	Choice.h Debug.h Environment.h HumanPlayer.h Move.h Player.h Pokemon.h Round.h Type.h PokemonFactory.h MoveFactory.h
 
 #
 # Housekeeping
