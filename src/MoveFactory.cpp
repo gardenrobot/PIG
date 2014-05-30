@@ -8,9 +8,19 @@
 #include "MoveFactory.h"
 #include "Move.h"
 
-Move* MoveFactory::createMove(int moveId)
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+void MoveFactory::initialize()
 {
-    switch(moveId)
+}
+
+Move* MoveFactory::createMove(int speciesId)
+{
+    switch(speciesId)
     {
         case 0:
             return new Ember();
@@ -22,6 +32,7 @@ Move* MoveFactory::createMove(int moveId)
             return new SelfInflictedConfusionMove();
             break;
         default:
+            cerr << "Move species " << speciesId << " not found." << endl;
             return NULL;
             break;
     }

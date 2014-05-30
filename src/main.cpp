@@ -14,6 +14,8 @@
 #include "PokemonFactory.h"
 #include "MajorAffliction.h"
 #include "MinorAffliction.h"
+#include "PokemonFactory.h"
+#include "MoveFactory.h"
 
 #include <iostream>
 #include <stdlib.h>
@@ -22,6 +24,8 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
+    PokemonFactory::initialize();
+    MoveFactory::initialize();
     srand(50);
 
     HumanPlayer* p1 = new HumanPlayer("Alpha");

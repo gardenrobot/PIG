@@ -14,6 +14,10 @@
 using namespace std;
 
 
+void PokemonFactory::initialize()
+{
+}
+
 Pokemon* PokemonFactory::createPokemon(int speciesId, string nickname)
 {
     switch(speciesId)
@@ -25,8 +29,9 @@ Pokemon* PokemonFactory::createPokemon(int speciesId, string nickname)
             return new Squirtle(nickname);
             break;
         default:
-            cerr << "Species not found." << endl;
+            cerr << "Pokemon species " << speciesId << " not found." << endl;
             return NULL;
+            break;
     }
 }
 
