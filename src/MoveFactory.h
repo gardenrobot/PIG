@@ -29,7 +29,7 @@ class MoveFactory
 
   private:
     
-    /// Holds one of each move species' objects
+    /// Holds one of each move species
     static std::map<int, MoveSpecies*> allSpecies;
 
 };

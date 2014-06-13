@@ -20,6 +20,7 @@ map<int, MoveSpecies*> MoveFactory::allSpecies;
 
 void MoveFactory::initialize()
 {
+    // add hard-coded moves to map
     allSpecies.insert(std::pair<int, MoveSpecies*>(0,
         new MoveSpecies(string("Ember"), FIRE, 40, 0.75F, SPECIAL)));
     allSpecies.insert(std::pair<int, MoveSpecies*>(1,
@@ -30,15 +31,18 @@ void MoveFactory::initialize()
 
 Move* MoveFactory::createMove(int speciesId)
 {
-    // get the species
+    // get the species from map
     MoveSpecies* species = allSpecies.at(speciesId);
 
+    // get values from species
     string name = species->name;
     Type type = species->type;
     int damage = species->damage;
     float accuracy = species->accuracy;
     Category category = species->category;
 
-    return new Move(name, type, damage, accuracy, category);
+    // create move from values
+    Move* move = new Move(name, type, damage, accuracy, category);
+    return move;
 }
 
