@@ -140,7 +140,7 @@ int Pokemon::getNumMoves() const
 }
 
 
-const vector< Move* > Pokemon::getMovesContainer() const
+const vector<Move*> Pokemon::getMovesContainer() const
 {
     return moves;
 }
@@ -276,14 +276,14 @@ void Pokemon::addMinorAffliction(MinorAffliction* affliction)
 
 
 Charmander::Charmander(const string nickname)
-:Pokemon(nickname, "Charmander", FIRE, NONE, 39, 52, 143, 60, 150, 65, MoveFactory::createMove(0), NULL,
-    NULL, NULL)
+:Pokemon(nickname, "Charmander", FIRE, NONE, 39, 52, 143, 60, 150,
+    65, MoveFactory::createMove(0), NULL, NULL, NULL)
 {
 }
 
 Squirtle::Squirtle(const string nickname)
-:Pokemon(nickname, "Squirtle", WATER, NONE, 29, 30, 180, 23, 121, 29, MoveFactory::createMove(1), NULL,
-    NULL, NULL)
+:Pokemon(nickname, "Squirtle", WATER, NONE, 29, 30, 180, 23, 121,
+    29, MoveFactory::createMove(1), NULL, NULL, NULL)
 {
 }
 

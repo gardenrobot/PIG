@@ -10,7 +10,11 @@
 #ifndef MOVE_FACTORY_H_
 #define MOVE_FACTORY_H_
 
+#include <map>
+
 class Move;
+class MoveSpecies;
+
 
 class MoveFactory
 {
@@ -23,6 +27,12 @@ class MoveFactory
     /// Create pokemon of the species id. Calling function must de-allocate.
     static Move* createMove(int speciesId);
 
+  private:
+    
+    /// Holds one of each move species' objects
+    static std::map<int, MoveSpecies*> allSpecies;
+
 };
 
 #endif // MOVE_FACTORY_H_
+

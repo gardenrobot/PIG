@@ -22,6 +22,7 @@
 
 using namespace std;
 
+
 int main(int argc, char** argv)
 {
     PokemonFactory::initialize();
@@ -31,8 +32,8 @@ int main(int argc, char** argv)
     HumanPlayer* p1 = new HumanPlayer("Alpha");
     p1->addPokemon(PokemonFactory::createPokemon(4, "Flamey"));
     p1->addPokemon(PokemonFactory::createPokemon(7, "Bubbles"));
-    p1->getPokemon(0)->setMajorAffliction(new Burn(*(p1->getPokemon(0))));
-    p1->getPokemon(0)->addMinorAffliction(new Confusion(*(p1->getPokemon(0))));
+    //p1->getPokemon(0)->setMajorAffliction(new Burn(*(p1->getPokemon(0))));
+    //p1->getPokemon(0)->addMinorAffliction(new Confusion(*(p1->getPokemon(0))));
     HumanPlayer* p2 = new HumanPlayer("Beta");
     p2->addPokemon(PokemonFactory::createPokemon(7, "Watery"));
 

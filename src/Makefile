@@ -1,5 +1,5 @@
 #
-# Created by gmakemake (Ubuntu Sep  7 2011) on Thu Mar 14 01:17:27 2013
+# Created by gmakemake (Ubuntu Sep  7 2011) on Thu Jun 12 14:32:25 2014
 #
 
 #
@@ -49,14 +49,14 @@ CCLIBFLAGS =
 ########## End of default flags
 
 
-CPP_FILES =	Battle.cpp Burn.cpp Choice.cpp Confusion.cpp Environment.cpp HumanPlayer.cpp main.cpp MajorAffliction.cpp MinorAffliction.cpp Move.cpp Player.cpp Pokemon.cpp Round.cpp Stat.cpp StringHelper.cpp Type.cpp Bind.cpp PokemonFactory.cpp MoveFactory.cpp
+CPP_FILES =	Battle.cpp Bind.cpp Burn.cpp Choice.cpp Confusion.cpp Environment.cpp HumanPlayer.cpp MajorAffliction.cpp MinorAffliction.cpp Move.cpp MoveFactory.cpp Player.cpp Pokemon.cpp PokemonFactory.cpp Round.cpp Stat.cpp StringHelper.cpp Type.cpp main.cpp
 C_FILES =	
 PS_FILES =	
 S_FILES =	
-H_FILES =	Battle.h Category.h Choice.h Debug.h Environment.h HumanPlayer.h MajorAffliction.h MinorAffliction.h Move.h Player.h Pokemon.h Round.h Stat.h StringHelper.h Type.h PokemonFactory.h MoveFactory.h
+H_FILES =	Battle.h Category.h Choice.h Debug.h Environment.h HumanPlayer.h MajorAffliction.h MinorAffliction.h Move.h MoveFactory.h MoveSpecies.h Player.h Pokemon.h PokemonFactory.h Round.h Stat.h StringHelper.h Type.h
 SOURCEFILES =	$(H_FILES) $(CPP_FILES) $(C_FILES) $(S_FILES)
 .PRECIOUS:	$(SOURCEFILES)
-OBJFILES =	Battle.o Burn.o Choice.o Confusion.o Environment.o HumanPlayer.o main.o MajorAffliction.o MinorAffliction.o Move.o Player.o Pokemon.o Round.o Stat.o StringHelper.o Type.o Bind.o PokemonFactory.o MoveFactory.o
+OBJFILES =	Battle.o Bind.o Burn.o Choice.o Confusion.o Environment.o HumanPlayer.o MajorAffliction.o MinorAffliction.o Move.o MoveFactory.o Player.o Pokemon.o PokemonFactory.o Round.o Stat.o StringHelper.o Type.o 
 
 #
 # Main targets
@@ -64,33 +64,32 @@ OBJFILES =	Battle.o Burn.o Choice.o Confusion.o Environment.o HumanPlayer.o main
 
 all:	main 
 
-main:	$(OBJFILES)
-	$(CXX) $(CXXFLAGS) -o main $(OBJFILES) $(CCLIBFLAGS)
+main:	main.o $(OBJFILES)
+	$(CXX) $(CXXFLAGS) -o main main.o $(OBJFILES) $(CCLIBFLAGS)
 
 #
 # Dependencies
 #
 
 Battle.o:	Battle.h Category.h Debug.h Move.h Pokemon.h Stat.h Type.h
-Bind.o:     Move.h
-Burn.o:		Move.h
+Bind.o:	Battle.h Category.h MinorAffliction.h Move.h Pokemon.h Type.h
+Burn.o:	MajorAffliction.h Pokemon.h Type.h
 Choice.o:	Choice.h
-Confusion.o:	MinorAffliction.h Pokemon.h Type.h
+Confusion.o:	Battle.h Category.h MinorAffliction.h Move.h MoveFactory.h Pokemon.h Type.h
 Environment.o:	Choice.h Environment.h Player.h Round.h
-HumanPlayer.o:	Choice.h HumanPlayer.h Player.h StringHelper.h
+HumanPlayer.o:	Category.h Choice.h HumanPlayer.h MajorAffliction.h Move.h Player.h Pokemon.h StringHelper.h Type.h
 MajorAffliction.o:	MajorAffliction.h
 MinorAffliction.o:	MinorAffliction.h Pokemon.h Type.h
 Move.o:	Category.h Move.h Type.h
-Player.o:	Choice.h Player.h Pokemon.h Type.h
-Poison.o:	MajorAffliction.h Pokemon.h Type.h
-Pokemon.o:	Category.h MajorAffliction.h MinorAffliction.h Move.h Pokemon.h Stat.h Type.h
-Round.o:	Battle.h Choice.h Debug.h Environment.h Player.h Pokemon.h Round.h Stat.h Type.h
+MoveFactory.o:	Category.h Move.h MoveFactory.h MoveSpecies.h Type.h
+Player.o:	Choice.h Debug.h MajorAffliction.h MinorAffliction.h Player.h Pokemon.h Type.h
+Pokemon.o:	Category.h Debug.h MajorAffliction.h MinorAffliction.h Move.h MoveFactory.h Pokemon.h Stat.h Type.h
+PokemonFactory.o:	Pokemon.h PokemonFactory.h Type.h
+Round.o:	Battle.h Choice.h Debug.h Environment.h MinorAffliction.h Player.h Pokemon.h Round.h Stat.h Type.h
 Stat.o:	Stat.h
 StringHelper.o:	StringHelper.h
 Type.o:	Type.h
-PokemonFactory.o: PokemonFactory.h
-MoveFactory.o: MoveFactory.h
-main.o:	Choice.h Debug.h Environment.h HumanPlayer.h Move.h Player.h Pokemon.h Round.h Type.h PokemonFactory.h MoveFactory.h
+main.o:	Choice.h Environment.h HumanPlayer.h MajorAffliction.h MinorAffliction.h MoveFactory.h Player.h Pokemon.h PokemonFactory.h Round.h Type.h
 
 #
 # Housekeeping

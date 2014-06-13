@@ -45,8 +45,6 @@ class Move
     /// Performs the effect in place of an attack, if special category
     virtual void doEffect(Pokemon& owner, Pokemon& defending);
 
-  protected:
-
     Move(std::string name, Type type, int damage, float accuracy,
         Category category);
 
