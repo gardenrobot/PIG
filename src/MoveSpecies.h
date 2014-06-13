@@ -27,13 +27,9 @@ class MoveSpecies
     /// See Move.h for descriptions of these variables.
 
     std::string name;
-
     Type type;
-
     int damage;
-
     float accuracy;
-
     Category category;
 
     MoveSpecies(std::string name, Type type, int damage, float accuracy,

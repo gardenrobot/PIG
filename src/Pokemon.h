@@ -84,8 +84,6 @@ class Pokemon
 
     Type getTypeTwo() const;
 
-  protected:
-
     Pokemon(std::string nickname, std::string speciesName, Type typeOne,
         Type typeTwo, int maxHp, int baseAttack, int baseDefense,
         int baseSpecialAttack, int baseSpecialDefense, int baseSpeed,
