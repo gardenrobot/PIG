@@ -30,6 +30,9 @@ void PokemonFactory::initialize()
     allSpecies.insert(std::pair<int, PokemonSpecies*>(7,
         new PokemonSpecies(string("Squirtle"), WATER, NONE, 29, 30, 180, 23,
         121, 29, 2, 0, 0, 0)));
+    allSpecies.insert(std::pair<int, PokemonSpecies*>(1,
+        new PokemonSpecies(string("Bulbasaur"), GRASS, NONE, 29, 30, 180, 23,
+        121, 29, 4, 0, 0, 0)));
 }
 
 Pokemon* PokemonFactory::createPokemon(int speciesId, string nickname)

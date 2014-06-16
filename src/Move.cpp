@@ -7,6 +7,7 @@
 
 #include "Move.h"
 #include "Type.h"
+#include "Effect.h"
 
 #include <string>
 #include <iostream>
@@ -62,11 +63,12 @@ Category Move::getCategory() const
 
 void Move::onRoundEnd() const
 {
-
+    effect->onRoundEnd(*this);
 }
 
 
 void Move::doEffect(Pokemon& owner, Pokemon& defending)
 {
+    effect->doEffect(*this, owner, defending);
 }
 

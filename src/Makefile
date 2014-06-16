@@ -49,14 +49,14 @@ CCLIBFLAGS =
 ########## End of default flags
 
 
-CPP_FILES =	Battle.cpp Bind.cpp Burn.cpp Choice.cpp Confusion.cpp Environment.cpp HumanPlayer.cpp MajorAffliction.cpp MinorAffliction.cpp Move.cpp MoveFactory.cpp Player.cpp Pokemon.cpp PokemonFactory.cpp PokemonSpecies.cpp Round.cpp Stat.cpp StringHelper.cpp Type.cpp main.cpp 
+CPP_FILES =	Battle.cpp Bind.cpp Burn.cpp Choice.cpp Confusion.cpp Effect.cpp Environment.cpp HumanPlayer.cpp MajorAffliction.cpp MinorAffliction.cpp Move.cpp MoveFactory.cpp Player.cpp Pokemon.cpp PokemonFactory.cpp PokemonSpecies.cpp Round.cpp Stat.cpp StringHelper.cpp Type.cpp main.cpp 
 C_FILES =	
 PS_FILES =	
 S_FILES =	
-H_FILES =	Battle.h Category.h Choice.h Debug.h Environment.h HumanPlayer.h MajorAffliction.h MinorAffliction.h Move.h MoveFactory.h MoveSpecies.h Player.h Pokemon.h PokemonFactory.h PokemonSpecies.h Round.h Stat.h StringHelper.h Type.h
+H_FILES =	Battle.h Category.h Choice.h Debug.h Effect.h Environment.h HumanPlayer.h MajorAffliction.h MinorAffliction.h Move.h MoveFactory.h MoveSpecies.h Player.h Pokemon.h PokemonFactory.h PokemonSpecies.h Round.h Stat.h StringHelper.h Type.h
 SOURCEFILES =	$(H_FILES) $(CPP_FILES) $(C_FILES) $(S_FILES)
 .PRECIOUS:	$(SOURCEFILES)
-OBJFILES =	Battle.o Bind.o Burn.o Choice.o Confusion.o Environment.o HumanPlayer.o MajorAffliction.o MinorAffliction.o Move.o MoveFactory.o Player.o Pokemon.o PokemonFactory.o Round.o Stat.o StringHelper.o Type.o 
+OBJFILES =	Battle.o Bind.o Burn.o Choice.o Confusion.o Effect.o Environment.o HumanPlayer.o MajorAffliction.o MinorAffliction.o Move.o MoveFactory.o Player.o Pokemon.o PokemonFactory.o Round.o Stat.o StringHelper.o Type.o 
 
 #
 # Main targets
@@ -76,6 +76,7 @@ Bind.o:	Battle.h Category.h MinorAffliction.h Move.h Pokemon.h Type.h
 Burn.o:	MajorAffliction.h Pokemon.h Type.h
 Choice.o:	Choice.h
 Confusion.o:	Battle.h Category.h MinorAffliction.h Move.h MoveFactory.h Pokemon.h Type.h
+Effect.o:   Effect.h Move.h
 Environment.o:	Choice.h Environment.h Player.h Round.h
 HumanPlayer.o:	Category.h Choice.h HumanPlayer.h MajorAffliction.h Move.h Player.h Pokemon.h StringHelper.h Type.h
 MajorAffliction.o:	MajorAffliction.h

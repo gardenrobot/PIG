@@ -29,12 +29,11 @@ int main(int argc, char** argv)
     MoveFactory::initialize();
     srand(50);
 
-    HumanPlayer* p1 = new HumanPlayer("Alpha");
-    p1->addPokemon(PokemonFactory::createPokemon(4, "Flamey"));
-    p1->addPokemon(PokemonFactory::createPokemon(7, "Bubbles"));
+    HumanPlayer* p1 = new HumanPlayer("Ash");
+    p1->addPokemon(PokemonFactory::createPokemon(1, "Leafy"));
     //p1->getPokemon(0)->setMajorAffliction(new Burn(*(p1->getPokemon(0))));
     //p1->getPokemon(0)->addMinorAffliction(new Confusion(*(p1->getPokemon(0))));
-    HumanPlayer* p2 = new HumanPlayer("Beta");
+    HumanPlayer* p2 = new HumanPlayer("Gary");
     p2->addPokemon(PokemonFactory::createPokemon(7, "Watery"));
 
     Environment env(p1, p2);

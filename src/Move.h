@@ -14,6 +14,7 @@
 #include "Category.h"
 
 class Pokemon;
+class Effect;
 
 #include <string>
 
@@ -38,7 +39,7 @@ class Move
 
     Category getCategory() const;
 
-    /// Called at the end of every turn that this's move's owner is the current
+    /// Called at the end of every turn that this move's owner is the current
     /// pokemon
     void onRoundEnd() const;
 
@@ -67,6 +68,9 @@ class Move
 
     /// The category of this move's attack
     Category category;
+
+    /// The object that handles any effect of using the move other than damage
+    Effect* effect;
 
 };
 
