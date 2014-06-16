@@ -130,27 +130,5 @@ class Pokemon
 
 };
 
-
-/// All derived classes go here
-
-
-class Charmander : public Pokemon
-{
-
-  public:
-
-    Charmander(const std::string nickname);
-
-};
-
-class Squirtle : public Pokemon
-{
-
-  public:
-
-    Squirtle(const std::string nickname);
-
-};
-
 #endif // POKEMON_H_
 

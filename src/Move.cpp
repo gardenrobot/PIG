@@ -70,21 +70,3 @@ void Move::doEffect(Pokemon& owner, Pokemon& defending)
 {
 }
 
-
-/// All implementations for derived moves go below here
-
-Ember::Ember()
-:Move(string("Ember"), FIRE, 40, 0.75F, SPECIAL)
-{
-}
-
-WaterGun::WaterGun()
-:Move(string("Water Gun"), WATER, 40, 0.75F, SPECIAL)
-{
-}
-
-SelfInflictedConfusionMove::SelfInflictedConfusionMove()
-:Move(string("Confused Move"), NONE, 40, -1, PHYSICAL)
-{
-}
-

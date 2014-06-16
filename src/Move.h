@@ -43,7 +43,7 @@ class Move
     void onRoundEnd() const;
 
     /// Performs the effect in place of an attack, if special category
-    virtual void doEffect(Pokemon& owner, Pokemon& defending);
+    void doEffect(Pokemon& owner, Pokemon& defending);
 
     Move(std::string name, Type type, int damage, float accuracy,
         Category category);
@@ -67,38 +67,6 @@ class Move
 
     /// The category of this move's attack
     Category category;
-
-};
-
-
-/// All derived classes go here
-
-
-class Ember : public Move
-{
-
-  public:
-
-    Ember();
-
-};
-
-
-class WaterGun : public Move
-{
-
-  public:
-
-    WaterGun();
-
-};
-
-class SelfInflictedConfusionMove : public Move
-{
-
-  public:
-
-    SelfInflictedConfusionMove();
 
 };
 

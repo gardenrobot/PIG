@@ -271,19 +271,3 @@ void Pokemon::addMinorAffliction(MinorAffliction* affliction)
     minorAfflictions.push_back(affliction);
 }
 
-
-/// All implementations for derived classes of Pokemon go below here.
-
-
-Charmander::Charmander(const string nickname)
-:Pokemon(nickname, "Charmander", FIRE, NONE, 39, 52, 143, 60, 150,
-    65, MoveFactory::createMove(1), NULL, NULL, NULL)
-{
-}
-
-Squirtle::Squirtle(const string nickname)
-:Pokemon(nickname, "Squirtle", WATER, NONE, 29, 30, 180, 23, 121,
-    29, MoveFactory::createMove(2), NULL, NULL, NULL)
-{
-}
-
