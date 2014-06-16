@@ -25,9 +25,17 @@ void Battle::doBattle(Pokemon& attacking, Pokemon& defending, Move& move)
     }
     else
     {
-        int damage = getDamage(attacking, defending, move);
+        bool moveHit = true; //TODO
 
-        defending.changeHp(-damage);
+        if(moveHit)
+        {
+            int damage = getDamage(attacking, defending, move);
+
+            defending.changeHp(-damage);
+        }
+
+        // hook for post-move effect
+        move.onMoveEnd(attacking, defending, moveHit);
     }
 }
 

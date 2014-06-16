@@ -46,8 +46,11 @@ class Move
     /// Performs the effect in place of an attack, if special category
     void doEffect(Pokemon& owner, Pokemon& defending);
 
+    /// Called after the move is done.
+    void onMoveEnd(Pokemon& owner, Pokemon& defending, bool moveHit);
+
     Move(std::string name, Type type, int damage, float accuracy,
-        Category category);
+        Category category, Effect* effect);
 
   private:
 

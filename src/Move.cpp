@@ -16,12 +16,13 @@ using namespace std;
 
 
 Move::Move(string name, Type type, int damage, float accuracy,
-    Category category)
+    Category category, Effect* effect)
 :name(name)
 ,type(type)
 ,damage(damage)
 ,accuracy(accuracy)
 ,category(category)
+,effect(effect)
 {
 }
 
@@ -63,12 +64,26 @@ Category Move::getCategory() const
 
 void Move::onRoundEnd() const
 {
-    effect->onRoundEnd(*this);
+    if(effect != NULL)
+    {
+        effect->onRoundEnd(*this);
+    }
 }
 
 
 void Move::doEffect(Pokemon& owner, Pokemon& defending)
 {
-    effect->doEffect(*this, owner, defending);
+    if(effect != NULL)
+    {
+        effect->doEffect(*this, owner, defending);
+    }
+}
+
+void Move::onMoveEnd(Pokemon& owner, Pokemon& defending, bool moveHit)
+{
+    if(effect != NULL)
+    {
+        effect->onMoveEnd(*this, owner, defending, moveHit);
+    }
 }
 

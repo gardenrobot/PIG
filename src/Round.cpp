@@ -105,6 +105,7 @@ void Round::processChoice(Player& attacking, Player& defending, Choice& choice)
             {
                 Battle::doBattle(*attackingPokemon, *defendingPokemon, *chosenMove);
             }
+
             break;
         }
 

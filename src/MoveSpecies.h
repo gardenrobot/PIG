@@ -31,14 +31,16 @@ class MoveSpecies
     int damage;
     float accuracy;
     Category category;
+    int effectId;
 
     MoveSpecies(std::string name, Type type, int damage, float accuracy,
-        Category category)
+        Category category, int effectId)
     :name(name)
     ,type(type)
     ,damage(damage)
     ,accuracy(accuracy)
     ,category(category)
+    ,effectId(effectId)
     {}
 
 };
