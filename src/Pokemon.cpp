@@ -76,12 +76,12 @@ Pokemon::~Pokemon()
     {
         delete majorAffliction;
     }
-    for(vector< MinorAffliction* >::iterator it(minorAfflictions.begin());
+    for(vector<MinorAffliction*>::iterator it(minorAfflictions.begin());
         it != minorAfflictions.end(); ++it)
     {
         delete *it;
     }
-    for(vector< Move* >::iterator it(moves.begin()); it != moves.end();
+    for(vector<Move*>::iterator it(moves.begin()); it != moves.end();
         ++it)
     {
         delete *it;
@@ -229,7 +229,7 @@ bool Pokemon::isFainted() const
 void Pokemon::onRoundEnd()
 {
     // call minor and major afflcition
-    for(vector< MinorAffliction* >::iterator it(minorAfflictions.begin());
+    for(vector<MinorAffliction*>::iterator it(minorAfflictions.begin());
         it != minorAfflictions.end(); ++it)
     {
         (*it)->onRoundEnd();
@@ -241,7 +241,7 @@ void Pokemon::onRoundEnd()
     }
 
     // call moves
-    for(vector< Move* >::iterator it(moves.begin()); it != moves.end();
+    for(vector<Move*>::iterator it(moves.begin()); it != moves.end();
         ++it)
     {
         if(*it != NULL)

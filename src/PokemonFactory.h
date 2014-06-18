@@ -10,6 +10,8 @@
 #ifndef POKEMON_FACTORY_H_
 #define POKEMON_FACTORY_H_
 
+#include "PokemonId.h"
+
 #include <string>
 #include <map>
 
@@ -26,7 +28,7 @@ class PokemonFactory
     static void initialize();
 
     /// Create pokemon of the species id. Calling function must de-allocate.
-    static Pokemon* createPokemon(int speciesId, std::string nickname);
+    static Pokemon* createPokemon(PokemonId speciesId, std::string nickname);
 
   private:
     

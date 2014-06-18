@@ -45,7 +45,7 @@ class Pokemon
 
     int getNumMoves() const;
 
-    const std::vector< Move* > getMovesContainer() const;
+    const std::vector<Move*> getMovesContainer() const;
 
     MajorAffliction* getMajorAffliction();
 
@@ -118,7 +118,7 @@ class Pokemon
 
     /// The moves that the pokemon can use. These are to be deleted by the
     /// pokemon.
-    std::vector< Move* > moves;
+    std::vector<Move*> moves;
 
     /// The major affliction of the pokemon. For example, sleep, paralysis, etc.
     /// This can be null, which means the pokemon is healthy.
@@ -126,7 +126,7 @@ class Pokemon
 
     /// The minor afflictions of the pokemon. Unlike major, there can be more
     /// than one minor. For example, confusion, constrict, etc.
-    std::vector< MinorAffliction* > minorAfflictions;
+    std::vector<MinorAffliction*> minorAfflictions;
 
 };
 

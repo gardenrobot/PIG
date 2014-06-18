@@ -30,11 +30,11 @@ int main(int argc, char** argv)
     srand(50);
 
     HumanPlayer* p1 = new HumanPlayer("Ash");
-    p1->addPokemon(PokemonFactory::createPokemon(4, "Hotman"));
+    p1->addPokemon(PokemonFactory::createPokemon(CHARMANDER, "Hotman"));
     //p1->getPokemon(0)->setMajorAffliction(new Burn(*(p1->getPokemon(0))));
     //p1->getPokemon(0)->addMinorAffliction(new Confusion(*(p1->getPokemon(0))));
     HumanPlayer* p2 = new HumanPlayer("Gary");
-    p2->addPokemon(PokemonFactory::createPokemon(7, "Watery"));
+    p2->addPokemon(PokemonFactory::createPokemon(SQUIRTLE, "Watery"));
 
     Environment env(p1, p2);
 
