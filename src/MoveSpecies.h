@@ -13,6 +13,7 @@
 
 #include "Type.h"
 #include "Category.h"
+#include "EffectId.h"
 
 #include <string>
 
@@ -31,10 +32,10 @@ class MoveSpecies
     int damage;
     float accuracy;
     Category category;
-    int effectId;
+    EffectId effectId;
 
     MoveSpecies(std::string name, Type type, int damage, float accuracy,
-        Category category, int effectId)
+        Category category, EffectId effectId)
     :name(name)
     ,type(type)
     ,damage(damage)

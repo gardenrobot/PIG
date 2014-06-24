@@ -8,6 +8,7 @@
 #include "MinorAffliction.h"
 #include "Move.h"
 #include "MoveFactory.h"
+#include "MoveId.h"
 #include "Battle.h"
 
 #include <iostream>
@@ -32,7 +33,7 @@ bool Confusion::whenAttacks()
     {
         cout << afflictedPokemon.getNickname() << " hurt itself in its confusion." << endl;
 
-        Move* confusedMove = MoveFactory::createMove(2);
+        Move* confusedMove = MoveFactory::createMove(CONFUSED_MOVE);
         Battle::doBattle(afflictedPokemon, afflictedPokemon, *confusedMove);
         delete confusedMove;
         return true;

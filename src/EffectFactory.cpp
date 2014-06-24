@@ -7,20 +7,21 @@
 
 #include "EffectFactory.h"
 #include "Effect.h"
+#include "EffectId.h"
 
 #include <iostream>
 
 using namespace std;
 
 
-Effect* EffectFactory::createEffect(int speciesId)
+Effect* EffectFactory::createEffect(EffectId speciesId)
 {
     switch(speciesId)
     {
-        case 0:
+        case NO_EFFECT:
             return NULL;
             break;
-        case 1:
+        case AFFLICT_BURN:
             return new AfflictBurn();
             break;
         default:

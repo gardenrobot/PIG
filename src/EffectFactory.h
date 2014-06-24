@@ -11,6 +11,8 @@
 #ifndef EFFECT_FACTORY_H_
 #define EFFECT_FACTORY_H_
 
+#include "EffectId.h"
+
 class Effect;
 
 class EffectFactory
@@ -19,7 +21,7 @@ class EffectFactory
   public:
 
     /// Create pokemon of the species id. Calling function must de-allocate.
-    static Effect* createEffect(int speciesId);
+    static Effect* createEffect(EffectId speciesId);
 
 };
 

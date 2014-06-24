@@ -5,11 +5,13 @@
 // 
 // //////////////////////////////////////////////////////////////////// 
 
+#include "Move.h"
 #include "MoveFactory.h"
 #include "MoveSpecies.h"
-#include "Move.h"
-#include "EffectFactory.h"
+#include "MoveId.h"
 #include "Effect.h"
+#include "EffectFactory.h"
+#include "EffectId.h"
 
 #include <iostream>
 #include <string>
@@ -19,22 +21,26 @@
 using namespace std;
 
 
-map<int, MoveSpecies*> MoveFactory::allSpecies;
+map<MoveId, MoveSpecies*> MoveFactory::allSpecies;
 
 void MoveFactory::initialize()
 {
     // add hard-coded moves to map
-    allSpecies.insert(std::pair<int, MoveSpecies*>(1,
-        new MoveSpecies(string("Ember"), FIRE, 40, 0.75F, SPECIAL, 1)));
-    allSpecies.insert(std::pair<int, MoveSpecies*>(2,
-        new MoveSpecies(string("Water Gun"), WATER, 40, 0.75F, SPECIAL, 0)));
-    allSpecies.insert(std::pair<int, MoveSpecies*>(3,
-        new MoveSpecies(string("Confused Move"), NONE, 40, -1, PHYSICAL, 0)));
-    allSpecies.insert(std::pair<int, MoveSpecies*>(4,
-        new MoveSpecies(string("Stun Spore"), GRASS, 0, -1, STATUS, 0)));
+    allSpecies.insert(std::pair<MoveId, MoveSpecies*>(EMBER,
+        new MoveSpecies(string("Ember"), FIRE, 40, 0.75F, SPECIAL,
+        AFFLICT_BURN)));
+    allSpecies.insert(std::pair<MoveId, MoveSpecies*>(WATER_GUN,
+        new MoveSpecies(string("Water Gun"), WATER, 40, 0.75F, SPECIAL,
+        NO_EFFECT)));
+    allSpecies.insert(std::pair<MoveId, MoveSpecies*>(CONFUSED_MOVE,
+        new MoveSpecies(string("Confused Move"), NONE, 40, -1, PHYSICAL,
+        NO_EFFECT)));
+    allSpecies.insert(std::pair<MoveId, MoveSpecies*>(STUN_SPORE,
+        new MoveSpecies(string("Stun Spore"), GRASS, 0, -1, STATUS,
+        NO_EFFECT)));
 }
 
-Move* MoveFactory::createMove(int speciesId)
+Move* MoveFactory::createMove(MoveId speciesId)
 {
     // get the species from map
     MoveSpecies* species;
@@ -53,7 +59,7 @@ Move* MoveFactory::createMove(int speciesId)
     int damage = species->damage;
     float accuracy = species->accuracy;
     Category category = species->category;
-    int effectId = species->effectId;
+    EffectId effectId = species->effectId;
 
     // get effect from effect facotry
 

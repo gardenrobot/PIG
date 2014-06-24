@@ -33,7 +33,7 @@ class PokemonFactory
   private:
     
     /// Holds one of each pokemon species objects
-    static std::map<int, PokemonSpecies*> allSpecies;
+    static std::map<PokemonId, PokemonSpecies*> allSpecies;
 
 };
 

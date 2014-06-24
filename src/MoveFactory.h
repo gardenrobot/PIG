@@ -10,6 +10,8 @@
 #ifndef MOVE_FACTORY_H_
 #define MOVE_FACTORY_H_
 
+#include "MoveId.h"
+
 #include <map>
 
 class Move;
@@ -25,12 +27,12 @@ class MoveFactory
     static void initialize();
 
     /// Create move of the species id. Calling function must de-allocate.
-    static Move* createMove(int speciesId);
+    static Move* createMove(MoveId speciesId);
 
   private:
     
     /// Holds one of each move species
-    static std::map<int, MoveSpecies*> allSpecies;
+    static std::map<MoveId, MoveSpecies*> allSpecies;
 
 };
 

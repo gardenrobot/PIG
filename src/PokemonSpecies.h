@@ -12,6 +12,7 @@
 #define POKEMON_SPECIES_H_
 
 #include "Type.h"
+#include "MoveId.h"
 
 #include <string>
 
@@ -34,15 +35,15 @@ class PokemonSpecies
     int baseSpecialAttack;
     int baseSpecialDefense;
     int baseSpeed;
-    int moveId1;
-    int moveId2;
-    int moveId3;
-    int moveId4;
+    MoveId moveId1;
+    MoveId moveId2;
+    MoveId moveId3;
+    MoveId moveId4;
 
     PokemonSpecies(std::string speciesName, Type typeOne,
         Type typeTwo, int maxHp, int baseAttack, int baseDefense,
         int baseSpecialAttack, int baseSpecialDefense, int baseSpeed,
-        int moveId1, int moveId2, int moveId3, int moveId4)
+        MoveId moveId1, MoveId moveId2, MoveId moveId3, MoveId moveId4)
     :speciesName(speciesName)
     ,typeOne(typeOne)
     ,typeTwo(typeTwo)
