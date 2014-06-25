@@ -40,6 +40,15 @@ void MoveFactory::initialize()
         NO_EFFECT)));
 }
 
+void MoveFactory::destroy()
+{
+    for(map<MoveId, MoveSpecies*>::iterator it = allSpecies.begin();
+        it != allSpecies.end(); it++)
+    {
+        delete it->second;
+    }
+}
+
 Move* MoveFactory::createMove(MoveId speciesId)
 {
     // get the species from map

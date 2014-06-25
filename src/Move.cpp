@@ -29,6 +29,10 @@ Move::Move(string name, Type type, int damage, float accuracy,
 
 Move::~Move()
 {
+    if(effect != NULL)
+    {
+        delete effect;
+    }
 }
 
 

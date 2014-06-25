@@ -46,5 +46,7 @@ int main(int argc, char** argv)
     }
 
     cout << "Done." << endl;
+    PokemonFactory::destroy();
+    MoveFactory::destroy();
 }
 

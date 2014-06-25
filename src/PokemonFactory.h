@@ -27,6 +27,9 @@ class PokemonFactory
     /// Must be called once per process before use of this class.
     static void initialize();
 
+    /// Should be called at the end of the process. Will prevent memory leaks.
+    static void destroy();
+
     /// Create pokemon of the species id. Calling function must de-allocate.
     static Pokemon* createPokemon(PokemonId speciesId, std::string nickname);
 

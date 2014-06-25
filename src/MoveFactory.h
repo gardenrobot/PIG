@@ -26,6 +26,9 @@ class MoveFactory
     /// Must be called once per process before use of this class.
     static void initialize();
 
+    /// Should be called at the end of the process. Will prevent memory leaks.
+    static void destroy();
+
     /// Create move of the species id. Calling function must de-allocate.
     static Move* createMove(MoveId speciesId);
 

@@ -37,6 +37,15 @@ void PokemonFactory::initialize()
         121, 29, WATER_GUN, NO_MOVE, NO_MOVE, NO_MOVE)));
 }
 
+void PokemonFactory::destroy()
+{
+    for(map<PokemonId, PokemonSpecies*>::iterator it = allSpecies.begin();
+        it != allSpecies.end(); it++)
+    {
+        delete it->second;
+    }
+}
+
 Pokemon* PokemonFactory::createPokemon(PokemonId speciesId, string nickname)
 {
     // get the species from map
