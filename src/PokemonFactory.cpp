@@ -27,13 +27,13 @@ map<PokemonId, PokemonSpecies*> PokemonFactory::allSpecies;
 void PokemonFactory::initialize()
 {
     allSpecies.insert(std::pair<PokemonId, PokemonSpecies*>(BULBASAUR,
-        new PokemonSpecies(string("Bulbasaur"), GRASS, NONE, 29, 30, 180, 23,
+        new PokemonSpecies(string("Bulbasaur"), GRASS, NO_TYPE, 29, 30, 180, 23,
         121, 29, STUN_SPORE, NO_MOVE, NO_MOVE, NO_MOVE)));
     allSpecies.insert(std::pair<PokemonId, PokemonSpecies*>(CHARMANDER,
-        new PokemonSpecies(string("Charmander"), FIRE, NONE, 39, 52, 143, 60,
+        new PokemonSpecies(string("Charmander"), FIRE, NO_TYPE, 39, 52, 143, 60,
         150, 65, EMBER, NO_MOVE, NO_MOVE, NO_MOVE)));
     allSpecies.insert(std::pair<PokemonId, PokemonSpecies*>(SQUIRTLE,
-        new PokemonSpecies(string("Squirtle"), WATER, NONE, 29, 30, 180, 23,
+        new PokemonSpecies(string("Squirtle"), WATER, NO_TYPE, 29, 30, 180, 23,
         121, 29, WATER_GUN, NO_MOVE, NO_MOVE, NO_MOVE)));
 }
 

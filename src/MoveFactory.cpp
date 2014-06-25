@@ -33,7 +33,7 @@ void MoveFactory::initialize()
         new MoveSpecies(string("Water Gun"), WATER, 40, 0.75F, SPECIAL,
         NO_EFFECT)));
     allSpecies.insert(std::pair<MoveId, MoveSpecies*>(CONFUSED_MOVE,
-        new MoveSpecies(string("Confused Move"), NONE, 40, -1, PHYSICAL,
+        new MoveSpecies(string("Confused Move"), NO_TYPE, 40, -1, PHYSICAL,
         NO_EFFECT)));
     allSpecies.insert(std::pair<MoveId, MoveSpecies*>(STUN_SPORE,
         new MoveSpecies(string("Stun Spore"), GRASS, 0, -1, STATUS,
