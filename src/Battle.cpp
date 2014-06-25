@@ -13,8 +13,11 @@
 #include "Stat.h"
 #include "Debug.h"
 
+#include <iostream>
 #include <stdlib.h>
 #include <math.h>
+
+using namespace std;
 
 
 void Battle::doBattle(Pokemon& attacking, Pokemon& defending, Move& move)
@@ -25,20 +28,46 @@ void Battle::doBattle(Pokemon& attacking, Pokemon& defending, Move& move)
     }
     else
     {
-        bool moveHit = true; //TODO
+        // calculate the probability of the move hitting
+        float hitProb = calcHitProb(attacking, defending, move);
+
+        // decide if the move hit or missed
+        float percentile = (rand() % 100) * 0.01;
+        bool moveHit = hitProb > percentile;
+        println_debug("Random percentile: " << percentile);
+        println_debug("Move hit: " << (moveHit ? "True" : "False"));
+        println_debug("");
 
         if(moveHit)
         {
             int damage = getDamage(attacking, defending, move);
 
             defending.changeHp(-damage);
-        }
 
-        // hook for post-move effect
-        move.onMoveEnd(attacking, defending, moveHit);
+            // hook for post-move effect
+            move.onMoveEnd(attacking, defending, moveHit);
+        }
+        else
+        {
+            cout << attacking.getNickname() << "'s attack missed." << endl;
+        }
     }
 }
 
+float Battle::calcHitProb(Pokemon& attacking, Pokemon& defending, Move& move)
+{
+    float moveAcc = move.getAccuracy();
+    float pokemonAcc = attacking.getAccuracy().getModValue();
+    float pokemonEva = defending.getEvasiveness().getModValue();
+    float hitProb = moveAcc * pokemonAcc / pokemonEva;
+    println_debug("Probability of hitting with " << move.getName());
+    println_debug("Move Accuracy: " << moveAcc);
+    println_debug("Attacking Pokemon Accuracy: " << pokemonAcc);
+    println_debug("Defending Pokemon Evasiveness: " << pokemonEva);
+    println_debug("Chance of hit: " << hitProb);
+    // TODO take into account moves that always hit
+    return hitProb;
+}
 
 int Battle::getDamage(Pokemon& attacking, Pokemon& defending, Move& move)
 {

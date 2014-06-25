@@ -25,6 +25,9 @@ class Battle
 
   private:
 
+    /// Calculates the probability that a move will hit
+    static float calcHitProb(Pokemon& attacking, Pokemon& defending, Move& move);
+
     /// Returns the damage that the move does to the defending pokemon.
     static int getDamage(Pokemon& attacking, Pokemon& defending, Move& move);
 
