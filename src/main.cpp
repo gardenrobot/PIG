@@ -16,6 +16,10 @@
 #include "MinorAffliction.h"
 #include "PokemonFactory.h"
 #include "MoveFactory.h"
+#include "EffectFactory.h"
+#include "PokemonId.h"
+#include "MoveId.h"
+#include "EffectId.h"
 
 #include <iostream>
 #include <stdlib.h>
@@ -30,9 +34,7 @@ int main(int argc, char** argv)
     srand(50);
 
     HumanPlayer* p1 = new HumanPlayer("Ash");
-    p1->addPokemon(PokemonFactory::createPokemon(CHARMANDER, "Hotman"));
-    //p1->getPokemon(0)->setMajorAffliction(new Burn(*(p1->getPokemon(0))));
-    //p1->getPokemon(0)->addMinorAffliction(new Confusion(*(p1->getPokemon(0))));
+    p1->addPokemon(PokemonFactory::createPokemon(CHARMANDER, "Flameo"));
     HumanPlayer* p2 = new HumanPlayer("Gary");
     p2->addPokemon(PokemonFactory::createPokemon(SQUIRTLE, "Watery"));
 

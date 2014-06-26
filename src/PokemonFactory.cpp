@@ -11,6 +11,7 @@
 #include "PokemonId.h"
 #include "MoveFactory.h"
 #include "MoveId.h"
+#include "Debug.h"
 
 #include <iostream>
 #include <string>
@@ -56,6 +57,7 @@ Pokemon* PokemonFactory::createPokemon(PokemonId speciesId, string nickname)
     }
     catch(const out_of_range& e)
     {
+        println_debug("Pokemon ID " << speciesId << " not found.");
         return NULL;
     }
 

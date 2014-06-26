@@ -8,6 +8,7 @@
 #include "EffectFactory.h"
 #include "Effect.h"
 #include "EffectId.h"
+#include "Debug.h"
 
 #include <iostream>
 
@@ -28,6 +29,7 @@ Effect* EffectFactory::createEffect(EffectId speciesId)
             return new IncreaseSpeed2();
             break;
         default:
+            println_debug("Effect ID " << speciesId << " not found.");
             return NULL;
             break;
     }

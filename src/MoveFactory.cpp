@@ -12,6 +12,7 @@
 #include "Effect.h"
 #include "EffectFactory.h"
 #include "EffectId.h"
+#include "Debug.h"
 
 #include <iostream>
 #include <string>
@@ -54,6 +55,11 @@ void MoveFactory::destroy()
 
 Move* MoveFactory::createMove(MoveId speciesId)
 {
+    if(speciesId == NO_MOVE)
+    {
+        return NULL;
+    }
+
     // get the species from map
     MoveSpecies* species;
     try
@@ -62,6 +68,7 @@ Move* MoveFactory::createMove(MoveId speciesId)
     }
     catch(const out_of_range& e)
     {
+        println_debug("Move ID " << speciesId << " not found.");
         return NULL;
     }
 
