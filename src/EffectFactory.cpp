@@ -24,6 +24,9 @@ Effect* EffectFactory::createEffect(EffectId speciesId)
         case AFFLICT_BURN:
             return new AfflictBurn();
             break;
+        case INCREASE_SPEED_2:
+            return new IncreaseSpeed2();
+            break;
         default:
             return NULL;
             break;

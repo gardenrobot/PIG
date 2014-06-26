@@ -31,7 +31,7 @@ void PokemonFactory::initialize()
         121, 29, STUN_SPORE, NO_MOVE, NO_MOVE, NO_MOVE)));
     allSpecies.insert(std::pair<PokemonId, PokemonSpecies*>(CHARMANDER,
         new PokemonSpecies(string("Charmander"), FIRE, NO_TYPE, 39, 52, 143, 60,
-        150, 65, EMBER, NO_MOVE, NO_MOVE, NO_MOVE)));
+        150, 65, EMBER, AGILITY, NO_MOVE, NO_MOVE)));
     allSpecies.insert(std::pair<PokemonId, PokemonSpecies*>(SQUIRTLE,
         new PokemonSpecies(string("Squirtle"), WATER, NO_TYPE, 29, 30, 180, 23,
         121, 29, WATER_GUN, NO_MOVE, NO_MOVE, NO_MOVE)));

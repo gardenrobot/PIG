@@ -18,6 +18,7 @@ typedef enum
     WATER_GUN = 2,
     CONFUSED_MOVE = 3,
     STUN_SPORE = 4,
+    AGILITY = 5,
 } MoveId;
 
 

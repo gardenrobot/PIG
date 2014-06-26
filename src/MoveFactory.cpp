@@ -27,17 +27,20 @@ void MoveFactory::initialize()
 {
     // add hard-coded moves to map
     allSpecies.insert(std::pair<MoveId, MoveSpecies*>(EMBER,
-        new MoveSpecies(string("Ember"), FIRE, 40, 0.75F, SPECIAL,
-        AFFLICT_BURN)));
+        new MoveSpecies(string("Ember"), FIRE, 40,
+        0.75F, SPECIAL, AFFLICT_BURN)));
     allSpecies.insert(std::pair<MoveId, MoveSpecies*>(WATER_GUN,
-        new MoveSpecies(string("Water Gun"), WATER, 40, 0.75F, SPECIAL,
-        NO_EFFECT)));
+        new MoveSpecies(string("Water Gun"), WATER, 40,
+        0.75F, SPECIAL, NO_EFFECT)));
     allSpecies.insert(std::pair<MoveId, MoveSpecies*>(CONFUSED_MOVE,
-        new MoveSpecies(string("Confused Move"), NO_TYPE, 40, -1, PHYSICAL,
-        NO_EFFECT)));
+        new MoveSpecies(string("Confused Move"), NO_TYPE, 40,
+        ALWAYS_HIT, PHYSICAL, NO_EFFECT)));
     allSpecies.insert(std::pair<MoveId, MoveSpecies*>(STUN_SPORE,
-        new MoveSpecies(string("Stun Spore"), GRASS, 0, -1, STATUS,
-        NO_EFFECT)));
+        new MoveSpecies(string("Stun Spore"), GRASS, 0,
+        HIT_UNLESS_SEMI_INVUL, STATUS, NO_EFFECT)));
+    allSpecies.insert(std::pair<MoveId, MoveSpecies*>(AGILITY,
+        new MoveSpecies(string("Agility"), NORMAL, 0,
+        ALWAYS_HIT, STATUS, INCREASE_SPEED_2)));
 }
 
 void MoveFactory::destroy()

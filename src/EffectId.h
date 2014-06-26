@@ -15,6 +15,7 @@ typedef enum
 {
     NO_EFFECT = 0,
     AFFLICT_BURN = 1,
+    INCREASE_SPEED_2 = 2,
 } EffectId;
 
 

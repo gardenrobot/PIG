@@ -53,13 +53,13 @@ class Pokemon
 
     MinorAffliction* getMinorAffliction(int index);
 
-    const Stat& getAttack() const;
-    const Stat& getDefense() const;
-    const Stat& getSpecialAttack() const;
-    const Stat& getSpecialDefense() const;
-    const Stat& getSpeed() const;
-    const Stat& getAccuracy() const;
-    const Stat& getEvasiveness() const;
+    Stat& getAttack() const;
+    Stat& getDefense() const;
+    Stat& getSpecialAttack() const;
+    Stat& getSpecialDefense() const;
+    Stat& getSpeed() const;
+    Stat& getAccuracy() const;
+    Stat& getEvasiveness() const;
 
     int getLevel() const;
 

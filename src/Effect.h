@@ -47,5 +47,14 @@ class AfflictBurn : public Effect
     
 };
 
+class IncreaseSpeed2 : public Effect
+{
+
+  public:
+
+    void doEffect(const Move& move, Pokemon& owner, Pokemon& defending);
+    
+};
+
 #endif // EFFECT_H_
 

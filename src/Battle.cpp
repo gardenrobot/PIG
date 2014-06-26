@@ -22,6 +22,9 @@ using namespace std;
 
 void Battle::doBattle(Pokemon& attacking, Pokemon& defending, Move& move)
 {
+    println_debug("Running Battle");
+    cout << attacking.getNickname() << " used " << move.getName() << "."
+        << endl;
     if(move.getCategory() == STATUS)
     {
         move.doEffect(attacking, defending);

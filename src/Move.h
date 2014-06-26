@@ -18,14 +18,18 @@ class Effect;
 
 #include <string>
 
+/// This accuracy value means that the move always hits no matter what. Usually,
+/// used for moves that only effect user. Ex: Agility, Bulk up, etc.
+#define ALWAYS_HIT -1
+
+/// This accuracy value means that the move will hit unless the defending
+/// pokemon is semi-unvulnerable. Ex: Effects of Dig, Fly, Protect.
+#define HIT_UNLESS_SEMI_INVUL -2
 
 class Move
 {
 
   public:
-
-    /// The move's accuracy is this value if it always hits.
-    static const float ALWAYS_HIT = -1;
 
     ~Move();
 

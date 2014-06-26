@@ -178,37 +178,37 @@ Type Pokemon::getTypeTwo() const
 }
 
 
-const Stat& Pokemon::getAttack() const
+Stat& Pokemon::getAttack() const
 {
     return *attack;
 }
 
-const Stat& Pokemon::getDefense() const
+Stat& Pokemon::getDefense() const
 {
     return *defense;
 }
 
-const Stat& Pokemon::getSpecialAttack() const
+Stat& Pokemon::getSpecialAttack() const
 {
     return *specialAttack;
 }
 
-const Stat& Pokemon::getSpecialDefense() const
+Stat& Pokemon::getSpecialDefense() const
 {
     return *specialDefense;
 }
 
-const Stat& Pokemon::getSpeed() const
+Stat& Pokemon::getSpeed() const
 {
     return *speed;
 }
 
-const Stat& Pokemon::getAccuracy() const
+Stat& Pokemon::getAccuracy() const
 {
     return *accuracy;
 }
 
-const Stat& Pokemon::getEvasiveness() const
+Stat& Pokemon::getEvasiveness() const
 {
     return *evasiveness;
 }
