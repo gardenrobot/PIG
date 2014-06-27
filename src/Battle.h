@@ -25,6 +25,9 @@ class Battle
 
   private:
 
+    /// Determines whether this move will hit the defending pokemon
+    static bool willMoveHit(Pokemon& attacking, Pokemon& defending, Move& move);
+
     /// Calculates the probability that a move will hit
     static float calcHitProb(Pokemon& attacking, Pokemon& defending, Move& move);
 

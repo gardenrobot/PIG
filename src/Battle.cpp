@@ -25,35 +25,56 @@ void Battle::doBattle(Pokemon& attacking, Pokemon& defending, Move& move)
     println_debug("Running Battle");
     cout << attacking.getNickname() << " used " << move.getName() << "."
         << endl;
-    if(move.getCategory() == STATUS)
+
+    // determine if move will hit
+    bool moveHit = willMoveHit(attacking, defending, move);
+
+    if(moveHit)
     {
-        move.doEffect(attacking, defending);
+        if(move.getCategory() == STATUS)
+        {
+            move.doEffect(attacking, defending);
+        }
+        else
+        {
+            int damage = getDamage(attacking, defending, move);
+
+            defending.changeHp(-damage);
+        }
+
+        // hook for post-move effect
+        move.onMoveEnd(attacking, defending, moveHit);
+    }
+    else
+    {
+        cout << attacking.getNickname() << "'s attack missed." << endl;
+    }
+}
+
+bool Battle::willMoveHit(Pokemon& attacking, Pokemon& defending, Move& move)
+{
+    float accuracy = move.getAccuracy();
+    if(accuracy == ALWAYS_HIT)
+    {
+        return true;
+    }
+    else if(accuracy == HIT_UNLESS_SEMI_INVUL)
+    {
+        return true;
     }
     else
     {
         // calculate the probability of the move hitting
         float hitProb = calcHitProb(attacking, defending, move);
 
-        // decide if the move hit or missed
+        // do the math to decide if the move hit or missed
         float percentile = (rand() % 100) * 0.01;
         bool moveHit = hitProb > percentile;
         println_debug("Random percentile: " << percentile);
         println_debug("Move hit: " << (moveHit ? "True" : "False"));
         println_debug("");
 
-        if(moveHit)
-        {
-            int damage = getDamage(attacking, defending, move);
-
-            defending.changeHp(-damage);
-
-            // hook for post-move effect
-            move.onMoveEnd(attacking, defending, moveHit);
-        }
-        else
-        {
-            cout << attacking.getNickname() << "'s attack missed." << endl;
-        }
+        return moveHit;
     }
 }
 
