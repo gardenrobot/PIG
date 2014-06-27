@@ -259,11 +259,12 @@ void Pokemon::healMajorAffliction()
 }
 
 
-void Pokemon::setMajorAffliction(MajorAffliction* affliction)
+void Pokemon::setMajorAffliction(MajorAffliction* affliction, bool force)
 {
-    assert(this->majorAffliction == NULL);
-
-    this->majorAffliction = affliction;
+    if(this->majorAffliction == NULL or force)
+    {
+        this->majorAffliction = affliction;
+    }
 }
 
 void Pokemon::addMinorAffliction(MinorAffliction* affliction)

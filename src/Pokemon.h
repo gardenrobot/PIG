@@ -76,7 +76,9 @@ class Pokemon
 
     void healMajorAffliction();
 
-    void setMajorAffliction(MajorAffliction* affliction);
+    /// Set the major affliction. New major afflictions cannot normally be
+    /// applied when one already exists. Use force argument to override this.
+    void setMajorAffliction(MajorAffliction* affliction, bool force=false);
 
     void addMinorAffliction(MinorAffliction* affliction);
 
