@@ -148,17 +148,18 @@ int main(int argc, char** argv)
     MoveFactory::initialize();
     srand(50);
 
-    /* // Hard coded player
+    #ifdef DEBUG_MODE
+    // Hard coded players for testing
     HumanPlayer* p1 = new HumanPlayer("Ash");
     p1->addPokemon(PokemonFactory::createPokemon(CHARMANDER, "Flameo"));
     HumanPlayer* p2 = new HumanPlayer("Gary");
     p2->addPokemon(PokemonFactory::createPokemon(SQUIRTLE, "Watery"));
-    */
-
+    #else
     // Create players
     listPokemon();
     HumanPlayer* p1 = createHumanPlayer(1);
     HumanPlayer* p2 = createHumanPlayer(2);
+    #endif
 
     Environment env(p1, p2);
 
