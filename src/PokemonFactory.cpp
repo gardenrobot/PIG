@@ -48,7 +48,7 @@ void PokemonFactory::destroy()
     }
 }
 
-Pokemon* PokemonFactory::createPokemon(PokemonId speciesId, string nickname)
+Pokemon* PokemonFactory::createPokemon(PokemonId speciesId, string nickname="")
 {
     // get the species from map
     PokemonSpecies* species;
@@ -76,6 +76,12 @@ Pokemon* PokemonFactory::createPokemon(PokemonId speciesId, string nickname)
     MoveId moveId2 = species->moveId2;
     MoveId moveId3 = species->moveId3;
     MoveId moveId4 = species->moveId4;
+
+    // if there is no nickname, use the species name
+    if(nickname == "")
+    {
+        nickname = speciesName;
+    }
 
     // create the pokemon's moves
     Move* move1 = MoveFactory::createMove(moveId1);

@@ -152,7 +152,7 @@ int main(int argc, char** argv)
     #ifdef DEBUG_MODE
     // Hard coded players for testing
     HumanPlayer* p1 = new HumanPlayer("Ash");
-    p1->addPokemon(PokemonFactory::createPokemon(CHARMANDER, "Flameo"));
+    p1->addPokemon(PokemonFactory::createPokemon(CHARMANDER, ""));
     HumanPlayer* p2 = new HumanPlayer("Gary");
     p2->addPokemon(PokemonFactory::createPokemon(SQUIRTLE, "Watery"));
     #else
