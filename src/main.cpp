@@ -53,7 +53,8 @@ HumanPlayer* createHumanPlayer(int playerIndex)
     
     // ask for pokemon
     bool continueGetInput = true;
-    for(int i = 0; i < Player::MAX_POKEMON and continueGetInput; i++)
+    for(int i = 0; i < Player::MAX_POKEMON and continueGetInput;
+        i = player->getNumPokemon())
     {
         bool displayError = false;
         while(true)
