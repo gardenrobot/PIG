@@ -33,6 +33,9 @@ class PokemonFactory
     /// Create pokemon of the species id. Calling function must de-allocate.
     static Pokemon* createPokemon(PokemonId speciesId, std::string nickname);
 
+    /// Get all pokemon species
+    static const std::map<PokemonId, const PokemonSpecies*> getAllSpecies();
+
   private:
     
     /// Holds one of each pokemon species objects

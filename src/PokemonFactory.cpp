@@ -16,6 +16,7 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <vector>
 #include <stdexcept>
 
 class Move;
@@ -87,5 +88,20 @@ Pokemon* PokemonFactory::createPokemon(PokemonId speciesId, string nickname)
         maxHp, baseAttack, baseDefense, baseSpecialAttack, baseSpecialDefense,
         baseSpeed, move1, move2, move3, move4);
     return pokemon;
+}
+
+const map<PokemonId, const PokemonSpecies*> PokemonFactory::getAllSpecies()
+{
+    map<PokemonId, const PokemonSpecies*> allSpeciesList;
+
+    for(map<PokemonId, PokemonSpecies*>::iterator it = allSpecies.begin();
+        it != allSpecies.end(); it++)
+    {
+        PokemonId id = it->first;
+        PokemonSpecies* species = it->second;
+        allSpeciesList.insert(pair<PokemonId, const PokemonSpecies*>(id, species));
+    }
+
+    return allSpeciesList;
 }
 
