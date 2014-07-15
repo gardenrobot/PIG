@@ -72,7 +72,7 @@ class Pokemon
     void changeHp(int change);
 
     /// Called when the environment finishes a round.
-    void onRoundEnd();
+    void onRoundEnd(Pokemon& enemyPokemon);
 
     void healMajorAffliction();
 

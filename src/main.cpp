@@ -43,11 +43,11 @@ int run(int argc, char** argv)
     // Hard coded players for testing
     HumanPlayer* p1 = new HumanPlayer("Ash");
     Pokemon* poke1 = PokemonFactory::createPokemon(CHARMANDER, "");
-    poke1->addMinorAffliction(new PartialTrap(*poke1));
     p1->addPokemon(poke1);
     HumanPlayer* p2 = new HumanPlayer("Gary");
     Pokemon* poke2 = PokemonFactory::createPokemon(SQUIRTLE, "Watery");
     p2->addPokemon(poke2);
+    poke1->addMinorAffliction(new Seeding(*poke1));
     #else
     // Create players
     listPokemon();

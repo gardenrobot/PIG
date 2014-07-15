@@ -37,7 +37,7 @@ class Player
     void swapPokemon(int index);
 
     /// Notifies its pokemon of the round end.
-    void onRoundEnd();
+    void onRoundEnd(Player& enemyPlayer);
 
     /// Returns true iff it is legal to swap head pokemon with the pokemon at
     /// the given index

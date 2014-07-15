@@ -56,9 +56,9 @@ void Player::swapPokemon(int index)
 }
 
 
-void Player::onRoundEnd()
+void Player::onRoundEnd(Player& enemyPlayer)
 {
-    getPokemon(0)->onRoundEnd();
+    getPokemon(0)->onRoundEnd(*enemyPlayer.getPokemon(0));
 }
 
 

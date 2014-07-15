@@ -36,8 +36,8 @@ void Round::doRound(Environment& env, Player& playerOne, Player& playerTwo)
     processChoice(*firstPlayer, *secondPlayer, *firstChoice);
     processChoice(*secondPlayer, *firstPlayer, *secondChoice);
 
-    playerOne.onRoundEnd();
-    playerTwo.onRoundEnd();
+    playerOne.onRoundEnd(playerTwo);
+    playerTwo.onRoundEnd(playerOne);
 }
 
 void Round::determineFirstPlayer(Player& playerOne, Player& playerTwo,
@@ -95,7 +95,7 @@ void Round::processChoice(Player& attacking, Player& defending, Choice& choice)
             bool skipBattle = false;
             for(int i = 0; i < attackingPokemon->getNumMinorAfflictions(); ++i)
             {
-                if(attackingPokemon->getMinorAffliction(i)->whenAttacks())
+                if(attackingPokemon->getMinorAffliction(i)->whenAttacks(*defending.getPokemon(0)))
                 {
                     skipBattle = true;
                 }

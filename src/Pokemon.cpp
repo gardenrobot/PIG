@@ -226,14 +226,14 @@ bool Pokemon::isFainted() const
 }
 
 
-void Pokemon::onRoundEnd()
+void Pokemon::onRoundEnd(Pokemon& enemyPokemon)
 {
     // call hooks for minor afflcition
     int i = 0;
     while(i < minorAfflictions.size())
     {
         MinorAffliction* aff = minorAfflictions.at(i);
-        aff->onRoundEnd();
+        aff->onRoundEnd(enemyPokemon);
         if(aff->isFinished())
         {
             delete aff;

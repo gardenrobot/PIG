@@ -20,11 +20,11 @@ class MinorAffliction
   public:
 
     /// Called when the round ends
-    virtual void onRoundEnd();
+    virtual void onRoundEnd(Pokemon& enemyPokemon);
 
     /// Called before the afflicted pokemon attacks. Return true if this
     /// replaces the attack
-    virtual bool whenAttacks();
+    virtual bool whenAttacks(Pokemon& defending);
 
     /// Returns true iff the minor affliction should be removed from the pokemon
     virtual bool isFinished() = 0;
@@ -50,7 +50,7 @@ class Confusion : public MinorAffliction
 
     Confusion(Pokemon& afflictedPokemon);
 
-    bool whenAttacks();
+    bool whenAttacks(Pokemon& defending);
 
     bool isFinished();
 
@@ -61,7 +61,6 @@ class Confusion : public MinorAffliction
 };
 
 
-// this is just for testing the isTrapped function; remove this later
 class PartialTrap : public MinorAffliction
 {
 
@@ -69,7 +68,59 @@ class PartialTrap : public MinorAffliction
 
     PartialTrap(Pokemon& afflictedPokemon);
 
-    void onRoundEnd();
+    void onRoundEnd(Pokemon& enemyPokemon);
+
+    bool isFinished();
+
+  private:
+
+    int turnsLeft;
+
+};
+
+
+class Flinch : public MinorAffliction
+{
+
+  public:
+
+    Flinch(Pokemon& afflictedPokemon);
+
+    bool whenAttacks(Pokemon& defending);
+
+    bool isFinished();
+
+};
+
+
+class Infatuation : public MinorAffliction
+{
+
+  public:
+
+    Infatuation(Pokemon& afflictedPokemon, Pokemon& infatSrc);
+
+    bool whenAttacks(Pokemon& defending);
+
+    bool isFinished();
+
+  private:
+
+    Pokemon& infatSrc;
+
+    bool infatSrcHasChanged;
+
+};
+
+
+class Seeding : public MinorAffliction
+{
+
+  public:
+
+    Seeding(Pokemon& afflictedPokemon);
+
+    void onRoundEnd(Pokemon& enemyPokemon);
 
     bool isFinished();
 

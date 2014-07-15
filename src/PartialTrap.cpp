@@ -28,9 +28,11 @@ bool PartialTrap::isFinished()
     return turnsLeft == 0;
 }
 
-void PartialTrap::onRoundEnd()
+
+void PartialTrap::onRoundEnd(Pokemon& enemyPokemon)
 {
     // do damage
+    cout << afflictedPokemon.getNickname() << " is trapped." << endl;
     int damage = (int)ceil(afflictedPokemon.getHp() / 16.0);
     afflictedPokemon.changeHp(-damage);
 

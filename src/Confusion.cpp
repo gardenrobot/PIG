@@ -25,7 +25,7 @@ Confusion::Confusion(Pokemon& afflictedPokemon)
 }
 
 
-bool Confusion::whenAttacks()
+bool Confusion::whenAttacks(Pokemon& defending)
 {
     cout << afflictedPokemon.getNickname() << " is confused." << endl;
 

@@ -18,12 +18,12 @@ MinorAffliction::MinorAffliction(Pokemon& afflictedPokemon)
 }
 
 
-void MinorAffliction::onRoundEnd()
+void MinorAffliction::onRoundEnd(Pokemon& enemyPokemon)
 {
 }
 
 
-bool MinorAffliction::whenAttacks()
+bool MinorAffliction::whenAttacks(Pokemon& defending)
 {
     return false;
 }
