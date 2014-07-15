@@ -69,7 +69,7 @@ class PartialTrap : public MinorAffliction
 
     PartialTrap(Pokemon& afflictedPokemon);
 
-    bool isTrapped();
+    void onRoundEnd();
 
     bool isFinished();
 

@@ -9,23 +9,32 @@
 #include "Move.h"
 #include "Battle.h"
 
+#include <iostream>
+#include <stdlib.h>
+#include <math.h>
+
 using namespace std;
 
 
 PartialTrap::PartialTrap(Pokemon& afflictedPokemon)
 :MinorAffliction(afflictedPokemon)
-,turnsLeft(10000)
 {
+    turnsLeft = (rand() % 4) + 2;
 }
 
 
 bool PartialTrap::isFinished()
 {
-    return false;
+    return turnsLeft == 0;
 }
 
-bool PartialTrap::isTrapped()
+void PartialTrap::onRoundEnd()
 {
-    return true;
+    // do damage
+    int damage = (int)ceil(afflictedPokemon.getHp() / 16.0);
+    afflictedPokemon.changeHp(-damage);
+
+    // decrement counter
+    turnsLeft--;
 }
 

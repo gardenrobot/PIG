@@ -228,16 +228,32 @@ bool Pokemon::isFainted() const
 
 void Pokemon::onRoundEnd()
 {
-    // call minor and major afflcition
-    for(vector<MinorAffliction*>::iterator it(minorAfflictions.begin());
-        it != minorAfflictions.end(); ++it)
+    // call hooks for minor afflcition
+    int i = 0;
+    while(i < minorAfflictions.size())
     {
-        (*it)->onRoundEnd();
+        MinorAffliction* aff = minorAfflictions.at(i);
+        aff->onRoundEnd();
+        if(aff->isFinished())
+        {
+            delete aff;
+            minorAfflictions.erase(minorAfflictions.begin()+i);
+        }
+        else
+        {
+            i++;
+        }
     }
 
+    // call hooks for minor afflcition
     if(majorAffliction != NULL)
     {
         majorAffliction->onRoundEnd();
+        if(majorAffliction->isFinished())
+        {
+            delete majorAffliction;
+            majorAffliction = NULL;
+        }
     }
 
     // call moves
