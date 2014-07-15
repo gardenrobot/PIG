@@ -42,9 +42,12 @@ int run(int argc, char** argv)
     #ifdef DEBUG_MODE
     // Hard coded players for testing
     HumanPlayer* p1 = new HumanPlayer("Ash");
-    p1->addPokemon(PokemonFactory::createPokemon(CHARMANDER, ""));
+    Pokemon* poke1 = PokemonFactory::createPokemon(CHARMANDER, "");
+    poke1->addMinorAffliction(new PartialTrap(*poke1));
+    p1->addPokemon(poke1);
     HumanPlayer* p2 = new HumanPlayer("Gary");
-    p2->addPokemon(PokemonFactory::createPokemon(SQUIRTLE, "Watery"));
+    Pokemon* poke2 = PokemonFactory::createPokemon(SQUIRTLE, "Watery");
+    p2->addPokemon(poke2);
     #else
     // Create players
     listPokemon();

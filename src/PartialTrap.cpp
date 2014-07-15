@@ -1,5 +1,5 @@
 // 
-// File: Bind.cpp 
+// File: PartialTrap.cpp 
 // 
 // Author: Lucas Clotfelter
 // 
@@ -12,19 +12,19 @@
 using namespace std;
 
 
-Bind::Bind(Pokemon& afflictedPokemon)
+PartialTrap::PartialTrap(Pokemon& afflictedPokemon)
 :MinorAffliction(afflictedPokemon)
 ,turnsLeft(10000)
 {
 }
 
 
-bool Bind::isFinished()
+bool PartialTrap::isFinished()
 {
     return false;
 }
 
-bool Bind::isTrapped()
+bool PartialTrap::isTrapped()
 {
     return true;
 }

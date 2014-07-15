@@ -62,12 +62,12 @@ class Confusion : public MinorAffliction
 
 
 // this is just for testing the isTrapped function; remove this later
-class Bind : public MinorAffliction
+class PartialTrap : public MinorAffliction
 {
 
   public:
 
-    Bind(Pokemon& afflictedPokemon);
+    PartialTrap(Pokemon& afflictedPokemon);
 
     bool isTrapped();
 
