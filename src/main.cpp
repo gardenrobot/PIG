@@ -3,7 +3,7 @@
 // 
 // Author: Lucas Clotfelter
 // 
-// Runs a pokemon game
+// Runs PIG
 // 
 // //////////////////////////////////////////////////////////////////// 
 
@@ -28,6 +28,45 @@
 #include <stdlib.h>
 
 using namespace std;
+
+
+/**
+ * Run the main loop of the game.
+ */
+int run(int argc, char** argv)
+{
+    PokemonFactory::initialize();
+    MoveFactory::initialize();
+    srand(50);
+
+    #ifdef DEBUG_MODE
+    // Hard coded players for testing
+    HumanPlayer* p1 = new HumanPlayer("Ash");
+    p1->addPokemon(PokemonFactory::createPokemon(CHARMANDER, ""));
+    HumanPlayer* p2 = new HumanPlayer("Gary");
+    p2->addPokemon(PokemonFactory::createPokemon(SQUIRTLE, "Watery"));
+    #else
+    // Create players
+    listPokemon();
+    HumanPlayer* p1 = createHumanPlayer(1);
+    HumanPlayer* p2 = createHumanPlayer(2);
+    #endif
+
+    Environment env(p1, p2);
+
+    cout << endl;
+    cout << "Starting game." << endl;
+    for(int i = 0; not p1->hasLost() and not p2->hasLost(); ++i)
+    {
+        cout << "Round " << (i + 1) << endl;
+
+        Round::doRound(env, *p1, *p2);
+    }
+
+    cout << "Done." << endl;
+    PokemonFactory::destroy();
+    MoveFactory::destroy();
+}
 
 
 /**
@@ -121,6 +160,7 @@ HumanPlayer* createHumanPlayer(int playerIndex)
     return player;
 }
 
+
 /**
  * Print information on all pokemon species to stdout
  */
@@ -140,41 +180,8 @@ void listPokemon()
 }
 
 
-/**
- * 
- */
 int main(int argc, char** argv)
 {
-    PokemonFactory::initialize();
-    MoveFactory::initialize();
-    srand(50);
-
-    #ifdef DEBUG_MODE
-    // Hard coded players for testing
-    HumanPlayer* p1 = new HumanPlayer("Ash");
-    p1->addPokemon(PokemonFactory::createPokemon(CHARMANDER, ""));
-    HumanPlayer* p2 = new HumanPlayer("Gary");
-    p2->addPokemon(PokemonFactory::createPokemon(SQUIRTLE, "Watery"));
-    #else
-    // Create players
-    listPokemon();
-    HumanPlayer* p1 = createHumanPlayer(1);
-    HumanPlayer* p2 = createHumanPlayer(2);
-    #endif
-
-    Environment env(p1, p2);
-
-    cout << endl;
-    cout << "Starting game." << endl;
-    for(int i = 0; not p1->hasLost() and not p2->hasLost(); ++i)
-    {
-        cout << "Round " << (i + 1) << endl;
-
-        Round::doRound(env, *p1, *p2);
-    }
-
-    cout << "Done." << endl;
-    PokemonFactory::destroy();
-    MoveFactory::destroy();
+    return run(argc, argv);
 }
 
