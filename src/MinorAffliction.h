@@ -110,6 +110,8 @@ class Infatuation : public MinorAffliction
 
     bool infatSrcHasChanged;
 
+    bool oppositeGender(Gender g1, Gender g2);
+
 };
 
 

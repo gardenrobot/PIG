@@ -47,7 +47,7 @@ int run(int argc, char** argv)
     HumanPlayer* p2 = new HumanPlayer("Gary");
     Pokemon* poke2 = PokemonFactory::createPokemon(SQUIRTLE, "Watery");
     p2->addPokemon(poke2);
-    poke1->addMinorAffliction(new Seeding(*poke1));
+    poke1->addMinorAffliction(new Infatuation(*poke1, *poke2));
     #else
     // Create players
     listPokemon();
