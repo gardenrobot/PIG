@@ -11,6 +11,7 @@
 #include "Pokemon.h"
 #include "Move.h"
 #include "MajorAffliction.h"
+#include "Gender.h"
 
 #include <iostream>
 #include <string>
@@ -116,6 +117,11 @@ Choice* HumanPlayer::askForInput(Player& otherPlayer)
         {
             Pokemon* poke = getPokemon(i);
             cout << (i+1) << ": " << poke->getNickname() << " ";
+
+            // print gender
+            cout << GenderString::genderToLetter(poke->getGender()) << " ";
+
+            // print major affliction if exists
             if(poke->getMajorAffliction() != NULL)
             {
                 cout << poke->getMajorAffliction()->shortName;
@@ -139,7 +145,8 @@ Choice* HumanPlayer::askForInput(Player& otherPlayer)
 
         Pokemon* otherPokemon = otherPlayer.getPokemon(0);
         cout << otherPlayer.getName() << "'s lead pokemon is " <<
-            otherPokemon->getNickname() << " ";
+            otherPokemon->getNickname() << " " <<
+            GenderString::genderToLetter(otherPokemon->getGender()) << " ";
         if(otherPokemon->getMajorAffliction() != NULL)
         {
             cout << otherPokemon->getMajorAffliction()->shortName;

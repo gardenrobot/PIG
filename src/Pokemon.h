@@ -11,6 +11,7 @@
 #define POKEMON_H_
 
 #include "Type.h"
+#include "Gender.h"
 
 class Stat;
 class Move;
@@ -36,6 +37,8 @@ class Pokemon
 
     /// Returns the given name of the pokemon.
     std::string getNickname() const;
+
+    Gender getGender() const;
 
     int getHp() const;
 
@@ -89,7 +92,7 @@ class Pokemon
     Pokemon(std::string nickname, std::string speciesName, Type typeOne,
         Type typeTwo, int maxHp, int baseAttack, int baseDefense,
         int baseSpecialAttack, int baseSpecialDefense, int baseSpeed,
-        Move* move1, Move* move2, Move* move3, Move* move4);
+        Move* move1, Move* move2, Move* move3, Move* move4, Gender gender);
 
   private:
 
@@ -98,6 +101,9 @@ class Pokemon
 
     /// The name used to identify the pokemon's species
     const std::string speciesName;
+
+    // The pokemon's gender
+    const Gender gender;
 
     /// Current health
     int hp;

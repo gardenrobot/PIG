@@ -25,13 +25,14 @@ using namespace std;
 Pokemon::Pokemon(string nickname, string speciesName, Type typeOne,
     Type typeTwo, int maxHp, int baseAttack, int baseDefense,
     int baseSpecialAttack, int baseSpecialDefense, int baseSpeed, Move* move1,
-    Move* move2, Move* move3, Move* move4)
+    Move* move2, Move* move3, Move* move4, Gender gender)
 :nickname(nickname)
 ,speciesName(speciesName)
 ,typeOne(typeOne)
 ,typeTwo(typeTwo)
 ,maxHp(maxHp)
 ,hp(maxHp)
+,gender(gender)
 ,attack(new Stat(baseAttack))
 ,defense(new Stat(baseDefense))
 ,specialAttack(new Stat(baseSpecialAttack))
@@ -123,6 +124,12 @@ string Pokemon::getSpeciesName() const
 string Pokemon::getNickname() const
 {
     return nickname;
+}
+
+
+Gender Pokemon::getGender() const
+{
+    return gender;
 }
 
 

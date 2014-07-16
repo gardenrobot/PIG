@@ -18,6 +18,7 @@
 #include <map>
 #include <vector>
 #include <stdexcept>
+#include <stdlib.h>
 
 class Move;
 
@@ -30,13 +31,13 @@ void PokemonFactory::initialize()
 {
     allSpecies.insert(std::pair<PokemonId, PokemonSpecies*>(BULBASAUR,
         new PokemonSpecies(string("Bulbasaur"), GRASS, NO_TYPE, 29, 30, 180, 23,
-        121, 29, STUN_SPORE, NO_MOVE, NO_MOVE, NO_MOVE)));
+        121, 29, STUN_SPORE, NO_MOVE, NO_MOVE, NO_MOVE, ALL_MALE_DIST)));
     allSpecies.insert(std::pair<PokemonId, PokemonSpecies*>(CHARMANDER,
         new PokemonSpecies(string("Charmander"), FIRE, NO_TYPE, 39, 52, 143, 60,
-        150, 65, EMBER, AGILITY, NO_MOVE, NO_MOVE)));
+        150, 65, EMBER, AGILITY, NO_MOVE, NO_MOVE, ALL_FEMALE_DIST)));
     allSpecies.insert(std::pair<PokemonId, PokemonSpecies*>(SQUIRTLE,
         new PokemonSpecies(string("Squirtle"), WATER, NO_TYPE, 29, 30, 180, 23,
-        121, 29, WATER_GUN, NO_MOVE, NO_MOVE, NO_MOVE)));
+        121, 29, WATER_GUN, NO_MOVE, NO_MOVE, NO_MOVE, NO_GENDER_DIST)));
 }
 
 void PokemonFactory::destroy()
@@ -77,6 +78,22 @@ Pokemon* PokemonFactory::createPokemon(PokemonId speciesId, string nickname="")
     MoveId moveId3 = species->moveId3;
     MoveId moveId4 = species->moveId4;
 
+    // Determine the gender
+    float genderDist = species->genderDist;
+    Gender gender;
+    if(genderDist == NO_GENDER_DIST)
+    {
+        gender = NO_GENDER;
+    }
+    else if(((rand() % 100) * 0.01) < genderDist)
+    {
+        gender = FEMALE;
+    }
+    else
+    {
+        gender = MALE;
+    }
+
     // if there is no nickname, use the species name
     if(nickname == "")
     {
@@ -92,7 +109,7 @@ Pokemon* PokemonFactory::createPokemon(PokemonId speciesId, string nickname="")
     // create move from values
     Pokemon* pokemon = new Pokemon(nickname, speciesName, typeOne, typeTwo,
         maxHp, baseAttack, baseDefense, baseSpecialAttack, baseSpecialDefense,
-        baseSpeed, move1, move2, move3, move4);
+        baseSpeed, move1, move2, move3, move4, gender);
     return pokemon;
 }
 

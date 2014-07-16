@@ -13,6 +13,7 @@
 
 #include "Type.h"
 #include "MoveId.h"
+#include "Gender.h"
 
 #include <string>
 
@@ -40,10 +41,14 @@ class PokemonSpecies
     MoveId moveId3;
     MoveId moveId4;
 
+    /// The probability 0-1 that a pokemon is female, or NO_GENDER_DIST
+    float genderDist;
+
     PokemonSpecies(std::string speciesName, Type typeOne,
         Type typeTwo, int maxHp, int baseAttack, int baseDefense,
         int baseSpecialAttack, int baseSpecialDefense, int baseSpeed,
-        MoveId moveId1, MoveId moveId2, MoveId moveId3, MoveId moveId4)
+        MoveId moveId1, MoveId moveId2, MoveId moveId3, MoveId moveId4,
+        float genderDist)
     :speciesName(speciesName)
     ,typeOne(typeOne)
     ,typeTwo(typeTwo)
@@ -57,6 +62,7 @@ class PokemonSpecies
     ,moveId2(moveId2)
     ,moveId3(moveId3)
     ,moveId4(moveId4)
+    ,genderDist(genderDist)
     {}
 
 };
