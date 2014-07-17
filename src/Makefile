@@ -42,8 +42,8 @@ COMPILE.c = $(CC) $(CFLAGS) $(CPPFLAGS) -c
 COMPILE.cc = $(CXX) $(CXXFLAGS) $(CPPFLAGS) -c
 CPP = $(CPP) $(CPPFLAGS)
 ########## Default flags (redefine these with a header.mak file if desired)
-CXXFLAGS =	-ggdb
-CFLAGS =	-ggdb
+CXXFLAGS =	-ggdb -ljsoncpp
+CFLAGS =	-ggdb -ljsoncpp
 CLIBFLAGS =	-lm
 CCLIBFLAGS =	
 ########## End of default flags
@@ -112,4 +112,4 @@ clean:
 realclean:        clean
 	-/bin/rm -rf main 
 debug:
-	 make CXXFLAGS=-DDEBUG_MODE
+	 make CXXFLAGS="$(CXXFLAGS) -DDEBUG_MODE"
