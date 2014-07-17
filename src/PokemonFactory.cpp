@@ -19,10 +19,14 @@
 #include <vector>
 #include <stdexcept>
 #include <stdlib.h>
+#include <fstream>
+#include <jsoncpp/json/reader.h>
+#include <jsoncpp/json/json.h>
 
 class Move;
 
 using namespace std;
+using namespace Json;
 
 
 map<PokemonId, PokemonSpecies*> PokemonFactory::allSpecies;
@@ -38,6 +42,13 @@ void PokemonFactory::initialize()
     allSpecies.insert(std::pair<PokemonId, PokemonSpecies*>(SQUIRTLE,
         new PokemonSpecies(string("Squirtle"), WATER, NO_TYPE, 29, 30, 180, 23,
         121, 29, WATER_GUN, NO_MOVE, NO_MOVE, NO_MOVE, ALL_MALE_DIST)));
+
+    Reader reader;
+    const char* filename = "Pokemon.json";
+    ifstream stream;
+    stream.open(filename, ifstream::in);
+    stream.close();
+
 }
 
 void PokemonFactory::destroy()

@@ -42,10 +42,10 @@ COMPILE.c = $(CC) $(CFLAGS) $(CPPFLAGS) -c
 COMPILE.cc = $(CXX) $(CXXFLAGS) $(CPPFLAGS) -c
 CPP = $(CPP) $(CPPFLAGS)
 ########## Default flags (redefine these with a header.mak file if desired)
-CXXFLAGS =	-ggdb -ljsoncpp
-CFLAGS =	-ggdb -ljsoncpp
-CLIBFLAGS =	-lm
-CCLIBFLAGS =	
+CXXFLAGS =	-ggdb 
+CFLAGS =	-ggdb 
+CLIBFLAGS =	-lm -ljsoncpp
+CCLIBFLAGS =	-ljsoncpp
 ########## End of default flags
 
 
