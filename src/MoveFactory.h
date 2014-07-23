@@ -13,6 +13,7 @@
 #include "MoveId.h"
 
 #include <map>
+#include <jsoncpp/json/value.h>
 
 class Move;
 class MoveSpecies;
@@ -36,6 +37,9 @@ class MoveFactory
     
     /// Holds one of each move species
     static std::map<MoveId, MoveSpecies*> allSpecies;
+
+    /// Parses the Json value and adds it to the species container
+    static void addSpecies(Json::Value& value);
 
 };
 

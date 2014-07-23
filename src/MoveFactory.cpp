@@ -18,30 +18,53 @@
 #include <string>
 #include <map>
 #include <stdexcept>
+#include <fstream>
+#include <jsoncpp/json/reader.h>
+#include <jsoncpp/json/json.h>
+#include <jsoncpp/json/value.h>
 
 using namespace std;
+using namespace Json;
 
 
 map<MoveId, MoveSpecies*> MoveFactory::allSpecies;
 
 void MoveFactory::initialize()
 {
-    // add hard-coded moves to map
-    allSpecies.insert(std::pair<MoveId, MoveSpecies*>(EMBER,
-        new MoveSpecies(string("Ember"), FIRE, 40,
-        0.75F, SPECIAL, AFFLICT_BURN)));
-    allSpecies.insert(std::pair<MoveId, MoveSpecies*>(WATER_GUN,
-        new MoveSpecies(string("Water Gun"), WATER, 40,
-        0.75F, SPECIAL, NO_EFFECT)));
-    allSpecies.insert(std::pair<MoveId, MoveSpecies*>(CONFUSED_MOVE,
-        new MoveSpecies(string("Confused Move"), NO_TYPE, 40,
-        ALWAYS_HIT, PHYSICAL, NO_EFFECT)));
-    allSpecies.insert(std::pair<MoveId, MoveSpecies*>(STUN_SPORE,
-        new MoveSpecies(string("Stun Spore"), GRASS, 0,
-        HIT_UNLESS_SEMI_INVUL, STATUS, NO_EFFECT)));
-    allSpecies.insert(std::pair<MoveId, MoveSpecies*>(AGILITY,
-        new MoveSpecies(string("Agility"), NORMAL, 0,
-        ALWAYS_HIT, STATUS, INCREASE_SPEED_2)));
+    // parse file
+    Reader reader;
+    const char* filename = "Move.json";
+    ifstream stream;
+    stream.open(filename, ifstream::in);
+    Value root;
+    reader.parse(stream, root, true);
+
+    // iterate over and parse each move 
+    for(ValueIterator it = root.begin(); it != root.end(); it++)
+    {
+        addSpecies(*it);
+    }
+
+    stream.close();
+}
+
+void MoveFactory::addSpecies(Value& value)
+{
+    // parse all single values from json
+    MoveId id = (MoveId) value.get("id", Value::null).asInt();
+    string name = value.get("name", Value::null).asString();
+    Type type = (Type) value.get("type", Value::null).asInt();
+    int damage = value.get("damage", Value::null).asInt();
+    float accuracy = value.get("accuracy", Value::null).asFloat();
+    Category category = (Category) value.get("category", Value::null).asInt();
+    EffectId effectId = (EffectId) value.get("effectId", Value::null).asInt();
+
+    // create species with parsed values
+    MoveSpecies* species = new MoveSpecies(name, type, damage, accuracy,
+        category, effectId);
+
+    // add to container
+    allSpecies.insert(std::pair<MoveId, MoveSpecies*>(id, species));
 }
 
 void MoveFactory::destroy()

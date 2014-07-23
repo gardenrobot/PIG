@@ -43,7 +43,7 @@ class PokemonFactory
     static std::map<PokemonId, PokemonSpecies*> allSpecies;
 
     /// Parses the Json value and adds it to the species container
-    static void addPokemon(Json::Value& value);
+    static void addSpecies(Json::Value& value);
 
 };
 

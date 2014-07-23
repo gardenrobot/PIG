@@ -45,13 +45,13 @@ void PokemonFactory::initialize()
     // iterate over and parse each pokemon 
     for(ValueIterator it = root.begin(); it != root.end(); it++)
     {
-        addPokemon(*it);
+        addSpecies(*it);
     }
 
     stream.close();
 }
 
-void PokemonFactory::addPokemon(Value& value)
+void PokemonFactory::addSpecies(Value& value)
 {
     // parse all single values from json
     PokemonId id = (PokemonId) value.get("id", Value::null).asInt();

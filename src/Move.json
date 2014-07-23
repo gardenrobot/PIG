@@ -1,0 +1,47 @@
+[
+    {
+        "id":1,
+        "name":"Ember",
+        "type":3,
+        "damage":40,
+        "accuracy":0.75,
+        "category":1,
+        "effectId":1
+    },
+    {
+        "id":2,
+        "name":"Water Gun",
+        "type":1,
+        "damage":40,
+        "accuracy":0.75,
+        "category":1,
+        "effectId":0
+    },
+    {
+        "id":3,
+        "name":"Confused Move",
+        "type":4,
+        "damage":40,
+        "accuracy":,
+        "category":2,
+        "effectId":0
+    },
+    {
+        "id":4,
+        "name":"Stun Spore",
+        "type":2,
+        "damage":0,
+        "accuracy":,
+        "category":0,
+        "effectId":0
+    },
+    {
+        "id":5,
+        "name":"Agility",
+        "type":4,
+        "damage":0,
+        "accuracy":,
+        "category":0,
+        "effectId":2
+    }
+]

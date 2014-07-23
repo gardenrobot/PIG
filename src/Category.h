@@ -13,7 +13,9 @@
 
 typedef enum
 {
-    STATUS, SPECIAL, PHYSICAL
+    STATUS = 0,
+    SPECIAL = 1,
+    PHYSICAL = 2
 } Category;
 
 #endif // CATEGORY_H_
