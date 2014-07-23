@@ -28,13 +28,13 @@ class MoveSpecies
     /// See Move.h for descriptions of these variables.
 
     std::string name;
-    Type type;
+    std::string type;
     int damage;
     float accuracy;
     Category category;
     EffectId effectId;
 
-    MoveSpecies(std::string name, Type type, int damage, float accuracy,
+    MoveSpecies(std::string name, std::string type, int damage, float accuracy,
         Category category, EffectId effectId)
     :name(name)
     ,type(type)

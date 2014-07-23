@@ -20,6 +20,7 @@
 #include "MoveFactory.h"
 #include "EffectId.h"
 #include "EffectFactory.h"
+#include "Type.h"
 #include "StringHelper.h"
 
 #include <string>
@@ -146,19 +147,20 @@ HumanPlayer* createHumanPlayer(int playerIndex)
  */
 int run(int argc, char** argv)
 {
-    PokemonFactory::initialize();
-    MoveFactory::initialize();
     srand(50);
+    Type::initialize();
+    MoveFactory::initialize();
+    PokemonFactory::initialize();
 
     #ifdef DEBUG_MODE
     // Hard coded players for testing
     HumanPlayer* p1 = new HumanPlayer("Ash");
-    Pokemon* poke1 = PokemonFactory::createPokemon(CHARMANDER, "");
+    Pokemon* poke1 = PokemonFactory::createPokemon(SQUIRTLE, "");
     p1->addPokemon(poke1);
     HumanPlayer* p2 = new HumanPlayer("Gary");
-    Pokemon* poke2 = PokemonFactory::createPokemon(SQUIRTLE, "Watery");
+    Pokemon* poke2 = PokemonFactory::createPokemon(BULBASAUR, "");
     p2->addPokemon(poke2);
-    poke1->addMinorAffliction(new Infatuation(*poke1, *poke2));
+    //poke1->addMinorAffliction(new Infatuation(*poke1, *poke2));
     #else
     // Create players
     listPokemon();

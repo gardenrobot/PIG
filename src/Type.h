@@ -12,66 +12,54 @@
 #define TYPE_H_
 
 #include <map>
+#include <string>
+#include <vector>
+
+class TypePair;
 
 
-typedef enum
-{
-    NO_TYPE = 0,
-    WATER = 1,
-    GRASS = 2,
-    FIRE = 3,
-    NORMAL = 4,
-} Type;
-
-
-/// This is a helper to TypeMult.
-struct TypePair
-{
-    TypePair(Type move, Type defending);
-
-    Type move;
-    Type defending;
-
-    /// These will be keys in a map, so they need operator
-    bool operator<(const TypePair other) const;
-    bool operator>(const TypePair other) const;
-};
-
-
-/// This is a container for a map that is filled on instantiation. It is a
-/// helper for TypeMult.
-class TypeMultiplierMap
+class Type
 {
   public:
 
-    TypeMultiplierMap();
+    /// Must be called once per process before using this class
+    static void initialize();
 
-    const std::map<TypePair, float>& getMap() const;
-
-  private:
-
-    std::map<TypePair, float> theMap;
-};
-
-
-class TypeMult
-{
-  public:
+    /// Returns true iff the string is a valid type
+    static bool isType(std::string);
 
     /// Returns the type multiplier of a move attacking a one-typed pokemon
-    static float getMultiplier(Type move, Type defending);
+    static float getMultiplier(std::string move, std::string defending);
 
     /// Same thing but the pokemon has two types
-    static float getMultiplier(Type move, Type defendingOne, Type defendingTwo);
+    static float getMultiplier(std::string move, std::string defending1,
+        std::string defending2);
 
   private:
 
     /// This maps type pairs to the damage multiplier
     /// For example, if water attack are strong against fire pokemon, the pair
     /// {water, fire} is mapped to 2.
-    static const TypeMultiplierMap typeMultipliers;
+    static std::map<TypePair, float> typeMultipliers;
 
+    /// Contains all valid types
+    static std::vector<std::string> allTypes;
 };
+
+class TypePair
+{
+  public:
+    TypePair(std::string move, std::string defending);
+
+    const std::string move;
+    const std::string defending;
+
+    /// These will be keys in a map, so they need operator
+    bool operator<(const TypePair& other) const;
+    bool operator>(const TypePair& other) const;
+    bool operator==(const TypePair& other) const;
+};
+
 
 #endif // TYPE_H_
 

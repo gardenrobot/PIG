@@ -85,12 +85,12 @@ class Pokemon
 
     void addMinorAffliction(MinorAffliction* affliction);
 
-    Type getTypeOne() const;
+    std::string getTypeOne() const;
 
-    Type getTypeTwo() const;
+    std::string getTypeTwo() const;
 
-    Pokemon(std::string nickname, std::string speciesName, Type typeOne,
-        Type typeTwo, int maxHp, int baseAttack, int baseDefense,
+    Pokemon(std::string nickname, std::string speciesName, std::string typeOne,
+        std::string typeTwo, int maxHp, int baseAttack, int baseDefense,
         int baseSpecialAttack, int baseSpecialDefense, int baseSpeed,
         Move* move1, Move* move2, Move* move3, Move* move4, Gender gender);
 
@@ -121,8 +121,8 @@ class Pokemon
 
     int level;
 
-    Type typeOne;
-    Type typeTwo;
+    std::string typeOne;
+    std::string typeTwo;
 
     /// The moves that the pokemon can use. These are to be deleted by the
     /// pokemon.

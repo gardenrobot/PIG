@@ -56,8 +56,8 @@ void PokemonFactory::addSpecies(Value& value)
     // parse all single values from json
     PokemonId id = (PokemonId) value.get("id", Value::null).asInt();
     string name = value.get("name", Value::null).asString();
-    Type type1 = (Type) value.get("type1", Value::null).asInt();
-    Type type2 = (Type) value.get("type2", Value::null).asInt();
+    string type1 = value.get("type1", Value::null).asString();
+    string type2 = value.get("type2", Value::null).asString();
     int hp = value.get("hp", Value::null).asInt();
     int attack = value.get("attack", Value::null).asInt();
     int defense = value.get("defense", Value::null).asInt();
@@ -115,8 +115,8 @@ Pokemon* PokemonFactory::createPokemon(PokemonId speciesId, string nickname="")
 
     // get values from species
     string speciesName = species->speciesName;
-    Type typeOne = species->typeOne;
-    Type typeTwo = species->typeTwo;
+    string typeOne = species->typeOne;
+    string typeTwo = species->typeTwo;
     int maxHp = species->maxHp;
     int baseAttack = species->baseAttack;
     int baseDefense = species->baseDefense;

@@ -2,8 +2,8 @@
     {
         "id":1,
         "name":"Bulbasaur",
-        "type1":2,
-        "type2":0,
+        "type1":"Grass",
+        "type2":"No Type",
         "hp":29,
         "attack":30,
         "defense":180,
@@ -16,8 +16,8 @@
     {
         "id":4,
         "name":"Charmander",
-        "type1":3,
-        "type2":0,
+        "type1":"Fire",
+        "type2":"No Type",
         "hp":39,
         "attack":52,
         "defense":143,
@@ -30,8 +30,8 @@
     {
         "id":7,
         "name":"Squirtle",
-        "type1":1,
-        "type2":0,
+        "type1":"Water",
+        "type2":"No Type",
         "hp":29,
         "attack":30,
         "defense":180,

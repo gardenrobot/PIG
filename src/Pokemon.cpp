@@ -22,8 +22,8 @@
 using namespace std;
 
 
-Pokemon::Pokemon(string nickname, string speciesName, Type typeOne,
-    Type typeTwo, int maxHp, int baseAttack, int baseDefense,
+Pokemon::Pokemon(string nickname, string speciesName, string typeOne,
+    string typeTwo, int maxHp, int baseAttack, int baseDefense,
     int baseSpecialAttack, int baseSpecialDefense, int baseSpeed, Move* move1,
     Move* move2, Move* move3, Move* move4, Gender gender)
 :nickname(nickname)
@@ -173,13 +173,13 @@ MinorAffliction* Pokemon::getMinorAffliction(int index)
 }
 
 
-Type Pokemon::getTypeOne() const
+string Pokemon::getTypeOne() const
 {
     return typeOne;
 }
 
 
-Type Pokemon::getTypeTwo() const
+string Pokemon::getTypeTwo() const
 {
     return typeTwo;
 }

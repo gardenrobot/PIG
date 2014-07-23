@@ -28,8 +28,8 @@ class PokemonSpecies
     /// See Pokemon.h for descriptions of these variables.
 
     std::string speciesName;
-    Type typeOne;
-    Type typeTwo;
+    std::string typeOne;
+    std::string typeTwo;
     int maxHp;
     int baseAttack;
     int baseDefense;
@@ -44,8 +44,8 @@ class PokemonSpecies
     /// The probability 0-1 that a pokemon is female, or NO_GENDER_DIST
     float genderDist;
 
-    PokemonSpecies(std::string speciesName, Type typeOne,
-        Type typeTwo, int maxHp, int baseAttack, int baseDefense,
+    PokemonSpecies(std::string speciesName, std::string typeOne,
+        std::string typeTwo, int maxHp, int baseAttack, int baseDefense,
         int baseSpecialAttack, int baseSpecialDefense, int baseSpeed,
         MoveId moveId1, MoveId moveId2, MoveId moveId3, MoveId moveId4,
         float genderDist)

@@ -53,7 +53,7 @@ void MoveFactory::addSpecies(Value& value)
     // parse all single values from json
     MoveId id = (MoveId) value.get("id", Value::null).asInt();
     string name = value.get("name", Value::null).asString();
-    Type type = (Type) value.get("type", Value::null).asInt();
+    string type = value.get("type", Value::null).asString();
     int damage = value.get("damage", Value::null).asInt();
     float accuracy = value.get("accuracy", Value::null).asFloat();
     Category category = (Category) value.get("category", Value::null).asInt();
@@ -97,13 +97,13 @@ Move* MoveFactory::createMove(MoveId speciesId)
 
     // get values from species
     string name = species->name;
-    Type type = species->type;
+    string type = species->type;
     int damage = species->damage;
     float accuracy = species->accuracy;
     Category category = species->category;
     EffectId effectId = species->effectId;
 
-    // get effect from effect facotry
+    // get effect from effect factory
 
     Effect* effect = EffectFactory::createEffect(effectId);
 

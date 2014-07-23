@@ -15,7 +15,7 @@
 using namespace std;
 
 
-Move::Move(string name, Type type, int damage, float accuracy,
+Move::Move(string name, string type, int damage, float accuracy,
     Category category, Effect* effect)
 :name(name)
 ,type(type)
@@ -42,7 +42,7 @@ string Move::getName() const
 }
 
 
-Type Move::getType() const
+string Move::getType() const
 {
     return type;
 }

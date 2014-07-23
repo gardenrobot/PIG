@@ -117,7 +117,7 @@ int Battle::getDamage(Pokemon& attacking, Pokemon& defending, Move& move)
         STAB = 1.5;
     }
 
-    double typeMult = TypeMult::getMultiplier(move.getType(), defending.getTypeOne(),
+    double typeMult = Type::getMultiplier(move.getType(), defending.getTypeOne(),
         defending.getTypeTwo());
 
     double randomNumber = (rand() % 16) + 85;

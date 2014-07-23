@@ -35,7 +35,7 @@ class Move
 
     std::string getName() const;
 
-    Type getType() const;
+    std::string getType() const;
 
     int getPower() const;
 
@@ -53,7 +53,7 @@ class Move
     /// Called after the move is done.
     void onMoveEnd(Pokemon& owner, Pokemon& defending, bool moveHit);
 
-    Move(std::string name, Type type, int damage, float accuracy,
+    Move(std::string name, std::string type, int damage, float accuracy,
         Category category, Effect* effect);
 
   private:
@@ -62,7 +62,7 @@ class Move
     std::string name;
 
     /// The type of damage this move deals
-    Type type;
+    std::string type;
 
     /// The amount of base damage the move inflicts on the opponent
     int damage;
