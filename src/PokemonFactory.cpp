@@ -22,6 +22,7 @@
 #include <fstream>
 #include <jsoncpp/json/reader.h>
 #include <jsoncpp/json/json.h>
+#include <jsoncpp/json/value.h>
 
 class Move;
 
@@ -33,22 +34,60 @@ map<PokemonId, PokemonSpecies*> PokemonFactory::allSpecies;
 
 void PokemonFactory::initialize()
 {
-    allSpecies.insert(std::pair<PokemonId, PokemonSpecies*>(BULBASAUR,
-        new PokemonSpecies(string("Bulbasaur"), GRASS, NO_TYPE, 29, 30, 180, 23,
-        121, 29, STUN_SPORE, NO_MOVE, NO_MOVE, NO_MOVE, ALL_MALE_DIST)));
-    allSpecies.insert(std::pair<PokemonId, PokemonSpecies*>(CHARMANDER,
-        new PokemonSpecies(string("Charmander"), FIRE, NO_TYPE, 39, 52, 143, 60,
-        150, 65, EMBER, AGILITY, NO_MOVE, NO_MOVE, ALL_FEMALE_DIST)));
-    allSpecies.insert(std::pair<PokemonId, PokemonSpecies*>(SQUIRTLE,
-        new PokemonSpecies(string("Squirtle"), WATER, NO_TYPE, 29, 30, 180, 23,
-        121, 29, WATER_GUN, NO_MOVE, NO_MOVE, NO_MOVE, ALL_MALE_DIST)));
-
+    // parse file
     Reader reader;
     const char* filename = "Pokemon.json";
     ifstream stream;
     stream.open(filename, ifstream::in);
-    stream.close();
+    Value root;
+    reader.parse(stream, root, true);
 
+    // iterate over and parse each pokemon 
+    for(ValueIterator it = root.begin(); it != root.end(); it++)
+    {
+        addPokemon(*it);
+    }
+
+    stream.close();
+}
+
+void PokemonFactory::addPokemon(Value& value)
+{
+    // parse all single values from json
+    PokemonId id = (PokemonId) value.get("id", Value::null).asInt();
+    string name = value.get("name", Value::null).asString();
+    Type type1 = (Type) value.get("type1", Value::null).asInt();
+    Type type2 = (Type) value.get("type2", Value::null).asInt();
+    int hp = value.get("hp", Value::null).asInt();
+    int attack = value.get("attack", Value::null).asInt();
+    int defense = value.get("defense", Value::null).asInt();
+    int specialAttack = value.get("specialAttack", Value::null).asInt();
+    int specialDefense = value.get("specialDefense", Value::null).asInt();
+    int speed = value.get("speed", Value::null).asInt();
+    float genderDist = value.get("gender", Value::null).asFloat();
+
+
+    // initialize container for the pokemon species' moves
+    MoveId moveIds[Pokemon::MAX_MOVES];
+    for(int i = 0; i < Pokemon::MAX_MOVES; i++)
+    {
+        moveIds[i] = NO_MOVE;
+    }
+    // parse move id values into move species
+    Value moveIdsRaw = value.get("moves", Value::null);
+    for(int i = 0; i < moveIdsRaw.size(); i++)
+    {
+        Value moveId = moveIdsRaw[i];
+        moveIds[i] = (MoveId) moveId.asInt();
+    }
+
+    // create species with parsed values
+    PokemonSpecies* species = new PokemonSpecies(name, type1, type2, hp, attack,
+        defense, specialAttack, specialDefense, speed, moveIds[0], moveIds[1],
+        moveIds[2], moveIds[3], genderDist);
+
+    // add to container
+    allSpecies.insert(std::pair<PokemonId, PokemonSpecies*>(id, species));
 }
 
 void PokemonFactory::destroy()

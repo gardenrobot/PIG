@@ -31,44 +31,21 @@ using namespace std;
 
 
 /**
- * Run the main loop of the game.
+ * Print information on all pokemon species to stdout
  */
-int run(int argc, char** argv)
+void listPokemon()
 {
-    PokemonFactory::initialize();
-    MoveFactory::initialize();
-    srand(50);
-
-    #ifdef DEBUG_MODE
-    // Hard coded players for testing
-    HumanPlayer* p1 = new HumanPlayer("Ash");
-    Pokemon* poke1 = PokemonFactory::createPokemon(CHARMANDER, "");
-    p1->addPokemon(poke1);
-    HumanPlayer* p2 = new HumanPlayer("Gary");
-    Pokemon* poke2 = PokemonFactory::createPokemon(SQUIRTLE, "Watery");
-    p2->addPokemon(poke2);
-    poke1->addMinorAffliction(new Infatuation(*poke1, *poke2));
-    #else
-    // Create players
-    listPokemon();
-    HumanPlayer* p1 = createHumanPlayer(1);
-    HumanPlayer* p2 = createHumanPlayer(2);
-    #endif
-
-    Environment env(p1, p2);
-
-    cout << endl;
-    cout << "Starting game." << endl;
-    for(int i = 0; not p1->hasLost() and not p2->hasLost(); ++i)
+    cout << "Listing all pokemon species." << endl;
+    const map<PokemonId, const PokemonSpecies*> allSpecies =
+        PokemonFactory::getAllSpecies();
+    for(map<PokemonId, const PokemonSpecies*>::const_iterator it =
+        allSpecies.begin(); it != allSpecies.end(); it++)
     {
-        cout << "Round " << (i + 1) << endl;
-
-        Round::doRound(env, *p1, *p2);
+        PokemonId id = it->first;
+        const PokemonSpecies* species = it->second;
+        cout << id << ": " << species->speciesName << endl;
     }
-
-    cout << "Done." << endl;
-    PokemonFactory::destroy();
-    MoveFactory::destroy();
+    cout << endl;
 }
 
 
@@ -165,21 +142,44 @@ HumanPlayer* createHumanPlayer(int playerIndex)
 
 
 /**
- * Print information on all pokemon species to stdout
+ * Run the main loop of the game.
  */
-void listPokemon()
+int run(int argc, char** argv)
 {
-    cout << "Listing all pokemon species." << endl;
-    const map<PokemonId, const PokemonSpecies*> allSpecies =
-        PokemonFactory::getAllSpecies();
-    for(map<PokemonId, const PokemonSpecies*>::const_iterator it =
-        allSpecies.begin(); it != allSpecies.end(); it++)
-    {
-        PokemonId id = it->first;
-        const PokemonSpecies* species = it->second;
-        cout << id << ": " << species->speciesName << endl;
-    }
+    PokemonFactory::initialize();
+    MoveFactory::initialize();
+    srand(50);
+
+    #ifdef DEBUG_MODE
+    // Hard coded players for testing
+    HumanPlayer* p1 = new HumanPlayer("Ash");
+    Pokemon* poke1 = PokemonFactory::createPokemon(CHARMANDER, "");
+    p1->addPokemon(poke1);
+    HumanPlayer* p2 = new HumanPlayer("Gary");
+    Pokemon* poke2 = PokemonFactory::createPokemon(SQUIRTLE, "Watery");
+    p2->addPokemon(poke2);
+    poke1->addMinorAffliction(new Infatuation(*poke1, *poke2));
+    #else
+    // Create players
+    listPokemon();
+    HumanPlayer* p1 = createHumanPlayer(1);
+    HumanPlayer* p2 = createHumanPlayer(2);
+    #endif
+
+    Environment env(p1, p2);
+
     cout << endl;
+    cout << "Starting game." << endl;
+    for(int i = 0; not p1->hasLost() and not p2->hasLost(); ++i)
+    {
+        cout << "Round " << (i + 1) << endl;
+
+        Round::doRound(env, *p1, *p2);
+    }
+
+    cout << "Done." << endl;
+    PokemonFactory::destroy();
+    MoveFactory::destroy();
 }
 
 

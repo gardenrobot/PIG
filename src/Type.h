@@ -17,10 +17,10 @@
 typedef enum
 {
     NO_TYPE = 0,
-    WATER,
-    GRASS,
-    FIRE,
-    NORMAL,
+    WATER = 1,
+    GRASS = 2,
+    FIRE = 3,
+    NORMAL = 4,
 } Type;
 
 

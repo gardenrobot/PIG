@@ -14,6 +14,7 @@
 
 #include <string>
 #include <map>
+#include <jsoncpp/json/value.h>
 
 class Pokemon;
 class PokemonSpecies;
@@ -40,6 +41,9 @@ class PokemonFactory
     
     /// Holds one of each pokemon species objects
     static std::map<PokemonId, PokemonSpecies*> allSpecies;
+
+    /// Parses the Json value and adds it to the species container
+    static void addPokemon(Json::Value& value);
 
 };
 
