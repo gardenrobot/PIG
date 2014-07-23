@@ -1,0 +1,23 @@
+{
+    "types":
+    [
+        "Fire",
+        "Grass",
+        "Water",
+        "Normal",
+        "No Type"
+    ],
+
+    "typeModifiers":
+    [
+        ["Fire", "Fire", 0.5],
+        ["Fire", "Grass", 2.0],
+        ["Fire", "Water", 0.5],
+        ["Grass", "Fire", 0.5],
+        ["Grass", "Grass", 0.5],
+        ["Grass", "Water", 2.0],
+        ["Water", "Fire", 2.0],
+        ["Water", "Grass", 0.5],
+        ["Water", "Water", 0.5]
+    ]
+}

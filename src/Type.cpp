@@ -9,10 +9,14 @@
 #include "Debug.h"
 #include <string>
 #include <vector>
-
 #include <map>
+#include <fstream>
+#include <jsoncpp/json/reader.h>
+#include <jsoncpp/json/json.h>
+#include <jsoncpp/json/value.h>
 
 using namespace std;
+using namespace Json;
 
 
 vector<string> Type::allTypes;
@@ -20,28 +24,44 @@ map<TypePair, float> Type::typeMultipliers;
 
 void Type::initialize()
 {
-    // define all types and register them
-    string water = "Water";
-    string grass = "Grass";
-    string fire = "Fire";
-    string normal = "Normal";
-    string noType = "No Type";
-    allTypes.push_back(water);
-    allTypes.push_back(grass);
-    allTypes.push_back(noType);
-    allTypes.push_back(fire);
-    allTypes.push_back(normal);
+    // parse file
+    Reader reader;
+    const char* filename = "Type.json";
+    ifstream stream;
+    stream.open(filename, ifstream::in);
+    Value root;
+    reader.parse(stream, root, true);
 
-    // define all type modifiers
-    typeMultipliers.insert(pair<TypePair, float>(TypePair(water, water), 0.5F));
-    typeMultipliers.insert(pair<TypePair, float>(TypePair(water, grass), 0.5F));
-    typeMultipliers.insert(pair<TypePair, float>(TypePair(water, fire), 2.0F));
-    typeMultipliers.insert(pair<TypePair, float>(TypePair(grass, water), 2.0F));
-    typeMultipliers.insert(pair<TypePair, float>(TypePair(grass, grass), 0.5F));
-    typeMultipliers.insert(pair<TypePair, float>(TypePair(grass, fire), 0.5F));
-    typeMultipliers.insert(pair<TypePair, float>(TypePair(fire, water), 0.5F));
-    typeMultipliers.insert(pair<TypePair, float>(TypePair(fire, grass), 2.0F));
-    typeMultipliers.insert(pair<TypePair, float>(TypePair(fire, fire), 0.5F));
+    const Value& typesRoot = root.get("types", Value::null);
+    const Value& typeModRoot = root.get("typeModifiers", Value::null);
+
+    // Add each type to the list of valid types
+    for(ValueIterator it = typesRoot.begin(); it != typesRoot.end(); it++)
+    {
+        string type = (*it).asString();
+        assert_debug(not isType(type));
+        allTypes.push_back(type);
+    }
+
+    // Add each modifier to the map
+    for(ValueIterator it = typeModRoot.begin(); it != typeModRoot.end(); it++)
+    {
+        // get values
+        const Value& typeMod = *it;
+        string attacking = typeMod[0].asString();
+        string defending = typeMod[1].asString();
+        float modValue = typeMod[2].asFloat();
+
+        // check if the type are valid
+        assert(isType(attacking));
+        assert(isType(defending));
+
+        // add values to map
+        typeMultipliers.insert(pair<TypePair, float>(TypePair(attacking,
+            defending), modValue));
+    }
+
+    stream.close();
 }
 
 bool Type::isType(string s)
