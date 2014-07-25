@@ -67,6 +67,9 @@ all:	main
 main:	main.o $(OBJFILES)
 	$(CXX) $(CXXFLAGS) -o main main.o $(OBJFILES) $(CCLIBFLAGS)
 
+debug:
+	 make CXXFLAGS="$(CXXFLAGS) -DDEBUG_MODE"
+
 #
 # Dependencies
 #
@@ -111,5 +114,3 @@ clean:
 
 realclean:        clean
 	-/bin/rm -rf main 
-debug:
-	 make CXXFLAGS="$(CXXFLAGS) -DDEBUG_MODE"
