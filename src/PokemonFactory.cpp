@@ -36,7 +36,7 @@ void PokemonFactory::initialize()
 {
     // parse file
     Reader reader;
-    const char* filename = "Pokemon.json";
+    const char* filename = "data/Pokemon.json";
     ifstream stream;
     stream.open(filename, ifstream::in);
     Value root;

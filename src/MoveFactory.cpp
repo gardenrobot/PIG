@@ -33,7 +33,7 @@ void MoveFactory::initialize()
 {
     // parse file
     Reader reader;
-    const char* filename = "Move.json";
+    const char* filename = "data/Move.json";
     ifstream stream;
     stream.open(filename, ifstream::in);
     Value root;

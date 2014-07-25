@@ -27,7 +27,7 @@ void Type::initialize()
 {
     // parse file
     Reader reader;
-    const char* filename = "Type.json";
+    const char* filename = "data/Type.json";
     ifstream stream;
     stream.open(filename, ifstream::in);
     Value root;
