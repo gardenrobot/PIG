@@ -22,13 +22,18 @@
 #include "EffectFactory.h"
 #include "Type.h"
 #include "StringHelper.h"
+#include "Debug.h"
 
 #include <string>
 #include <iostream>
 #include <vector>
 #include <stdlib.h>
+#include <boost/filesystem.hpp>
+#include <boost/filesystem/operations.hpp>
+#include <boost/filesystem/path.hpp>
 
 using namespace std;
+using namespace boost::filesystem;
 
 
 /**
@@ -154,6 +159,7 @@ int run(int argc, char** argv)
 
     #ifdef DEBUG_MODE
     // Hard coded players for testing
+    println_debug("Debug mode");
     HumanPlayer* p1 = new HumanPlayer("Ash");
     Pokemon* poke1 = PokemonFactory::createPokemon(SQUIRTLE, "");
     p1->addPokemon(poke1);

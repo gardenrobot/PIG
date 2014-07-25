@@ -23,11 +23,15 @@
 #include <jsoncpp/json/reader.h>
 #include <jsoncpp/json/json.h>
 #include <jsoncpp/json/value.h>
+#include <boost/filesystem.hpp>
+#include <boost/filesystem/operations.hpp>
+#include <boost/filesystem/path.hpp>
 
 class Move;
 
 using namespace std;
 using namespace Json;
+using namespace boost::filesystem;
 
 
 map<PokemonId, PokemonSpecies*> PokemonFactory::allSpecies;
@@ -36,9 +40,9 @@ void PokemonFactory::initialize()
 {
     // parse file
     Reader reader;
-    const char* filename = "data/Pokemon.json";
+    path filename =  current_path() / path("data/") / path("Pokemon.json");
     ifstream stream;
-    stream.open(filename, ifstream::in);
+    stream.open(filename.string().c_str(), ifstream::in);
     Value root;
     reader.parse(stream, root, true);
 
@@ -87,6 +91,7 @@ void PokemonFactory::addSpecies(Value& value)
         moveIds[2], moveIds[3], genderDist);
 
     // add to container
+    println_debug("Registering Pokemon " << id);
     allSpecies.insert(std::pair<PokemonId, PokemonSpecies*>(id, species));
 }
 

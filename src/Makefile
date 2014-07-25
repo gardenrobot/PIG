@@ -44,8 +44,8 @@ CPP = $(CPP) $(CPPFLAGS)
 ########## Default flags (redefine these with a header.mak file if desired)
 CXXFLAGS =	-ggdb 
 CFLAGS =	-ggdb 
-CLIBFLAGS =	-lm -ljsoncpp
-CCLIBFLAGS =	-ljsoncpp
+CLIBFLAGS =	-lm -ljsoncpp -lboost_system -lboost_filesystem
+CCLIBFLAGS =	-ljsoncpp -lboost_system -lboost_filesystem
 ########## End of default flags
 
 

@@ -15,9 +15,13 @@
 #include <jsoncpp/json/reader.h>
 #include <jsoncpp/json/json.h>
 #include <jsoncpp/json/value.h>
+#include <boost/filesystem.hpp>
+#include <boost/filesystem/operations.hpp>
+#include <boost/filesystem/path.hpp>
 
 using namespace std;
 using namespace Json;
+using namespace boost::filesystem;
 
 
 vector<string> Type::allTypes;
@@ -27,9 +31,9 @@ void Type::initialize()
 {
     // parse file
     Reader reader;
-    const char* filename = "data/Type.json";
+    path filename =  current_path() / path("data/") / path("Type.json");
     ifstream stream;
-    stream.open(filename, ifstream::in);
+    stream.open(filename.string().c_str(), ifstream::in);
     Value root;
     reader.parse(stream, root, true);
 
@@ -41,6 +45,7 @@ void Type::initialize()
     {
         string type = (*it).asString();
         assert_debug(not isType(type));
+        println_debug("Registering Type " << type);
         allTypes.push_back(type);
     }
 
@@ -58,6 +63,8 @@ void Type::initialize()
         assert(isType(defending));
 
         // add values to map
+        println_debug("Registering Type Modifier " << attacking << " on " <<
+            defending);
         typeMultipliers.insert(pair<TypePair, float>(TypePair(attacking,
             defending), modValue));
     }
