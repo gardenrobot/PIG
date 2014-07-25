@@ -11,6 +11,7 @@
 #include <vector>
 #include <map>
 #include <fstream>
+#include <cassert>
 #include <jsoncpp/json/reader.h>
 #include <jsoncpp/json/json.h>
 #include <jsoncpp/json/value.h>
