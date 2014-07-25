@@ -84,7 +84,8 @@ float Battle::calcHitProb(Pokemon& attacking, Pokemon& defending, Move& move)
     float pokemonAcc = attacking.getAccuracy().getModValue();
     float pokemonEva = defending.getEvasiveness().getModValue();
     float hitProb = moveAcc * pokemonAcc / pokemonEva;
-    println_debug("Probability of hitting with " << move.getName());
+    println_debug("Probability of " << attacking.getNickname() << " hitting "
+        << defending.getNickname() << " with " << move.getName());
     println_debug("Move Accuracy: " << moveAcc);
     println_debug("Attacking Pokemon Accuracy: " << pokemonAcc);
     println_debug("Defending Pokemon Evasiveness: " << pokemonEva);
@@ -127,7 +128,7 @@ int Battle::getDamage(Pokemon& attacking, Pokemon& defending, Move& move)
         randomNumber / 100.0;
 
     println_debug("Damage for " << attacking.getNickname() << " attacking " <<
-        defending.getNickname());
+        defending.getNickname() << " with " << move.getName());
     println_debug("Level = " << level);
     println_debug("attackStat = " << attackStat);
     println_debug("attackPower = " << attackPower);
