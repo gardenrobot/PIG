@@ -68,7 +68,7 @@ void PokemonFactory::addSpecies(Value& value)
     int specialAttack = value.get("specialAttack", Value::null).asInt();
     int specialDefense = value.get("specialDefense", Value::null).asInt();
     int speed = value.get("speed", Value::null).asInt();
-    float genderDist = value.get("gender", Value::null).asFloat();
+    float genderDist = (float) value.get("gender", Value::null).asDouble();
 
 
     // initialize container for the pokemon species' moves

@@ -46,7 +46,14 @@ CXXFLAGS =	-ggdb
 CFLAGS =	-ggdb 
 CLIBFLAGS =	-lm -ljsoncpp -lboost_system -lboost_filesystem
 CCLIBFLAGS =	-ljsoncpp -lboost_system -lboost_filesystem
+MAINFILE = main
 ########## End of default flags
+
+# Cross-compiling Linux-to-Mingw 
+MINGWCXX = i586-mingw32msvc-g++
+MINGMAINFILE = main.exe
+MINGWINCLUDEFLAGS = -I/usr/local/win32/include
+MINGWLIBFLAGS = -L/usr/local/win32/lib -ljson_mingw_libmt -lboost_filesystem-mt-s -lboost_system-mt-s
 
 
 CPP_FILES =	Battle.cpp Burn.cpp Choice.cpp Confusion.cpp Effect.cpp EffectFactory.cpp Environment.cpp Flinch.cpp Gender.cpp HumanPlayer.cpp Infatuation.cpp MajorAffliction.cpp MinorAffliction.cpp Move.cpp MoveFactory.cpp PartialTrap.cpp Player.cpp Pokemon.cpp PokemonFactory.cpp Round.cpp Seeding.cpp Stat.cpp StringHelper.cpp Type.cpp main.cpp
@@ -65,10 +72,13 @@ OBJFILES =	Battle.o Burn.o Choice.o Confusion.o Effect.o EffectFactory.o Environ
 all:	main 
 
 main:	main.o $(OBJFILES)
-	$(CXX) $(CXXFLAGS) -o main main.o $(OBJFILES) $(CCLIBFLAGS)
+	$(CXX) $(CXXFLAGS) -o $(MAINFILE) main.o $(OBJFILES) $(CCLIBFLAGS)
 
 debug:
-	 make CXXFLAGS="$(CXXFLAGS) -DDEBUG_MODE"
+	make CXXFLAGS="$(CXXFLAGS) -DDEBUG_MODE"
+
+mingw:
+	make CXX="$(MINGWCXX)" CCLIBFLAGS="$(MINGWLIBFLAGS)" CXXFLAGS="$(MINGWINCLUDEFLAGS)" MAINFILE="$(MINGMAINFILE)"
 
 #
 # Dependencies

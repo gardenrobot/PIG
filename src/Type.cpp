@@ -54,9 +54,12 @@ void Type::initialize()
     {
         // get values
         const Value& typeMod = *it;
-        string attacking = typeMod[0].asString();
-        string defending = typeMod[1].asString();
-        float modValue = typeMod[2].asFloat();
+        int attackingIndex = 0;
+        int defendingIndex = 1;
+        int modValueIndex = 2;
+        string attacking = typeMod[attackingIndex].asString();
+        string defending = typeMod[defendingIndex].asString();
+        float modValue = (float) typeMod[modValueIndex].asDouble();
 
         // check if the type are valid
         assert(isType(attacking));

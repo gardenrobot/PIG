@@ -59,7 +59,7 @@ void MoveFactory::addSpecies(Value& value)
     string name = value.get("name", Value::null).asString();
     string type = value.get("type", Value::null).asString();
     int damage = value.get("damage", Value::null).asInt();
-    float accuracy = value.get("accuracy", Value::null).asFloat();
+    float accuracy = (float) value.get("accuracy", Value::null).asDouble();
     Category category = (Category) value.get("category", Value::null).asInt();
     EffectId effectId = (EffectId) value.get("effectId", Value::null).asInt();
 
