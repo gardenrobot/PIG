@@ -15,3 +15,4 @@ clean:
 
 realclean: clean
 	-/bin/rm -rf main 
+	-/bin/rm -rf main.exe 
