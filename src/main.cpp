@@ -8,6 +8,7 @@
 // //////////////////////////////////////////////////////////////////// 
 
 #include "Round.h"
+#include "Battle.h"
 #include "HumanPlayer.h"
 #include "Environment.h"
 #include "MajorAffliction.h"

@@ -31,7 +31,7 @@ bool Seeding::isFinished()
 void Seeding::onRoundEnd(Pokemon& enemyPokemon)
 {
     // do damage and heal
-    int damage = (int)ceil(afflictedPokemon.getMaxHp() / 8.0);
+    int damage = Battle::roundDamage(afflictedPokemon.getMaxHp() / 8.0);
     afflictedPokemon.changeHp(-damage);
     enemyPokemon.changeHp(damage);
 

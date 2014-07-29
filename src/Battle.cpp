@@ -51,6 +51,16 @@ void Battle::doBattle(Pokemon& attacking, Pokemon& defending, Move& move)
     }
 }
 
+int Battle::roundDamage(float damage)
+{
+    int rounded = (int) floor(damage);
+    if(rounded == 0)
+    {
+        return 1;
+    }
+    return rounded;
+}
+
 bool Battle::willMoveHit(Pokemon& attacking, Pokemon& defending, Move& move)
 {
     float accuracy = move.getAccuracy();
@@ -139,6 +149,6 @@ int Battle::getDamage(Pokemon& attacking, Pokemon& defending, Move& move)
     println_debug("Damage calculated = " << damage);
     println_debug("");
 
-    return (int)ceil(damage);
+    return roundDamage(damage);
 }
 

@@ -7,6 +7,7 @@
 
 #include "MajorAffliction.h"
 #include "Pokemon.h"
+#include "Battle.h"
 
 #include <iostream>
 #include <cmath>
@@ -22,7 +23,7 @@ Burn::Burn(Pokemon& afflictedPokemon)
 
 void Burn::onRoundEnd()
 {
-    int damage(ceil(afflictedPokemon.getMaxHp() / 8.0));
+    int damage = Battle::roundDamage(afflictedPokemon.getMaxHp() / 8.0);
     cout << afflictedPokemon.getNickname() << " took " << damage <<
         " burn damage" << endl;
     afflictedPokemon.changeHp(-damage);

@@ -23,6 +23,9 @@ class Battle
     /// to attacking pokemon.
     static void doBattle(Pokemon& attacking, Pokemon& defending, Move& move);
 
+    /// Rounds damage to be inflicted on pokemon.
+    static int roundDamage(float damage);
+
   private:
 
     /// Determines whether this move will hit the defending pokemon

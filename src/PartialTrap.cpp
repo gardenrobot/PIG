@@ -33,7 +33,7 @@ void PartialTrap::onRoundEnd(Pokemon& enemyPokemon)
 {
     // do damage
     cout << afflictedPokemon.getNickname() << " is trapped." << endl;
-    int damage = (int)ceil(afflictedPokemon.getMaxHp() / 16.0);
+    int damage = Battle::roundDamage(afflictedPokemon.getMaxHp() / 16.0);
     afflictedPokemon.changeHp(-damage);
 
     // decrement counter
