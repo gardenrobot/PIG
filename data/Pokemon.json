@@ -1,9 +1,25 @@
+/*
+    This file defines pokemon species.
+
+    id: A unique id number
+    name: Species name
+    type1: Primary type defined in Type.h
+    type2: Secondary type. Optional
+    hp: Starting hp
+    attack: Base attack stat
+    defense: Base defense stat
+    specialAttack: Base special attack stat
+    specialDefense: Base special defense stat
+    speed: Base speed stat
+    moves: List of moves defined in Moves.h
+    gender: Probability 0-1 of being female, or -1 for no gender
+*/
+
 [
     {
         "id":1,
         "name":"Bulbasaur",
         "type1":"Grass",
-        "type2":"Fire",
         "hp":29,
         "attack":30,
         "defense":180,

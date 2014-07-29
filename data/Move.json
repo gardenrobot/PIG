@@ -1,3 +1,16 @@
+/*
+    This file defines move species.
+
+    id: A unique id number
+    name: Move name
+    type: Type defined in Type.h
+    damage: Damage stat
+    accuracy: Probability 0-1 of hitting target, -1 for always hit, or -2 for
+        always hit unless semi-invulnerable
+    category: 0 if status, 1 if special, 2 if physical
+    effectId: Id of extra effect. These are hard coded and not defined in json
+*/
+
 [
     {
         "id":1,

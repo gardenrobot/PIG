@@ -1,3 +1,14 @@
+/*
+    This file defines types, which pokemon and moves have.
+
+    types: A list of all types
+
+    typeModifiers: Defines type multipliers.
+        The format is [move type, defending pokemon type, multiplier].
+        For example, ["Water", "Fire", 2.0] defines water moves as doing
+        2x damage to fire pokemon
+*/
+
 {
     "types":
     [
