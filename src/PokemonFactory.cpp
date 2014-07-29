@@ -8,9 +8,7 @@
 #include "Pokemon.h"
 #include "PokemonFactory.h"
 #include "PokemonSpecies.h"
-#include "PokemonId.h"
 #include "MoveFactory.h"
-#include "MoveId.h"
 #include "Environment.h"
 #include "Debug.h"
 
@@ -36,7 +34,7 @@ using namespace boost::filesystem;
 
 
 const std::string PokemonFactory::POKEMON_JSON_FILE = "Pokemon.json";
-map<PokemonId, PokemonSpecies*> PokemonFactory::allSpecies;
+map<int, PokemonSpecies*> PokemonFactory::allSpecies;
 
 void PokemonFactory::initialize()
 {
@@ -60,7 +58,7 @@ void PokemonFactory::initialize()
 void PokemonFactory::addSpecies(Value& value)
 {
     // parse all single values from json
-    PokemonId id = (PokemonId) value.get("id", Value::null).asInt();
+    int id = (int) value.get("id", Value::null).asInt();
     string name = value.get("name", Value::null).asString();
     int hp = value.get("hp", Value::null).asInt();
     int attack = value.get("attack", Value::null).asInt();
@@ -88,17 +86,17 @@ void PokemonFactory::addSpecies(Value& value)
 
 
     // initialize container for the pokemon species' moves
-    MoveId moveIds[Pokemon::MAX_MOVES];
+    int moveIds[Pokemon::MAX_MOVES];
     for(int i = 0; i < Pokemon::MAX_MOVES; i++)
     {
-        moveIds[i] = NO_MOVE;
+        moveIds[i] = -1;
     }
     // parse move id values into move species
     Value moveIdsRaw = value.get("moves", Value::null);
     for(int i = 0; i < moveIdsRaw.size(); i++)
     {
         Value moveId = moveIdsRaw[i];
-        moveIds[i] = (MoveId) moveId.asInt();
+        moveIds[i] = (int) moveId.asInt();
     }
 
     // create species with parsed values
@@ -108,19 +106,19 @@ void PokemonFactory::addSpecies(Value& value)
 
     // add to container
     println_debug("Registering Pokemon " << id);
-    allSpecies.insert(std::pair<PokemonId, PokemonSpecies*>(id, species));
+    allSpecies.insert(std::pair<int, PokemonSpecies*>(id, species));
 }
 
 void PokemonFactory::destroy()
 {
-    for(map<PokemonId, PokemonSpecies*>::iterator it = allSpecies.begin();
+    for(map<int, PokemonSpecies*>::iterator it = allSpecies.begin();
         it != allSpecies.end(); it++)
     {
         delete it->second;
     }
 }
 
-Pokemon* PokemonFactory::createPokemon(PokemonId speciesId, string nickname="")
+Pokemon* PokemonFactory::createPokemon(int speciesId, string nickname="")
 {
     // get the species from map
     PokemonSpecies* species;
@@ -144,10 +142,10 @@ Pokemon* PokemonFactory::createPokemon(PokemonId speciesId, string nickname="")
     int baseSpecialAttack = species->baseSpecialAttack;
     int baseSpecialDefense = species->baseSpecialDefense;
     int baseSpeed = species->baseSpeed;
-    MoveId moveId1 = species->moveId1;
-    MoveId moveId2 = species->moveId2;
-    MoveId moveId3 = species->moveId3;
-    MoveId moveId4 = species->moveId4;
+    int moveId1 = species->moveId1;
+    int moveId2 = species->moveId2;
+    int moveId3 = species->moveId3;
+    int moveId4 = species->moveId4;
 
     // Determine the gender
     float genderDist = species->genderDist;
@@ -184,16 +182,16 @@ Pokemon* PokemonFactory::createPokemon(PokemonId speciesId, string nickname="")
     return pokemon;
 }
 
-const map<PokemonId, const PokemonSpecies*> PokemonFactory::getAllSpecies()
+const map<int, const PokemonSpecies*> PokemonFactory::getAllSpecies()
 {
-    map<PokemonId, const PokemonSpecies*> allSpeciesList;
+    map<int, const PokemonSpecies*> allSpeciesList;
 
-    for(map<PokemonId, PokemonSpecies*>::iterator it = allSpecies.begin();
+    for(map<int, PokemonSpecies*>::iterator it = allSpecies.begin();
         it != allSpecies.end(); it++)
     {
-        PokemonId id = it->first;
+        int id = it->first;
         PokemonSpecies* species = it->second;
-        allSpeciesList.insert(pair<PokemonId, const PokemonSpecies*>(id, species));
+        allSpeciesList.insert(pair<int, const PokemonSpecies*>(id, species));
     }
 
     return allSpeciesList;

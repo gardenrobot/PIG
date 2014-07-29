@@ -8,7 +8,6 @@
 #include "Move.h"
 #include "MoveFactory.h"
 #include "MoveSpecies.h"
-#include "MoveId.h"
 #include "Effect.h"
 #include "EffectFactory.h"
 #include "EffectId.h"
@@ -33,7 +32,7 @@ using namespace boost::filesystem;
 
 
 const std::string MoveFactory::MOVE_JSON_FILE = "Move.json";
-map<MoveId, MoveSpecies*> MoveFactory::allSpecies;
+map<int, MoveSpecies*> MoveFactory::allSpecies;
 
 void MoveFactory::initialize()
 {
@@ -57,7 +56,7 @@ void MoveFactory::initialize()
 void MoveFactory::addSpecies(Value& value)
 {
     // parse all single values from json
-    MoveId id = (MoveId) value.get("id", Value::null).asInt();
+    int id = (int) value.get("id", Value::null).asInt();
     string name = value.get("name", Value::null).asString();
     string type = value.get("type", Value::null).asString();
     int damage = value.get("damage", Value::null).asInt();
@@ -71,25 +70,20 @@ void MoveFactory::addSpecies(Value& value)
 
     // add to container
     println_debug("Registering Move " << id);
-    allSpecies.insert(std::pair<MoveId, MoveSpecies*>(id, species));
+    allSpecies.insert(std::pair<int, MoveSpecies*>(id, species));
 }
 
 void MoveFactory::destroy()
 {
-    for(map<MoveId, MoveSpecies*>::iterator it = allSpecies.begin();
+    for(map<int, MoveSpecies*>::iterator it = allSpecies.begin();
         it != allSpecies.end(); it++)
     {
         delete it->second;
     }
 }
 
-Move* MoveFactory::createMove(MoveId speciesId)
+Move* MoveFactory::createMove(int speciesId)
 {
-    if(speciesId == NO_MOVE)
-    {
-        return NULL;
-    }
-
     // get the species from map
     MoveSpecies* species;
     try

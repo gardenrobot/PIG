@@ -15,8 +15,6 @@
 #include "Pokemon.h"
 #include "PokemonFactory.h"
 #include "PokemonSpecies.h"
-#include "PokemonId.h"
-#include "MoveId.h"
 #include "MoveFactory.h"
 #include "EffectId.h"
 #include "EffectFactory.h"
@@ -42,12 +40,12 @@ using namespace boost::filesystem;
 void listPokemon()
 {
     cout << "Listing all pokemon species." << endl;
-    const map<PokemonId, const PokemonSpecies*> allSpecies =
+    const map<int, const PokemonSpecies*> allSpecies =
         PokemonFactory::getAllSpecies();
-    for(map<PokemonId, const PokemonSpecies*>::const_iterator it =
+    for(map<int, const PokemonSpecies*>::const_iterator it =
         allSpecies.begin(); it != allSpecies.end(); it++)
     {
-        PokemonId id = it->first;
+        int id = it->first;
         const PokemonSpecies* species = it->second;
         cout << id << ": " << species->speciesName << endl;
     }
@@ -114,7 +112,7 @@ HumanPlayer* createHumanPlayer(int playerIndex)
                 // parse to int
                 char* endptr;
                 const char* pokemonIdCStr = splitInput.at(0).c_str();
-                PokemonId pokemonId = (PokemonId) strtol(pokemonIdCStr,
+                int pokemonId = (int) strtol(pokemonIdCStr,
                     &endptr, 10);
 
                 // if parse is success 
@@ -161,10 +159,10 @@ int run(int argc, char** argv)
     // Hard coded players for testing
     println_debug("Debug mode");
     HumanPlayer* p1 = new HumanPlayer("Ash");
-    Pokemon* poke1 = PokemonFactory::createPokemon(SQUIRTLE, "");
+    Pokemon* poke1 = PokemonFactory::createPokemon(4, "");
     p1->addPokemon(poke1);
     HumanPlayer* p2 = new HumanPlayer("Gary");
-    Pokemon* poke2 = PokemonFactory::createPokemon(BULBASAUR, "");
+    Pokemon* poke2 = PokemonFactory::createPokemon(1, "");
     p2->addPokemon(poke2);
     //poke1->addMinorAffliction(new Infatuation(*poke1, *poke2));
     #else

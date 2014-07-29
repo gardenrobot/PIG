@@ -12,7 +12,6 @@
 #define POKEMON_SPECIES_H_
 
 #include "Type.h"
-#include "MoveId.h"
 #include "Gender.h"
 
 #include <string>
@@ -36,10 +35,10 @@ class PokemonSpecies
     int baseSpecialAttack;
     int baseSpecialDefense;
     int baseSpeed;
-    MoveId moveId1;
-    MoveId moveId2;
-    MoveId moveId3;
-    MoveId moveId4;
+    int moveId1;
+    int moveId2;
+    int moveId3;
+    int moveId4;
 
     /// The probability 0-1 that a pokemon is female, or NO_GENDER_DIST
     float genderDist;
@@ -47,7 +46,7 @@ class PokemonSpecies
     PokemonSpecies(std::string speciesName, std::string typeOne,
         std::string typeTwo, int maxHp, int baseAttack, int baseDefense,
         int baseSpecialAttack, int baseSpecialDefense, int baseSpeed,
-        MoveId moveId1, MoveId moveId2, MoveId moveId3, MoveId moveId4,
+        int moveId1, int moveId2, int moveId3, int moveId4,
         float genderDist)
     :speciesName(speciesName)
     ,typeOne(typeOne)

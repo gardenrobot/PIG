@@ -10,8 +10,6 @@
 #ifndef POKEMON_FACTORY_H_
 #define POKEMON_FACTORY_H_
 
-#include "PokemonId.h"
-
 #include <string>
 #include <map>
 #include <jsoncpp/json/value.h>
@@ -35,15 +33,15 @@ class PokemonFactory
     static void destroy();
 
     /// Create pokemon of the species id. Calling function must de-allocate.
-    static Pokemon* createPokemon(PokemonId speciesId, std::string nickname);
+    static Pokemon* createPokemon(int speciesId, std::string nickname);
 
     /// Get all pokemon species
-    static const std::map<PokemonId, const PokemonSpecies*> getAllSpecies();
+    static const std::map<int, const PokemonSpecies*> getAllSpecies();
 
   private:
     
     /// Holds one of each pokemon species objects
-    static std::map<PokemonId, PokemonSpecies*> allSpecies;
+    static std::map<int, PokemonSpecies*> allSpecies;
 
     /// Parses the Json value and adds it to the species container
     static void addSpecies(Json::Value& value);

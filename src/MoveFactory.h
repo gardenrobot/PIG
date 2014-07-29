@@ -10,8 +10,6 @@
 #ifndef MOVE_FACTORY_H_
 #define MOVE_FACTORY_H_
 
-#include "MoveId.h"
-
 #include <map>
 #include <jsoncpp/json/value.h>
 
@@ -34,12 +32,12 @@ class MoveFactory
     static void destroy();
 
     /// Create move of the species id. Calling function must de-allocate.
-    static Move* createMove(MoveId speciesId);
+    static Move* createMove(int speciesId);
 
   private:
     
     /// Holds one of each move species
-    static std::map<MoveId, MoveSpecies*> allSpecies;
+    static std::map<int, MoveSpecies*> allSpecies;
 
     /// Parses the Json value and adds it to the species container
     static void addSpecies(Json::Value& value);
