@@ -12,6 +12,7 @@
 #include "Effect.h"
 #include "EffectFactory.h"
 #include "EffectId.h"
+#include "Environment.h"
 #include "Debug.h"
 
 #include <iostream>
@@ -31,13 +32,14 @@ using namespace Json;
 using namespace boost::filesystem;
 
 
+const std::string MoveFactory::MOVE_JSON_FILE = "Move.json";
 map<MoveId, MoveSpecies*> MoveFactory::allSpecies;
 
 void MoveFactory::initialize()
 {
     // parse file
     Reader reader;
-    path filename =  current_path() / path("data/") / path("Move.json");
+    path filename =  current_path() / Environment::DATA_DIR / MOVE_JSON_FILE;
     ifstream stream;
     stream.open(filename.string().c_str(), ifstream::in);
     Value root;

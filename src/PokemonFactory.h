@@ -25,6 +25,9 @@ class PokemonFactory
 
   public:
 
+    /// The json file to parse
+    static const std::string POKEMON_JSON_FILE;
+
     /// Must be called once per process before use of this class.
     static void initialize();
 

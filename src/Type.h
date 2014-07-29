@@ -22,6 +22,10 @@ class Type
 {
   public:
 
+    /// The json file to parse
+    static const std::string TYPE_JSON_FILE;
+
+    /// This type is used for null secondary pokemon types
     static std::string NO_TYPE;
 
     /// Must be called once per process before using this class

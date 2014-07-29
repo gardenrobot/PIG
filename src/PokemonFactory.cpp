@@ -11,6 +11,7 @@
 #include "PokemonId.h"
 #include "MoveFactory.h"
 #include "MoveId.h"
+#include "Environment.h"
 #include "Debug.h"
 
 #include <iostream>
@@ -34,13 +35,14 @@ using namespace Json;
 using namespace boost::filesystem;
 
 
+const std::string PokemonFactory::POKEMON_JSON_FILE = "Pokemon.json";
 map<PokemonId, PokemonSpecies*> PokemonFactory::allSpecies;
 
 void PokemonFactory::initialize()
 {
     // parse file
     Reader reader;
-    path filename =  current_path() / path("data/") / path("Pokemon.json");
+    path filename =  current_path() / Environment::DATA_DIR / POKEMON_JSON_FILE;
     ifstream stream;
     stream.open(filename.string().c_str(), ifstream::in);
     Value root;

@@ -10,8 +10,12 @@
 #include "Round.h"
 
 #include <iostream>
+#include <string>
 
 using namespace std;
+
+
+const string Environment::DATA_DIR = "data/";
 
 Environment::Environment(Player* playerOne, Player* playerTwo)
 :playerOne(playerOne)
