@@ -26,6 +26,7 @@ using namespace boost::filesystem;
 
 vector<string> Type::allTypes;
 map<TypePair, float> Type::typeMultipliers;
+string Type::NO_TYPE = "";
 
 void Type::initialize()
 {
@@ -39,6 +40,9 @@ void Type::initialize()
 
     const Value& typesRoot = root.get("types", Value::null);
     const Value& typeModRoot = root.get("typeModifiers", Value::null);
+
+    // Register NO_TYPE
+    allTypes.push_back(NO_TYPE);
 
     // Add each type to the list of valid types
     for(ValueIterator it = typesRoot.begin(); it != typesRoot.end(); it++)
@@ -64,6 +68,8 @@ void Type::initialize()
         // check if the type are valid
         assert(isType(attacking));
         assert(isType(defending));
+        assert(attacking != NO_TYPE);
+        assert(defending != NO_TYPE);
 
         // add values to map
         println_debug("Registering Type Modifier " << attacking << " on " <<
@@ -111,8 +117,10 @@ float Type::getMultiplier(string move, string defending)
 float Type::getMultiplier(std::string move, string defending1,
     string defending2)
 {
-    float mult = getMultiplier(move, defending1) * getMultiplier(move, defending2);
-    return mult;
+    float mult1 = getMultiplier(move, defending1);
+    float mult2 = getMultiplier(move, defending2);
+    float multTotal = mult1 * mult2;
+    return multTotal;
 }
 
 

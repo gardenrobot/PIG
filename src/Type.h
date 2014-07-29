@@ -22,6 +22,8 @@ class Type
 {
   public:
 
+    static std::string NO_TYPE;
+
     /// Must be called once per process before using this class
     static void initialize();
 

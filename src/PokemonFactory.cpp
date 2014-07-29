@@ -60,8 +60,6 @@ void PokemonFactory::addSpecies(Value& value)
     // parse all single values from json
     PokemonId id = (PokemonId) value.get("id", Value::null).asInt();
     string name = value.get("name", Value::null).asString();
-    string type1 = value.get("type1", Value::null).asString();
-    string type2 = value.get("type2", Value::null).asString();
     int hp = value.get("hp", Value::null).asInt();
     int attack = value.get("attack", Value::null).asInt();
     int defense = value.get("defense", Value::null).asInt();
@@ -69,6 +67,22 @@ void PokemonFactory::addSpecies(Value& value)
     int specialDefense = value.get("specialDefense", Value::null).asInt();
     int speed = value.get("speed", Value::null).asInt();
     float genderDist = (float) value.get("gender", Value::null).asDouble();
+
+
+    // parse types
+    string type1 = value.get("type1", Value::null).asString();
+    string type2 = Type::NO_TYPE;
+    const Value& type2Value = value.get("type2", Value::null);
+    if(type2Value.isString())
+    {
+        type2 = type2Value.asString();
+    }
+
+    // check that types are valid
+    assert(Type::isType(type1));
+    assert(Type::isType(type2));
+    assert(type1 != Type::NO_TYPE);
+    assert(type1 != type2);
 
 
     // initialize container for the pokemon species' moves

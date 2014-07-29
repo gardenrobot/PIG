@@ -4,8 +4,7 @@
         "Fire",
         "Grass",
         "Water",
-        "Normal",
-        "No Type"
+        "Normal"
     ],
 
     "typeModifiers":
