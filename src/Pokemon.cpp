@@ -24,15 +24,14 @@ using namespace std;
 
 Pokemon::Pokemon(string nickname, string speciesName, string typeOne,
     string typeTwo, int maxHp, int baseAttack, int baseDefense,
-    int baseSpecialAttack, int baseSpecialDefense, int baseSpeed, Move* move1,
-    Move* move2, Move* move3, Move* move4, Gender gender)
+    int baseSpecialAttack, int baseSpecialDefense, int baseSpeed,
+    vector<Move*> moves, Gender gender)
 :nickname(nickname)
 ,speciesName(speciesName)
 ,typeOne(typeOne)
 ,typeTwo(typeTwo)
 ,maxHp(maxHp)
 ,hp(maxHp)
-,gender(gender)
 ,attack(new Stat(baseAttack))
 ,defense(new Stat(baseDefense))
 ,specialAttack(new Stat(baseSpecialAttack))
@@ -42,22 +41,9 @@ Pokemon::Pokemon(string nickname, string speciesName, string typeOne,
 ,evasiveness(new Stat(1))
 ,majorAffliction(NULL)
 ,level(50)
+,moves(moves)
+,gender(gender)
 {
-    // place all non-null moves into the pokemon's move container
-    Move** tmpMoves = new Move*[MAX_MOVES];
-    tmpMoves[0] = move1;
-    tmpMoves[1] = move2;
-    tmpMoves[2] = move3;
-    tmpMoves[3] = move4;
-    for(int i(0); i < MAX_MOVES; ++i)
-    {
-        if(tmpMoves[i] != NULL)
-        {
-            moves.push_back(tmpMoves[i]);
-        }
-    }
-    delete tmpMoves;
-
     assert(moves.size() > 0);
     assert(moves.size() <= MAX_MOVES);
 }

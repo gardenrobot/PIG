@@ -92,7 +92,7 @@ class Pokemon
     Pokemon(std::string nickname, std::string speciesName, std::string typeOne,
         std::string typeTwo, int maxHp, int baseAttack, int baseDefense,
         int baseSpecialAttack, int baseSpecialDefense, int baseSpeed,
-        Move* move1, Move* move2, Move* move3, Move* move4, Gender gender);
+        std::vector<Move*> moves, Gender gender);
 
   private:
 

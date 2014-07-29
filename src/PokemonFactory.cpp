@@ -86,23 +86,22 @@ void PokemonFactory::addSpecies(Value& value)
 
 
     // initialize container for the pokemon species' moves
-    int moveIds[Pokemon::MAX_MOVES];
-    for(int i = 0; i < Pokemon::MAX_MOVES; i++)
-    {
-        moveIds[i] = -1;
-    }
+    vector<int> moveIds;
     // parse move id values into move species
     Value moveIdsRaw = value.get("moves", Value::null);
     for(int i = 0; i < moveIdsRaw.size(); i++)
     {
         Value moveId = moveIdsRaw[i];
-        moveIds[i] = (int) moveId.asInt();
+        moveIds.push_back((int) moveId.asInt());
     }
+
+    // check that the number of moves is valid
+    assert(moveIds.size() > 0);
+    assert(moveIds.size() <= Pokemon::MAX_MOVES);
 
     // create species with parsed values
     PokemonSpecies* species = new PokemonSpecies(name, type1, type2, hp, attack,
-        defense, specialAttack, specialDefense, speed, moveIds[0], moveIds[1],
-        moveIds[2], moveIds[3], genderDist);
+        defense, specialAttack, specialDefense, speed, moveIds, genderDist);
 
     // add to container
     println_debug("Registering Pokemon " << id);
@@ -142,10 +141,7 @@ Pokemon* PokemonFactory::createPokemon(int speciesId, string nickname="")
     int baseSpecialAttack = species->baseSpecialAttack;
     int baseSpecialDefense = species->baseSpecialDefense;
     int baseSpeed = species->baseSpeed;
-    int moveId1 = species->moveId1;
-    int moveId2 = species->moveId2;
-    int moveId3 = species->moveId3;
-    int moveId4 = species->moveId4;
+    vector<int> moveIds = species->moveIds;
 
     // Determine the gender
     float genderDist = species->genderDist;
@@ -170,15 +166,17 @@ Pokemon* PokemonFactory::createPokemon(int speciesId, string nickname="")
     }
 
     // create the pokemon's moves
-    Move* move1 = MoveFactory::createMove(moveId1);
-    Move* move2 = MoveFactory::createMove(moveId2);
-    Move* move3 = MoveFactory::createMove(moveId3);
-    Move* move4 = MoveFactory::createMove(moveId4);
+    vector<Move*> moves;
+    for(vector<int>::iterator it = moveIds.begin(); it != moveIds.end(); it++)
+    {
+        Move* move = MoveFactory::createMove(*it);
+        moves.push_back(move);
+    }
 
     // create move from values
     Pokemon* pokemon = new Pokemon(nickname, speciesName, typeOne, typeTwo,
         maxHp, baseAttack, baseDefense, baseSpecialAttack, baseSpecialDefense,
-        baseSpeed, move1, move2, move3, move4, gender);
+        baseSpeed, moves, gender);
     return pokemon;
 }
 

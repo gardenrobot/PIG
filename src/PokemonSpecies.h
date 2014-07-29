@@ -35,10 +35,7 @@ class PokemonSpecies
     int baseSpecialAttack;
     int baseSpecialDefense;
     int baseSpeed;
-    int moveId1;
-    int moveId2;
-    int moveId3;
-    int moveId4;
+    std::vector<int> moveIds;
 
     /// The probability 0-1 that a pokemon is female, or NO_GENDER_DIST
     float genderDist;
@@ -46,8 +43,7 @@ class PokemonSpecies
     PokemonSpecies(std::string speciesName, std::string typeOne,
         std::string typeTwo, int maxHp, int baseAttack, int baseDefense,
         int baseSpecialAttack, int baseSpecialDefense, int baseSpeed,
-        int moveId1, int moveId2, int moveId3, int moveId4,
-        float genderDist)
+        std::vector<int> moveIds, float genderDist)
     :speciesName(speciesName)
     ,typeOne(typeOne)
     ,typeTwo(typeTwo)
@@ -57,10 +53,7 @@ class PokemonSpecies
     ,baseSpecialAttack(baseSpecialAttack)
     ,baseSpecialDefense(baseSpecialDefense)
     ,baseSpeed(baseSpeed)
-    ,moveId1(moveId1)
-    ,moveId2(moveId2)
-    ,moveId3(moveId3)
-    ,moveId4(moveId4)
+    ,moveIds(moveIds)
     ,genderDist(genderDist)
     {}
 
