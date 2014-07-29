@@ -10,9 +10,7 @@ debug:
 	cd src; make debug
 	mv src/main .
 
-clean:
+clean: 
 	cd src; make clean
-
-realclean: clean
 	-/bin/rm -rf main 
 	-/bin/rm -rf main.exe 

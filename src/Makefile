@@ -121,6 +121,5 @@ archive.tgz:	$(SOURCEFILES) Makefile
 
 clean:
 	-/bin/rm $(OBJFILES) main.o core 2> /dev/null
-
-realclean:        clean
 	-/bin/rm -rf main 
+	-/bin/rm -rf main.exe 
