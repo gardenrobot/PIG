@@ -59,7 +59,7 @@ int Battle::roundDamage(float damage)
 {
     // round down, but must be at least 1
     int rounded = (int) floor(damage);
-    if(rounded == 0)
+    if(rounded < 0)
     {
         return 1;
     }
