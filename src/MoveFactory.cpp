@@ -31,11 +31,12 @@ using namespace Json;
 using namespace boost::filesystem;
 
 
+// define static variables
 map<int, MoveSpecies*> MoveFactory::allSpecies;
 
 void MoveFactory::initialize()
 {
-    // parse file
+    // parse json file
     Reader reader;
     path filename =  current_path() / Environment::DATA_DIR /
         Environment::MOVE_DATA_FILE;
@@ -50,6 +51,7 @@ void MoveFactory::initialize()
         addSpecies(*it);
     }
 
+    // close file stream
     stream.close();
 }
 
@@ -75,6 +77,7 @@ void MoveFactory::addSpecies(Value& value)
 
 void MoveFactory::destroy()
 {
+    // delete species
     for(map<int, MoveSpecies*>::iterator it = allSpecies.begin();
         it != allSpecies.end(); it++)
     {

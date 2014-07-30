@@ -35,9 +35,7 @@ using namespace std;
 using namespace boost::filesystem;
 
 
-/**
- * Print information on all pokemon species to stdout
- */
+/// Print information on all pokemon species and their ids to stdout
 void listPokemon()
 {
     cout << "Listing all pokemon species." << endl;
@@ -54,15 +52,14 @@ void listPokemon()
 }
 
 
-/**
- * Prompts the human player to select pokemon, name, etc. to be used in the
- * game. Player Index is 1-indexed
- */
+/// Prompts the human player to select pokemon, name, etc. to be used in the
+/// game. Player Index is 1-indexed
 HumanPlayer* createHumanPlayer(int playerIndex)
 {
+    // tmp var for getting input
     string input;
 
-    // ask name
+    // ask for player's name
     cout << "Player " << playerIndex << ", what is your name?" << endl;
     getline(cin, input);
     string name = input;
@@ -146,35 +143,37 @@ HumanPlayer* createHumanPlayer(int playerIndex)
 }
 
 
-/**
- * Run the main loop of the game.
- */
-int run(int argc, char** argv)
+/// Initialize the plays and start the game.
+int run()
 {
+    // Seed prng
     srand(50);
+
+    // Intialize classes that need it
     Type::initialize();
     MoveFactory::initialize();
     PokemonFactory::initialize();
 
+    // Create players
     #ifdef DEBUG_MODE
-    // Hard coded players for testing
-    println_debug("Debug mode");
+    // Use hard coded players for testing
     HumanPlayer* p1 = new HumanPlayer("Ash");
     Pokemon* poke1 = PokemonFactory::createPokemon(4, "");
     p1->addPokemon(poke1);
     HumanPlayer* p2 = new HumanPlayer("Gary");
     Pokemon* poke2 = PokemonFactory::createPokemon(1, "");
     p2->addPokemon(poke2);
-    //poke1->addMinorAffliction(new Infatuation(*poke1, *poke2));
     #else
-    // Create players
+    // Create human players with user input
     listPokemon();
     HumanPlayer* p1 = createHumanPlayer(1);
     HumanPlayer* p2 = createHumanPlayer(2);
     #endif
 
+    // Create environment with players
     Environment env(p1, p2);
 
+    // Run the game loop
     cout << endl;
     cout << "Starting game." << endl;
     for(int i = 0; not p1->hasLost() and not p2->hasLost(); ++i)
@@ -192,6 +191,6 @@ int run(int argc, char** argv)
 
 int main(int argc, char** argv)
 {
-    return run(argc, argv);
+    return run();
 }
 

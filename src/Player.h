@@ -46,6 +46,9 @@ class Player
     /// Prompt the user for input
     virtual Choice getInput(Player& otherPlayer) = 0;
 
+
+    // Getters
+
     Pokemon* getPokemon(int index);
 
     int getNumPokemon() const;

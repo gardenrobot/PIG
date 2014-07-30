@@ -22,8 +22,8 @@ class Stat
 
     Stat(const Stat& original);
 
+    /// Change the stage
     Stat& operator+=(int change);
-
     Stat& operator-=(int change);
 
     /// Returns the original value of the stat

@@ -12,6 +12,9 @@
 using namespace std;
 
 
+/// Do nothing for all of these. Interesting things can be done in derived
+/// classes.
+
 MinorAffliction::MinorAffliction(Pokemon& afflictedPokemon)
 :afflictedPokemon(afflictedPokemon)
 {

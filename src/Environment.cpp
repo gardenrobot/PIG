@@ -15,6 +15,7 @@
 using namespace std;
 
 
+// Define public variables
 const string Environment::DATA_DIR = "data/";
 const int Environment::MAX_ROUNDS = 15;
 const int Environment::MAX_POKEMON = 6;
@@ -40,8 +41,8 @@ Environment::~Environment()
 
 Player* Environment::doGame()
 {
+    // This is the game loop; run until finished
     bool playerHasWon = false;
-
     while(not playerHasWon and (roundCount < MAX_ROUNDS or MAX_ROUNDS == -1))
     {
         Round::doRound(*this, *playerOne, *playerTwo);
@@ -50,6 +51,7 @@ Player* Environment::doGame()
         playerHasWon = playerOne->hasLost() or playerTwo->hasLost();
     }
 
+    // determine the winner and return
     Player* winner;
     if(not playerHasWon)
     {

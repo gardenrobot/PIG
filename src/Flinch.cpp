@@ -6,6 +6,7 @@
 // //////////////////////////////////////////////////////////////////// 
 
 #include "MinorAffliction.h"
+#include "Pokemon.h"
 #include "Move.h"
 #include "Battle.h"
 

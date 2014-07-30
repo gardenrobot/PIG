@@ -29,6 +29,7 @@ Move::Move(string name, string type, int damage, float accuracy,
 
 Move::~Move()
 {
+    // delete object
     if(effect != NULL)
     {
         delete effect;

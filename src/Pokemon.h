@@ -29,10 +29,11 @@ class Pokemon
 
     ~Pokemon();
 
-    /// Returns the name of the pokemon's species.
+
+    // Getters
+
     std::string getSpeciesName() const;
 
-    /// Returns the given name of the pokemon.
     std::string getNickname() const;
 
     Gender getGender() const;
@@ -63,28 +64,32 @@ class Pokemon
 
     int getLevel() const;
 
+    std::string getTypeOne() const;
+
+    std::string getTypeTwo() const;
+
     /// Returns true of health is 0
     bool isFainted() const;
 
-    /// Use this to change the hp.
+
+    /// Sets the hp to value
     void setHp(int hp);
 
+    /// Changes the hp by the value
     void changeHp(int change);
 
     /// Called when the environment finishes a round.
     void onRoundEnd(Pokemon& enemyPokemon);
 
+    /// Set major afficiton to healthy
     void healMajorAffliction();
 
     /// Set the major affliction. New major afflictions cannot normally be
     /// applied when one already exists. Use force argument to override this.
     void setMajorAffliction(MajorAffliction* affliction, bool force=false);
 
+    /// Add a new minor affliction.
     void addMinorAffliction(MinorAffliction* affliction);
-
-    std::string getTypeOne() const;
-
-    std::string getTypeTwo() const;
 
     Pokemon(std::string nickname, std::string speciesName, std::string typeOne,
         std::string typeTwo, int maxHp, int baseAttack, int baseDefense,

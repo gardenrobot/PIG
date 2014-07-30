@@ -6,8 +6,10 @@
 // //////////////////////////////////////////////////////////////////// 
 
 #include "MinorAffliction.h"
+#include "Pokemon.h"
 #include "Move.h"
 #include "Battle.h"
+#include "Gender.h"
 
 #include <iostream>
 #include <stdlib.h>

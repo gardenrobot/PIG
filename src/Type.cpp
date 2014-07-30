@@ -26,6 +26,7 @@ using namespace Json;
 using namespace boost::filesystem;
 
 
+// define static variables
 vector<string> Type::allTypes;
 map<TypePair, float> Type::typeMultipliers;
 string Type::NO_TYPE = "";
@@ -81,6 +82,7 @@ void Type::initialize()
             defending), modValue));
     }
 
+    // close file stream
     stream.close();
 }
 
@@ -120,6 +122,7 @@ float Type::getMultiplier(string move, string defending)
 float Type::getMultiplier(std::string move, string defending1,
     string defending2)
 {
+    // multiply multiplier for move against both defending types
     float mult1 = getMultiplier(move, defending1);
     float mult2 = getMultiplier(move, defending2);
     float multTotal = mult1 * mult2;
@@ -134,6 +137,7 @@ TypePair::TypePair(std::string move, std::string defending)
 
 bool TypePair::operator<(const TypePair& other) const
 {
+    // sort by move, then defending
     if(move == other.move)
     {
         return defending < other.defending;
@@ -146,6 +150,7 @@ bool TypePair::operator<(const TypePair& other) const
 
 bool TypePair::operator>(const TypePair& other) const
 {
+    // sort by move, then defending
     if(move == other.move)
     {
         return defending > other.defending;

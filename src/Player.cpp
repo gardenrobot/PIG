@@ -30,8 +30,9 @@ Player::Player(string name)
 
 Player::~Player()
 {
-    vector<Pokemon*>::iterator it = ownedPokemon.begin();
-    for( ; it != ownedPokemon.end(); ++it)
+    // delete pokemon
+    for(vector<Pokemon*>::iterator it = ownedPokemon.begin();
+        it != ownedPokemon.end(); ++it)
     {
         delete *it;
     }
@@ -40,6 +41,7 @@ Player::~Player()
 
 void Player::addPokemon(Pokemon* addedPokemon)
 {
+    // add to list of pokemon if there is avaiable space
     if(ownedPokemon.size() < Environment::MAX_POKEMON)
     {
         ownedPokemon.push_back(addedPokemon);
@@ -49,8 +51,10 @@ void Player::addPokemon(Pokemon* addedPokemon)
 
 void Player::swapPokemon(int index)
 {
+    // test that args are valid
     assert_debug(index >= 1 and index < getNumPokemon());
 
+    // swap pokemon
     Pokemon* tmp = ownedPokemon[0];
     ownedPokemon[0] = ownedPokemon[index];
     ownedPokemon[index] = tmp;
@@ -59,6 +63,7 @@ void Player::swapPokemon(int index)
 
 void Player::onRoundEnd(Player& enemyPlayer)
 {
+    // pass off to current pokemon
     getPokemon(0)->onRoundEnd(*enemyPlayer.getPokemon(0));
 }
 
@@ -71,6 +76,7 @@ void Player::surrender()
 
 bool Player::hasLost() const
 {
+    // did they surrender?
     if(surrenders)
     {
         return true;
@@ -124,6 +130,7 @@ bool Player::canSwap(int index)
 
 Pokemon* Player::getPokemon(int index)
 {
+    // return pokemon from list or null if out of bounds
     if(index >= 0 and index < Environment::MAX_POKEMON)
     {
         return ownedPokemon.at(index);

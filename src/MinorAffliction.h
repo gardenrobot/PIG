@@ -12,6 +12,9 @@
 #define MINORAFFLICTION_H_
 
 #include "Pokemon.h"
+#include "Gender.h"
+
+class Pokemon;
 
 
 class MinorAffliction

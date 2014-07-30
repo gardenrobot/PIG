@@ -20,6 +20,7 @@
 using namespace std;
 
 
+// define command strings
 const string HumanPlayer::MOVE_COMMAND = "move";
 const string HumanPlayer::SWAP_POKEMON_COMMAND = "swap";
 const string HumanPlayer::SKIP_COMMAND = "skip";
@@ -57,19 +58,24 @@ Choice HumanPlayer::getInput(Player& otherPlayer)
 
 Choice* HumanPlayer::askForInput(Player& otherPlayer)
 {
+    // print prompt
     cout << getName() << ", enter choice..." << endl;
 
+    // get input
     string input;
     getline(cin, input);
 
+    // parse input into a list of token
     vector<string> splitInput(StringHelper::split(input));
 
+    // if no token
     if(splitInput.size() < 1)
     {
         return NULL;
     }
     else if(splitInput[0] == MOVE_COMMAND)
     {
+        // check if number of tokens
         if(splitInput.size() != 2)
         {
             return NULL;
@@ -87,6 +93,7 @@ Choice* HumanPlayer::askForInput(Player& otherPlayer)
     }
     else if(splitInput[0] == SWAP_POKEMON_COMMAND)
     {
+        // check if number of tokens
         if(splitInput.size() != 2)
         {
             return NULL;

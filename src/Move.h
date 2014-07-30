@@ -33,6 +33,9 @@ class Move
 
     ~Move();
 
+
+    /// Getters for read-only vars
+
     std::string getName() const;
 
     std::string getType() const;
@@ -42,6 +45,7 @@ class Move
     float getAccuracy() const;
 
     Category getCategory() const;
+
 
     /// Called at the end of every turn that this move's owner is the current
     /// pokemon
@@ -67,13 +71,11 @@ class Move
     /// The amount of base damage the move inflicts on the opponent
     int damage;
 
-    /// The base probability that the move will hit the target. This is
-    /// ALWAYS_HIT if it always hits. Otherwise, it is a value 0 to 1.
-    /// There is a difference between ALWAYS_HIT and 1 (100%); ALWAYS_HIT
-    /// is not effected by outside factors.
+    /// The base probability that the move will hit the target. This is either
+    /// a float between 0-1, or a special value declared in Move
     float accuracy;
 
-    /// The category of this move's attack
+    /// The category of this move
     Category category;
 
     /// The object that handles any effect of using the move other than damage

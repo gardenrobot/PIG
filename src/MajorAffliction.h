@@ -21,8 +21,10 @@ class MajorAffliction
 
   public:
 
+    /// The name of the afflicition
     const std::string name;
 
+    /// An abbrev. of the name
     const std::string shortName;
 
     /// Called when the round ends
@@ -40,7 +42,7 @@ class MajorAffliction
     MajorAffliction(Pokemon& afflictedPokemon, std::string name,
         std::string shortName);
 
-    /// The pokemon that this is afflicted.
+    /// The pokemon that this is afflicting.
     Pokemon& afflictedPokemon;
 
 };

@@ -17,6 +17,7 @@ using namespace std;
 
 Effect* EffectFactory::createEffect(EffectId speciesId)
 {
+    // this is the hard-coded map
     switch(speciesId)
     {
         case NO_EFFECT:

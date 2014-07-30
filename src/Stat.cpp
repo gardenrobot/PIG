@@ -34,7 +34,10 @@ Stat& Stat::operator-=(int change)
 
 Stat& Stat::operator+=(int change)
 {
+    // change stat
     currentStage += change;
+
+    // keep stage in bounds
     if(currentStage < 0)
     {
         currentStage = 0;

@@ -25,7 +25,8 @@ class MoveSpecies
 
   public:
 
-    /// See Move.h for descriptions of these variables.
+    /// These correspond to variables in Move class. See that class for
+    /// descriptions.
 
     std::string name;
     std::string type;

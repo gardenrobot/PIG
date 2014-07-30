@@ -22,6 +22,7 @@ typedef enum
 
 namespace GenderString
 {
+    /// Returns a single capial letter for gender
     std::string genderToLetter(Gender g);
 }
 

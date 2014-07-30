@@ -33,6 +33,7 @@ using namespace Json;
 using namespace boost::filesystem;
 
 
+// define static variables
 map<int, PokemonSpecies*> PokemonFactory::allSpecies;
 
 void PokemonFactory::initialize()
@@ -52,6 +53,7 @@ void PokemonFactory::initialize()
         addSpecies(*it);
     }
 
+    // close file stream
     stream.close();
 }
 
@@ -110,6 +112,7 @@ void PokemonFactory::addSpecies(Value& value)
 
 void PokemonFactory::destroy()
 {
+    // delete species
     for(map<int, PokemonSpecies*>::iterator it = allSpecies.begin();
         it != allSpecies.end(); it++)
     {
