@@ -26,7 +26,6 @@ using namespace Json;
 using namespace boost::filesystem;
 
 
-const std::string Type::TYPE_JSON_FILE = "Type.json";
 vector<string> Type::allTypes;
 map<TypePair, float> Type::typeMultipliers;
 string Type::NO_TYPE = "";
@@ -35,7 +34,8 @@ void Type::initialize()
 {
     // parse file
     Reader reader;
-    path filename =  current_path() / Environment::DATA_DIR / TYPE_JSON_FILE;
+    path filename =  current_path() / Environment::DATA_DIR /
+        Environment::TYPE_DATA_FILE;
     ifstream stream;
     stream.open(filename.string().c_str(), ifstream::in);
     Value root;

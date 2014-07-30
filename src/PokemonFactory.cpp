@@ -33,14 +33,14 @@ using namespace Json;
 using namespace boost::filesystem;
 
 
-const std::string PokemonFactory::POKEMON_JSON_FILE = "Pokemon.json";
 map<int, PokemonSpecies*> PokemonFactory::allSpecies;
 
 void PokemonFactory::initialize()
 {
     // parse file
     Reader reader;
-    path filename =  current_path() / Environment::DATA_DIR / POKEMON_JSON_FILE;
+    path filename =  current_path() / Environment::DATA_DIR /
+        Environment::POKEMON_DATA_FILE;
     ifstream stream;
     stream.open(filename.string().c_str(), ifstream::in);
     Value root;
@@ -97,7 +97,7 @@ void PokemonFactory::addSpecies(Value& value)
 
     // check that the number of moves is valid
     assert(moveIds.size() > 0);
-    assert(moveIds.size() <= Pokemon::MAX_MOVES);
+    assert(moveIds.size() <= Environment::MAX_MOVES);
 
     // create species with parsed values
     PokemonSpecies* species = new PokemonSpecies(name, type1, type2, hp, attack,

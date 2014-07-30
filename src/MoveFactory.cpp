@@ -31,14 +31,14 @@ using namespace Json;
 using namespace boost::filesystem;
 
 
-const std::string MoveFactory::MOVE_JSON_FILE = "Move.json";
 map<int, MoveSpecies*> MoveFactory::allSpecies;
 
 void MoveFactory::initialize()
 {
     // parse file
     Reader reader;
-    path filename =  current_path() / Environment::DATA_DIR / MOVE_JSON_FILE;
+    path filename =  current_path() / Environment::DATA_DIR /
+        Environment::MOVE_DATA_FILE;
     ifstream stream;
     stream.open(filename.string().c_str(), ifstream::in);
     Value root;

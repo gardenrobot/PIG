@@ -22,7 +22,23 @@ class Environment
     static const std::string DATA_DIR;
 
     /// The limit on the number of rounds that will be run, or -1 for no limit
-    static const int MAX_ROUNDS = 15;
+    static const int MAX_ROUNDS;
+
+    /// The maximum number of moves each pokemon can have
+    static const int MAX_MOVES;
+
+    /// The maximum number of pokemon each player can have
+    static const int MAX_POKEMON;
+
+    /// The data file for pokemon stats
+    static const std::string POKEMON_DATA_FILE;
+
+    /// The data file for move stats
+    static const std::string MOVE_DATA_FILE;
+
+    /// The data file for type modifiers
+    static const std::string TYPE_DATA_FILE;
+
 
     // Create environment with these players. Does not start game execution.
     Environment(Player* playerOne, Player* playerTwo);

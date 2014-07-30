@@ -16,6 +16,12 @@ using namespace std;
 
 
 const string Environment::DATA_DIR = "data/";
+const int Environment::MAX_ROUNDS = 15;
+const int Environment::MAX_POKEMON = 6;
+const int Environment::MAX_MOVES = 4;
+const std::string Environment::POKEMON_DATA_FILE = "Pokemon.json";
+const std::string Environment::MOVE_DATA_FILE = "Move.json";
+const std::string Environment::TYPE_DATA_FILE = "Type.json";
 
 Environment::Environment(Player* playerOne, Player* playerTwo)
 :playerOne(playerOne)

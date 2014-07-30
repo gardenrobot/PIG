@@ -12,6 +12,7 @@
 #include "Type.h"
 #include "Stat.h"
 #include "MoveFactory.h"
+#include "Environment.h"
 #include "Debug.h"
 
 #include <string>
@@ -45,7 +46,7 @@ Pokemon::Pokemon(string nickname, string speciesName, string typeOne,
 ,gender(gender)
 {
     assert(moves.size() > 0);
-    assert(moves.size() <= MAX_MOVES);
+    assert(moves.size() <= Environment::MAX_MOVES);
 }
 
 

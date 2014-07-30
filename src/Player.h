@@ -22,9 +22,6 @@ class Player
 {
   public:
 
-    /// The player can have no more than this many pokemon
-    static const int MAX_POKEMON = 6;
-
     ~Player();
 
     /// Add a pokemon to the player's team. It will be deleted by the player.

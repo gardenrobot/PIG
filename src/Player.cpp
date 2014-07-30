@@ -10,6 +10,7 @@
 #include "Choice.h"
 #include "MajorAffliction.h"
 #include "MinorAffliction.h"
+#include "Environment.h"
 #include "Debug.h"
 
 #include <vector>
@@ -39,7 +40,7 @@ Player::~Player()
 
 void Player::addPokemon(Pokemon* addedPokemon)
 {
-    if(ownedPokemon.size() < MAX_POKEMON)
+    if(ownedPokemon.size() < Environment::MAX_POKEMON)
     {
         ownedPokemon.push_back(addedPokemon);
     }
@@ -123,7 +124,7 @@ bool Player::canSwap(int index)
 
 Pokemon* Player::getPokemon(int index)
 {
-    if(index >= 0 and index < MAX_POKEMON)
+    if(index >= 0 and index < Environment::MAX_POKEMON)
     {
         return ownedPokemon.at(index);
     }

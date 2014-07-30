@@ -27,9 +27,6 @@ class Pokemon
 
   public:
 
-    /// A pokemon can have no more than this many moves
-    static const int MAX_MOVES = 4;
-
     ~Pokemon();
 
     /// Returns the name of the pokemon's species.
