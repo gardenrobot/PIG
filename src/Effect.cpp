@@ -11,6 +11,7 @@
 #include "Pokemon.h"
 #include "Move.h"
 #include "MajorAffliction.h"
+#include "MinorAffliction.h"
 #include "Stat.h"
 #include "Debug.h"
 
@@ -33,5 +34,10 @@ void IncreaseSpeed2::doEffect(const Move& move, Pokemon& owner, Pokemon& defendi
     speed -= 2;
     cout << owner.getNickname() << "'s speed rose." << endl;
     println_debug("Current speed: " << speed.getModValue());
+}
+
+void Confuse::doEffect(const Move& move, Pokemon& owner, Pokemon& defending)
+{
+    defending.addMinorAffliction(new Confusion(defending));
 }
 

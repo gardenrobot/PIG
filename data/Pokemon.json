@@ -39,7 +39,7 @@
         "specialAttack":60,
         "specialDefense":150,
         "speed":65,
-        "moves":[1],
+        "moves":[1,6],
         "gender":0.25
     },
     {

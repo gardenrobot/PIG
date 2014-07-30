@@ -279,6 +279,21 @@ void Pokemon::setMajorAffliction(MajorAffliction* affliction, bool force)
 
 void Pokemon::addMinorAffliction(MinorAffliction* affliction)
 {
+    // check if the pokemon already has this kind of affliction
+    for(vector<MinorAffliction*>::iterator it = minorAfflictions.begin();
+        it != minorAfflictions.end(); it++)
+    {
+        if((*it)->name == affliction->name)
+        {
+            // this affliction already exists, do nothing
+            println_debug("Affliction " << affliction->name <<
+                " already exists.");
+            return;
+        }
+    }
+
+    // add the affliction
+    println_debug("Affliction " << affliction.name << " added.");
     minorAfflictions.push_back(affliction);
 }
 

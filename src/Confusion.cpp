@@ -19,7 +19,7 @@ using namespace std;
 
 
 Confusion::Confusion(Pokemon& afflictedPokemon)
-:MinorAffliction(afflictedPokemon)
+:MinorAffliction("Confusion", afflictedPokemon)
 ,turnsLeft(rand() % 4 + 1)
 {
 }

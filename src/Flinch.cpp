@@ -18,7 +18,7 @@ using namespace std;
 
 
 Flinch::Flinch(Pokemon& afflictedPokemon)
-:MinorAffliction(afflictedPokemon)
+:MinorAffliction("Flinch", afflictedPokemon)
 {
 }
 

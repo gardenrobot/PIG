@@ -19,7 +19,7 @@ using namespace std;
 
 
 Infatuation::Infatuation(Pokemon& afflictedPokemon, Pokemon& infatSrc)
-:MinorAffliction(afflictedPokemon)
+:MinorAffliction("Infatuation", afflictedPokemon)
 ,infatSrc(infatSrc)
 ,infatSrcHasChanged(false)
 {

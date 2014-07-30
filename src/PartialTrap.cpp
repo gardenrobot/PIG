@@ -17,7 +17,7 @@ using namespace std;
 
 
 PartialTrap::PartialTrap(Pokemon& afflictedPokemon)
-:MinorAffliction(afflictedPokemon)
+:MinorAffliction("Partial Trap", afflictedPokemon)
 {
     turnsLeft = (rand() % 4) + 2;
 }

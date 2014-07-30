@@ -29,6 +29,9 @@ Effect* EffectFactory::createEffect(EffectId speciesId)
         case INCREASE_SPEED_2:
             return new IncreaseSpeed2();
             break;
+        case CONFUSE:
+            return new Confuse();
+            break;
         default:
             println_debug("Effect ID " << speciesId << " not found.");
             return NULL;

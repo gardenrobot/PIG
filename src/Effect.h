@@ -56,5 +56,14 @@ class IncreaseSpeed2 : public Effect
     
 };
 
+class Confuse : public Effect
+{
+
+  public:
+
+    void doEffect(const Move& move, Pokemon& owner, Pokemon& defending);
+    
+};
+
 #endif // EFFECT_H_
 

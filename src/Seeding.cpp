@@ -17,7 +17,7 @@ using namespace std;
 
 
 Seeding::Seeding(Pokemon& afflictedPokemon)
-:MinorAffliction(afflictedPokemon)
+:MinorAffliction("Seeding", afflictedPokemon)
 {
     turnsLeft = (rand() % 4) + 2;
 }

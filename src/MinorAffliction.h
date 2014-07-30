@@ -14,6 +14,8 @@
 #include "Pokemon.h"
 #include "Gender.h"
 
+#include <string>
+
 class Pokemon;
 
 
@@ -21,6 +23,9 @@ class MinorAffliction
 {
 
   public:
+
+    /// This is used to identify derived minor afflictions.
+    const std::string name;
 
     /// Called when the round ends
     virtual void onRoundEnd(Pokemon& enemyPokemon);
@@ -38,7 +43,7 @@ class MinorAffliction
 
   protected:
 
-    MinorAffliction(Pokemon& afflictedPokemon);
+    MinorAffliction(std::string name, Pokemon& afflictedPokemon);
 
     /// The pokemon that this is afflicted.
     Pokemon& afflictedPokemon;

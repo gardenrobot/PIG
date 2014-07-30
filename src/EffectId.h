@@ -18,6 +18,7 @@
 #define NO_EFFECT 0
 #define AFFLICT_BURN 1
 #define INCREASE_SPEED_2 2
+#define CONFUSE 3
 
 
 #endif // EFFECT_ID_H_
