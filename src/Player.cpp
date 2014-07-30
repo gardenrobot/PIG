@@ -52,7 +52,7 @@ void Player::addPokemon(Pokemon* addedPokemon)
 void Player::swapPokemon(int index)
 {
     // test that args are valid
-    assert_debug(index >= 1 and index < getNumPokemon());
+    assert_debug(canSwap(index));
 
     // swap pokemon
     Pokemon* tmp = ownedPokemon[0];
