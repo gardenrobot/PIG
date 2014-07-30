@@ -56,14 +56,14 @@ MINGWINCLUDEFLAGS = -I/usr/local/win32/include
 MINGWLIBFLAGS = -L/usr/local/win32/lib -ljson_mingw_libmt -lboost_filesystem-mt-s -lboost_system-mt-s
 
 
-CPP_FILES =	Battle.cpp Burn.cpp Choice.cpp Confusion.cpp Effect.cpp EffectFactory.cpp Environment.cpp Flinch.cpp Gender.cpp HumanPlayer.cpp Infatuation.cpp MajorAffliction.cpp MinorAffliction.cpp Move.cpp MoveFactory.cpp PartialTrap.cpp Player.cpp Pokemon.cpp PokemonFactory.cpp Round.cpp Seeding.cpp Stat.cpp StringHelper.cpp Type.cpp main.cpp
+CPP_FILES =	Battle.cpp Burn.cpp Confusion.cpp Effect.cpp EffectFactory.cpp Environment.cpp Flinch.cpp Gender.cpp HumanPlayer.cpp Infatuation.cpp MajorAffliction.cpp MinorAffliction.cpp Move.cpp MoveFactory.cpp PartialTrap.cpp Player.cpp Pokemon.cpp PokemonFactory.cpp Round.cpp Seeding.cpp Stat.cpp StringHelper.cpp Type.cpp main.cpp
 C_FILES =	
 PS_FILES =	
 S_FILES =	
 H_FILES =	Battle.h Category.h Choice.h Debug.h Effect.h EffectFactory.h EffectId.h Environment.h Gender.h HumanPlayer.h MajorAffliction.h MinorAffliction.h Move.h MoveFactory.h MoveSpecies.h Player.h Pokemon.h PokemonFactory.h PokemonSpecies.h Round.h Stat.h StringHelper.h Type.h
 SOURCEFILES =	$(H_FILES) $(CPP_FILES) $(C_FILES) $(S_FILES)
 .PRECIOUS:	$(SOURCEFILES)
-OBJFILES =	Battle.o Burn.o Choice.o Confusion.o Effect.o EffectFactory.o Environment.o Flinch.o Gender.o HumanPlayer.o Infatuation.o MajorAffliction.o MinorAffliction.o Move.o MoveFactory.o PartialTrap.o Player.o Pokemon.o PokemonFactory.o Round.o Seeding.o Stat.o StringHelper.o Type.o 
+OBJFILES =	Battle.o Burn.o Confusion.o Effect.o EffectFactory.o Environment.o Flinch.o Gender.o HumanPlayer.o Infatuation.o MajorAffliction.o MinorAffliction.o Move.o MoveFactory.o PartialTrap.o Player.o Pokemon.o PokemonFactory.o Round.o Seeding.o Stat.o StringHelper.o Type.o 
 
 #
 # Main targets
@@ -86,7 +86,6 @@ mingw:
 
 Battle.o:	Battle.h Category.h Debug.h Gender.h Move.h Pokemon.h Stat.h Type.h
 Burn.o:	Gender.h MajorAffliction.h Pokemon.h Type.h
-Choice.o:	Choice.h
 Confusion.o:	Battle.h Category.h Gender.h MinorAffliction.h Move.h MoveFactory.h Pokemon.h Type.h
 Effect.o:	Category.h Debug.h Effect.h Gender.h MajorAffliction.h Move.h Pokemon.h Stat.h Type.h
 EffectFactory.o:	Debug.h Effect.h EffectFactory.h EffectId.h

@@ -19,7 +19,11 @@ typedef enum
 
 struct Choice
 {
-    Choice(ChoiceType choiceType, int index);
+    Choice(ChoiceType choiceType, int index)
+    :choiceType(choiceType)
+    ,index(index)
+    {
+    }
 
     /// The action that the player decided to take
     ChoiceType choiceType;
