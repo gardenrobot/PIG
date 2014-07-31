@@ -84,7 +84,13 @@ Choice* HumanPlayer::askForInput(Player& otherPlayer)
         int index;
         bool success = stringstream(splitInput[1]) >> index;
 
+        // check if error parsing to int
         if(not success)
+        {
+            return NULL;
+        }
+        // check if index is out of bounds
+        if(index < 0 or index > getPokemon(0)->getNumMoves())
         {
             return NULL;
         }
