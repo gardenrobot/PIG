@@ -77,7 +77,7 @@ void Type::initialize()
 
         // add values to map
         println_debug("Registering Type Modifier " << attacking << " on " <<
-            defending);
+            defending << " = " << modValue);
         typeMultipliers.insert(pair<TypePair, float>(TypePair(attacking,
             defending), modValue));
     }

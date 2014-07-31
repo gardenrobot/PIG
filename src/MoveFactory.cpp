@@ -71,7 +71,7 @@ void MoveFactory::addSpecies(Value& value)
         category, effectId);
 
     // add to container
-    println_debug("Registering Move " << id);
+    println_debug("Registering Move " << id << " \"" << name << "\"");
     allSpecies.insert(std::pair<int, MoveSpecies*>(id, species));
 }
 

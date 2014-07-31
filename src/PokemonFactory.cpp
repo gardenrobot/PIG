@@ -106,7 +106,7 @@ void PokemonFactory::addSpecies(Value& value)
         defense, specialAttack, specialDefense, speed, moveIds, genderDist);
 
     // add to container
-    println_debug("Registering Pokemon " << id);
+    println_debug("Registering Pokemon " << id << " \"" << name << "\"");
     allSpecies.insert(std::pair<int, PokemonSpecies*>(id, species));
 }
 
