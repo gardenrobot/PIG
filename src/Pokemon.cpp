@@ -293,7 +293,7 @@ void Pokemon::addMinorAffliction(MinorAffliction* affliction)
     }
 
     // add the affliction
-    println_debug("Affliction " << affliction.name << " added.");
+    println_debug("Affliction " << affliction->name << " added.");
     minorAfflictions.push_back(affliction);
 }
 
