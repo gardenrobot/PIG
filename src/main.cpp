@@ -143,7 +143,7 @@ HumanPlayer* createHumanPlayer(int playerIndex)
 }
 
 
-/// Initialize the plays and start the game.
+/// Initialize the players and start the game.
 int run()
 {
     // Seed prng
@@ -176,11 +176,15 @@ int run()
     // Run the game loop
     cout << endl;
     cout << "Starting game." << endl;
-    for(int i = 0; not p1->hasLost() and not p2->hasLost(); ++i)
-    {
-        cout << "Round " << (i + 1) << endl;
+    Player* winner = env.doGame();
 
-        Round::doRound(env, *p1, *p2);
+    if(winner == NULL)
+    {
+        cout << "Tie." << endl;
+    }
+    else
+    {
+        cout << winner->getName() << " wins." << endl;
     }
 
     cout << "Done." << endl;
