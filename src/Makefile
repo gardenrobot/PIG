@@ -56,14 +56,14 @@ MINGWINCLUDEFLAGS = -I/usr/local/win32/include
 MINGWLIBFLAGS = -L/usr/local/win32/lib -ljson_mingw_libmt -lboost_filesystem-mt-s -lboost_system-mt-s
 
 
-CPP_FILES =	Battle.cpp Burn.cpp Confusion.cpp Effect.cpp EffectFactory.cpp Environment.cpp Flinch.cpp Gender.cpp HumanPlayer.cpp Infatuation.cpp MajorAffliction.cpp MinorAffliction.cpp Move.cpp MoveFactory.cpp PartialTrap.cpp Player.cpp Pokemon.cpp PokemonFactory.cpp Round.cpp Seeding.cpp Stat.cpp StringHelper.cpp Type.cpp main.cpp
+CPP_FILES =	Battle.cpp Burn.cpp Confusion.cpp Effect.cpp EffectFactory.cpp Environment.cpp Flinch.cpp Gender.cpp HumanPlayer.cpp Infatuation.cpp MajorAffliction.cpp MinorAffliction.cpp Move.cpp MoveFactory.cpp PartialTrap.cpp Player.cpp Pokemon.cpp PokemonFactory.cpp Round.cpp Seeding.cpp Stat.cpp Type.cpp main.cpp
 C_FILES =	
 PS_FILES =	
 S_FILES =	
-H_FILES =	Battle.h Category.h Choice.h Debug.h Effect.h EffectFactory.h EffectId.h Environment.h Gender.h HumanPlayer.h MajorAffliction.h MinorAffliction.h Move.h MoveFactory.h MoveSpecies.h Player.h Pokemon.h PokemonFactory.h PokemonSpecies.h Round.h Stat.h StringHelper.h Type.h
+H_FILES =	Battle.h Category.h Choice.h Debug.h Effect.h EffectFactory.h EffectId.h Environment.h Gender.h HumanPlayer.h MajorAffliction.h MinorAffliction.h Move.h MoveFactory.h MoveSpecies.h Player.h Pokemon.h PokemonFactory.h PokemonSpecies.h Round.h Stat.h Type.h
 SOURCEFILES =	$(H_FILES) $(CPP_FILES) $(C_FILES) $(S_FILES)
 .PRECIOUS:	$(SOURCEFILES)
-OBJFILES =	Battle.o Burn.o Confusion.o Effect.o EffectFactory.o Environment.o Flinch.o Gender.o HumanPlayer.o Infatuation.o MajorAffliction.o MinorAffliction.o Move.o MoveFactory.o PartialTrap.o Player.o Pokemon.o PokemonFactory.o Round.o Seeding.o Stat.o StringHelper.o Type.o 
+OBJFILES =	Battle.o Burn.o Confusion.o Effect.o EffectFactory.o Environment.o Flinch.o Gender.o HumanPlayer.o Infatuation.o MajorAffliction.o MinorAffliction.o Move.o MoveFactory.o PartialTrap.o Player.o Pokemon.o PokemonFactory.o Round.o Seeding.o Stat.o Type.o 
 
 #
 # Main targets
@@ -92,7 +92,7 @@ EffectFactory.o:	Debug.h Effect.h EffectFactory.h EffectId.h
 Environment.o:	Choice.h Environment.h Player.h Round.h
 Flinch.o:	Battle.h Category.h Gender.h MinorAffliction.h Move.h Pokemon.h Type.h
 Gender.o:	Gender.h
-HumanPlayer.o:	Category.h Choice.h Gender.h HumanPlayer.h MajorAffliction.h Move.h Player.h Pokemon.h StringHelper.h Type.h
+HumanPlayer.o:	Category.h Choice.h Gender.h HumanPlayer.h MajorAffliction.h Move.h Player.h Pokemon.h Type.h
 Infatuation.o:	Battle.h Category.h Gender.h MinorAffliction.h Move.h Pokemon.h Type.h
 MajorAffliction.o:	MajorAffliction.h
 MinorAffliction.o:	Gender.h MinorAffliction.h Pokemon.h Type.h
@@ -105,9 +105,8 @@ PokemonFactory.o:	Debug.h Gender.h MoveFactory.h Pokemon.h PokemonFactory.h Poke
 Round.o:	Battle.h Choice.h Debug.h Environment.h Gender.h MinorAffliction.h Player.h Pokemon.h Round.h Stat.h Type.h
 Seeding.o:	Battle.h Category.h Gender.h MinorAffliction.h Move.h Pokemon.h Type.h
 Stat.o:	Stat.h
-StringHelper.o:	StringHelper.h
 Type.o:	Type.h
-main.o:	Choice.h EffectFactory.h EffectId.h Environment.h Gender.h HumanPlayer.h MajorAffliction.h MinorAffliction.h MoveFactory.h Player.h Pokemon.h PokemonFactory.h PokemonSpecies.h Round.h StringHelper.h Type.h
+main.o:	Choice.h EffectFactory.h EffectId.h Environment.h Gender.h HumanPlayer.h MajorAffliction.h MinorAffliction.h MoveFactory.h Player.h Pokemon.h PokemonFactory.h PokemonSpecies.h Round.h Type.h
 
 #
 # Housekeeping

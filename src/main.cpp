@@ -20,7 +20,6 @@
 #include "EffectId.h"
 #include "EffectFactory.h"
 #include "Type.h"
-#include "StringHelper.h"
 #include "Debug.h"
 
 #include <string>
@@ -30,9 +29,11 @@
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/operations.hpp>
 #include <boost/filesystem/path.hpp>
+#include <boost/algorithm/string/trim.hpp>
 
 using namespace std;
 using namespace boost::filesystem;
+using namespace boost::algorithm;
 
 
 /// Print information on all pokemon species and their ids to stdout
@@ -92,8 +93,8 @@ HumanPlayer* createHumanPlayer(int playerIndex)
             getline(cin, input);
 
             // parse input and create pokemon
-            vector<string> splitInput = StringHelper::split(input);
-            if(splitInput.size() == 0)
+            trim(input);
+            if(input == "")
             {
                 if(player->getNumPokemon() > 0)
                 {
@@ -101,15 +102,11 @@ HumanPlayer* createHumanPlayer(int playerIndex)
                 }
                 break;
             }
-            else if(splitInput.size() > 1)
-            {
-                continue;
-            }
             else
             {
                 // parse to int
                 char* endptr;
-                const char* pokemonIdCStr = splitInput.at(0).c_str();
+                const char* pokemonIdCStr = input.c_str();
                 int pokemonId = (int) strtol(pokemonIdCStr,
                     &endptr, 10);
 

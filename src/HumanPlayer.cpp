@@ -7,7 +7,6 @@
 
 #include "Player.h"
 #include "HumanPlayer.h"
-#include "StringHelper.h"
 #include "Pokemon.h"
 #include "Move.h"
 #include "MajorAffliction.h"
@@ -16,8 +15,11 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <boost/algorithm/string/split.hpp>
+#include <boost/algorithm/string/trim_all.hpp>
 
 using namespace std;
+using namespace boost::algorithm;
 
 
 // define command strings
@@ -64,12 +66,14 @@ Choice* HumanPlayer::askForInput(Player& otherPlayer)
     // get input
     string input;
     getline(cin, input);
+    trim_all(input);
 
     // parse input into a list of token
-    vector<string> splitInput(StringHelper::split(input));
+    vector<string> splitInput;
+    split(splitInput, input, is_any_of(" "), token_compress_on);
 
     // if no token
-    if(splitInput.size() < 1)
+    if(splitInput.size() == 0 or splitInput[0] == "")
     {
         return NULL;
     }
