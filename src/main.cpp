@@ -147,7 +147,7 @@ HumanPlayer* createHumanPlayer(int playerIndex)
 int run()
 {
     // Seed prng
-    srand(50);
+    srand(Environment::PRNG_SEED);
 
     // Intialize classes that need it
     Type::initialize();
@@ -178,6 +178,7 @@ int run()
     cout << "Starting game." << endl;
     Player* winner = env.doGame();
 
+    // Print the winner's name.
     if(winner == NULL)
     {
         cout << "Tie." << endl;

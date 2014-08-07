@@ -17,7 +17,8 @@ using namespace std;
 
 // Define public variables
 const string Environment::DATA_DIR = "data/";
-const int Environment::MAX_ROUNDS = 2;
+const int Environment::PRNG_SEED = 50;
+const int Environment::MAX_ROUNDS = 100;
 const int Environment::MAX_POKEMON = 6;
 const int Environment::MAX_MOVES = 4;
 const std::string Environment::POKEMON_DATA_FILE = "Pokemon.json";

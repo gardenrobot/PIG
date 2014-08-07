@@ -18,6 +18,8 @@ class Environment
 {
   public:
 
+    static const int PRNG_SEED;
+
     /// The directory that contains all data files
     static const std::string DATA_DIR;
 
