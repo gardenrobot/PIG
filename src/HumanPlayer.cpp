@@ -86,7 +86,7 @@ HumanPlayer::HumanPlayer(int playerIndex)
                 if(*endptr == 0)
                 {
                     // ask for pokemon nickname
-                    cout << "Give a nickname to pokemon: " << endl;
+                    cout << "Give a nickname to pokemon: ";
                     getline(cin, input);
                     string nickname = input;
 
@@ -115,7 +115,7 @@ string HumanPlayer::askForName(int playerIndex)
 {
     // ask for player's name
     string input;
-    cout << "Player " << playerIndex << ", what is your name?" << endl;
+    cout << "Player " << playerIndex << ", what is your name? ";
     getline(cin, input);
 
     // set the name
