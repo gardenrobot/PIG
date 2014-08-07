@@ -20,7 +20,7 @@ class HumanPlayer : public Player
 {
   public:
 
-    HumanPlayer(std::string name);
+    HumanPlayer(int playerIndex);
 
     /// Prompts the user for input. The user can enter a command to take an
     /// action or view info. Stops prompting when user takes action.
@@ -30,6 +30,9 @@ class HumanPlayer : public Player
 
     /// Prompts the user for input once. Returns the choice, valid or not.
     Choice* askForInput(Player& otherPlayer);
+
+    /// Ask user for player name
+    std::string askForName(int playerIndex);
 
 
     /// Commands strings

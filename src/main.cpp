@@ -53,93 +53,6 @@ void listPokemon()
 }
 
 
-/// Prompts the human player to select pokemon, name, etc. to be used in the
-/// game. Player Index is 1-indexed
-HumanPlayer* createHumanPlayer(int playerIndex)
-{
-    // tmp var for getting input
-    string input;
-
-    // ask for player's name
-    cout << "Player " << playerIndex << ", what is your name?" << endl;
-    getline(cin, input);
-    string name = input;
-
-    // create player object
-    HumanPlayer* player = new HumanPlayer(name);
-
-    // list pokemon
-
-    cout << name << ", Enter the id of the pokemon you want "
-        << "or enter nothing to stop." << endl;
-    
-    // ask for pokemon
-    bool continueGetInput = true;
-    for(int i = 0; i < Environment::MAX_POKEMON and continueGetInput;
-        i = player->getNumPokemon())
-    {
-        bool displayError = false;
-        while(true)
-        {
-            // complain to user if they messed up
-            if(displayError)
-            {
-                cout << "Invalid input." << endl;
-            }
-            displayError = true;
-
-            // get input
-            cout << "Pokemon " << (i+1) << " id: ";
-            getline(cin, input);
-
-            // parse input and create pokemon
-            trim(input);
-            if(input == "")
-            {
-                if(player->getNumPokemon() > 0)
-                {
-                    continueGetInput = false;
-                }
-                break;
-            }
-            else
-            {
-                // parse to int
-                char* endptr;
-                const char* pokemonIdCStr = input.c_str();
-                int pokemonId = (int) strtol(pokemonIdCStr,
-                    &endptr, 10);
-
-                // if parse is success 
-                if(*endptr == 0)
-                {
-                    // ask for pokemon nickname
-                    cout << "Give a nickname to pokemon: " << endl;
-                    getline(cin, input);
-                    string nickname = input;
-
-                    // add pokemon to id
-                    Pokemon* pokemon = PokemonFactory::createPokemon(pokemonId,
-                        nickname);
-                    if(pokemon == NULL)
-                    {
-                        continue;
-                    }
-                    player->addPokemon(pokemon);
-                    
-                    break;
-                }
-                else
-                {
-                    continue;
-                }
-            }
-        }
-    }
-    return player;
-}
-
-
 /// Initialize the players and start the game.
 int run()
 {
@@ -154,17 +67,17 @@ int run()
     // Create players
     #ifdef DEBUG_MODE
     // Use hard coded players for testing
-    HumanPlayer* p1 = new HumanPlayer("Ash");
+    HumanPlayer* p1 = new HumanPlayer(1);
     Pokemon* poke1 = PokemonFactory::createPokemon(4, "");
     p1->addPokemon(poke1);
-    HumanPlayer* p2 = new HumanPlayer("Gary");
+    HumanPlayer* p2 = new HumanPlayer(2);
     Pokemon* poke2 = PokemonFactory::createPokemon(1, "");
     p2->addPokemon(poke2);
     #else
-    // Create human players with user input
+    // Create human players
     listPokemon();
-    HumanPlayer* p1 = createHumanPlayer(1);
-    HumanPlayer* p2 = createHumanPlayer(2);
+    HumanPlayer* p1 = new HumanPlayer(1);
+    HumanPlayer* p2 = new HumanPlayer(2);
     #endif
 
     // Create environment with players

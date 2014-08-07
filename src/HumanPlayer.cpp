@@ -7,7 +7,9 @@
 
 #include "Player.h"
 #include "HumanPlayer.h"
+#include "Environment.h"
 #include "Pokemon.h"
+#include "PokemonFactory.h"
 #include "Move.h"
 #include "MajorAffliction.h"
 #include "Gender.h"
@@ -34,9 +36,90 @@ const string HumanPlayer::PLAYER = "player";
 const string HumanPlayer::ENEMY = "enemy";
 const string HumanPlayer::POKEMON = "pokemon";
 
-HumanPlayer::HumanPlayer(string name)
-:Player(name)
+HumanPlayer::HumanPlayer(int playerIndex)
+:Player(askForName(playerIndex))
 {
+    // tmp var for getting input
+    string input;
+
+    cout << getName() << ", Enter the id of the pokemon you want "
+        << "or enter nothing to stop." << endl;
+    
+    // ask for pokemon
+    bool continueGetInput = true;
+    for(int i = 0; i < Environment::MAX_POKEMON and continueGetInput;
+        i = getNumPokemon())
+    {
+        bool displayError = false;
+        while(true)
+        {
+            // complain to user if they messed up
+            if(displayError)
+            {
+                cout << "Invalid input." << endl;
+            }
+            displayError = true;
+
+            // get input
+            cout << "Pokemon " << (i+1) << " id: ";
+            getline(cin, input);
+
+            // parse input and create pokemon
+            trim(input);
+            if(input == "")
+            {
+                if(getNumPokemon() > 0)
+                {
+                    continueGetInput = false;
+                }
+                break;
+            }
+            else
+            {
+                // parse to int
+                char* endptr;
+                const char* pokemonIdCStr = input.c_str();
+                int pokemonId = (int) strtol(pokemonIdCStr,
+                    &endptr, 10);
+
+                // if parse is success 
+                if(*endptr == 0)
+                {
+                    // ask for pokemon nickname
+                    cout << "Give a nickname to pokemon: " << endl;
+                    getline(cin, input);
+                    string nickname = input;
+
+                    // add pokemon to id
+                    Pokemon* pokemon = PokemonFactory::createPokemon(pokemonId,
+                        nickname);
+                    if(pokemon == NULL)
+                    {
+                        continue;
+                    }
+                    addPokemon(pokemon);
+                    
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+        }
+    }
+}
+
+
+string HumanPlayer::askForName(int playerIndex)
+{
+    // ask for player's name
+    string input;
+    cout << "Player " << playerIndex << ", what is your name?" << endl;
+    getline(cin, input);
+
+    // set the name
+    return input;
 }
 
 
