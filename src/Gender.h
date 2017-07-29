@@ -1,7 +1,7 @@
 // 
 // File: Gender.h 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // The gender of the pokemon
 // 

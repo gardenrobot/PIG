@@ -1,7 +1,7 @@
 // 
 // File: Type.h 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // Each move and pokemon is assigned a type. Each type has strengths and
 // weaknesses in battle.

@@ -1,7 +1,7 @@
 // 
 // File: Effect.h 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // Move objects that have hooks for non-damage effects pass the work off
 // to Effect objects.

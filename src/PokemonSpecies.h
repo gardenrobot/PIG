@@ -1,7 +1,7 @@
 // 
 // File: PokemonSpecies.h 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // Pokemon species are configurations used by the factory to create pokemon. They
 // are used like structs with only public variables.

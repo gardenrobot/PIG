@@ -1,7 +1,7 @@
 // 
 // File: Pokemon.h 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // Pokemon are the cute little animals that fight each other.
 // 

@@ -1,7 +1,7 @@
 // 
 // File: MajorAffliction.h 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // A major affliction will effect a pokemon throughout the game using hooks. A
 // pokemon can have only major affliction at a time.

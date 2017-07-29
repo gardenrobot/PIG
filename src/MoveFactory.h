@@ -1,7 +1,7 @@
 // 
 // File: MoveFactory.h 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // Factory that creates moves
 // 

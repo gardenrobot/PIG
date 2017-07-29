@@ -1,7 +1,7 @@
 // 
 // File: Choice.h 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // This struct holds information about user input
 // 

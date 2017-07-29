@@ -1,7 +1,7 @@
 // 
 // File: Battle.h 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // This class's functions will process a single battle step
 // 

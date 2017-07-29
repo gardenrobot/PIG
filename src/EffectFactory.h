@@ -1,7 +1,7 @@
 // 
 // File: EffectFactory.h 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // Creates effects. Unlike other factories, the generated objects here are
 // hard-coded.

@@ -1,7 +1,7 @@
 // 
 // File: MinorAffliction.h 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // These can effect a pokemon throughout the game. A pokemon can have multiple
 // minor afflictions at a time.

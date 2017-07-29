@@ -1,7 +1,7 @@
 // 
 // File: Debug.h 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // Some macros and functions for debugging
 // 

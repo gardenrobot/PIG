@@ -1,7 +1,7 @@
 // 
 // File: HumanPlayer.h 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // A player that prompts the user for input
 // 

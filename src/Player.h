@@ -1,7 +1,7 @@
 // 
 // File: Player.h 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // Players hold a set of pokemon, and enter input when prompted.
 // 

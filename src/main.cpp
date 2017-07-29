@@ -1,7 +1,7 @@
 // 
 // File: main.h 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // Runs PIG
 // 

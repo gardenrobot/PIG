@@ -1,7 +1,7 @@
 // 
 // File: EffectId.h 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // These are used to identify species of Effect.
 // 

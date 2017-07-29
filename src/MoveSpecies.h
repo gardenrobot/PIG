@@ -1,7 +1,7 @@
 // 
 // File: MoveSpecies.h 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // Move species are configurations used by the factory to create moves. They
 // are used like structs with only public variables.

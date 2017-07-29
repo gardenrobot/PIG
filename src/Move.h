@@ -1,7 +1,7 @@
 // 
 // File: Move.h 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // Moves are different kinds of attacks that the pokemon can use on each other.
 // 

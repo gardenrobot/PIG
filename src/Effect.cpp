@@ -1,7 +1,7 @@
 // 
 // File: Effect.cpp 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // Implementations of Effect's derived classes
 // 

@@ -1,7 +1,7 @@
 // 
 // File: Stat.h 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // Stats hold values that effect how a pokemon deals damage, takes damage, etc.
 // Each stat has a constant base value which is multiplied by modifiers, which

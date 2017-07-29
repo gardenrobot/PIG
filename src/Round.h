@@ -1,7 +1,7 @@
 // 
 // File: Round.h 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // Each game is separated into rounds. This class processes a round.
 // 

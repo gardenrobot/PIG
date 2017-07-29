@@ -1,7 +1,7 @@
 // 
 // File: PokemonFactory.h 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // Factory for pokemon
 // 

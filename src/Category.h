@@ -1,7 +1,7 @@
 // 
 // File: Category.h 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // These are the different categories of moves. Categories describe what the
 // move does. Status moves do not do direct damage but have a hook for effects.

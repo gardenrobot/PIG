@@ -1,7 +1,7 @@
 // 
 // File: Environment.h 
 // 
-// Author: Lucas Clotfelter
+// Author: Sam Clotfelter
 // 
 // The environment in which the game happens
 // 
