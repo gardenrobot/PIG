@@ -1,13 +1,15 @@
-#PIG - Pokemon Imitating Game
+# PIG - Pokemon Imitating Game
 
-##Description
+## Description
+
 This is a text-based game that mimics the game mechanics of Pokemon battles from the Pokemon game series, Generation 2. Supports Linux and Windows.
 
-##Dependencies
+## Dependencies
 * Jsoncpp 0.5.0
 * Boost C++ 1.55.0
 
-##Building
+## Building
+
 * For Linux
   * Install all dependencies.
   * Download and unzip archive.
@@ -20,5 +22,6 @@ This is a text-based game that mimics the game mechanics of Pokemon battles from
   * The Makefile assumes the dependencies are installed to /usr/local/win32/. If they are not, edit src/Makefile to point to the correct directory.
   * Run "make mingw".
 
-##Running
+## Running
+
 Ensure main(.exe) and data/ are in the same directory. Run main(.exe).
